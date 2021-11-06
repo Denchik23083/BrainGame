@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Auth", "BrainGame.Auth\BrainGame.Auth.csproj", "{BAAF95E8-CCF4-48DA-93EC-F9D2B573FC60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Logic", "BrainGame.Logic\BrainGame.Logic.csproj", "{56594077-9BB0-4637-883D-F610753F8FBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Db", "BrainGame.Db\BrainGame.Db.csproj", "{2E2286F3-8454-48AC-ADCB-B04145F912A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.WebDb", "BrainGame.Web\BrainGame.WebDb.csproj", "{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Tests", "BrainGame.Tests\BrainGame.Tests.csproj", "{96C820FF-A4D7-423B-AF40-3C211E05C7B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAAF95E8-CCF4-48DA-93EC-F9D2B573FC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAAF95E8-CCF4-48DA-93EC-F9D2B573FC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAAF95E8-CCF4-48DA-93EC-F9D2B573FC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAAF95E8-CCF4-48DA-93EC-F9D2B573FC60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56594077-9BB0-4637-883D-F610753F8FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56594077-9BB0-4637-883D-F610753F8FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56594077-9BB0-4637-883D-F610753F8FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56594077-9BB0-4637-883D-F610753F8FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84AD0A0C-ACEA-4BC0-B2B5-FC10DC922486}
+	EndGlobalSection
+EndGlobal
