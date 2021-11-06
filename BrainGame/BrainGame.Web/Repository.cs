@@ -30,7 +30,7 @@ namespace BrainGame.WebDb
         public User Login(Login login)
         {
             var user = _context.Users.FirstOrDefault(
-                b => b.Email == login.Email || 
+                b => b.Email == login.Email && 
                          b.Password == login.Password);
 
             if (user is null)

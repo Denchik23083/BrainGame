@@ -35,6 +35,32 @@ namespace BrainGame.Tests
             Assert.Equal(2, create);
         }
 
+        [Fact]
+        public void Login()
+        {
+            var login = new Login
+            {
+                Email = "user@gmail.com",
+                Password = "0000",
+            };
+
+
+            var user = _context.Users.FirstOrDefault(
+                b => b.Email == login.Email &&
+                     b.Password == login.Password);
+
+            var isUser = false;
+
+            if (user is null)
+            {
+                isUser = false;
+            }
+
+            isUser = true;
+
+            Assert.True(isUser);
+        }
+
         private User Map(Register model)
         {
             return new User
