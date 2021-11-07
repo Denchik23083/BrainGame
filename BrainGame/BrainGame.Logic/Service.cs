@@ -22,5 +22,20 @@ namespace BrainGame.Logic
         {
             return _repository.Login(login);
         }
+
+        public User User()
+        {
+            return _repository.User();
+        }
+
+        public void Update(User user)
+        {
+            _repository.Update(user);
+        }
+
+        public void Remove()
+        {
+            _repository.Remove();
+        }
     }
 }
