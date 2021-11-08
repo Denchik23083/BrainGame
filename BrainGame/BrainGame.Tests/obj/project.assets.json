@@ -1855,6 +1855,33 @@
         "runtime": {
           "bin/placeholder/BrainGame.Db.dll": {}
         }
+      },
+      "BrainGame.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "BrainGame.Db": "1.0.0",
+          "BrainGame.WebDb": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BrainGame.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BrainGame.Logic.dll": {}
+        }
+      },
+      "BrainGame.WebDb/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "BrainGame.Db": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BrainGame.WebDb.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BrainGame.WebDb.dll": {}
+        }
       }
     }
   },
@@ -6537,11 +6564,22 @@
       "type": "project",
       "path": "../BrainGame.Db/BrainGame.Db.csproj",
       "msbuildProject": "../BrainGame.Db/BrainGame.Db.csproj"
+    },
+    "BrainGame.Logic/1.0.0": {
+      "type": "project",
+      "path": "../BrainGame.Logic/BrainGame.Logic.csproj",
+      "msbuildProject": "../BrainGame.Logic/BrainGame.Logic.csproj"
+    },
+    "BrainGame.WebDb/1.0.0": {
+      "type": "project",
+      "path": "../BrainGame.Web/BrainGame.WebDb.csproj",
+      "msbuildProject": "../BrainGame.Web/BrainGame.WebDb.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "BrainGame.Db >= 1.0.0",
+      "BrainGame.Logic >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "coverlet.collector >= 1.2.0",
       "xunit >= 2.4.0",
@@ -6577,6 +6615,9 @@
           "projectReferences": {
             "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj": {
               "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj"
+            },
+            "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj"
             }
           }
         }

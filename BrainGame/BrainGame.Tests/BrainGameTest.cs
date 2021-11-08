@@ -1,6 +1,8 @@
+using System;
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
+using BrainGame.Logic;
 using Xunit;
 
 namespace BrainGame.Tests
@@ -49,7 +51,7 @@ namespace BrainGame.Tests
                 b => b.Email == login.Email &&
                      b.Password == login.Password);
 
-            var isUser = false;
+            bool isUser;
 
             if (user is null)
             {
@@ -59,6 +61,68 @@ namespace BrainGame.Tests
             isUser = true;
 
             Assert.True(isUser);
+        }
+
+        [Fact]
+        public void Get()
+        {
+            var user = Service._user;
+
+            bool isUser;
+
+            if (user is null)
+            {
+                isUser = false;
+            }
+
+            isUser = true;
+
+            Assert.True(isUser);
+        }
+
+        [Fact]
+        public void Update()
+        {
+            var newUser = new User
+            {
+                Name = "Bob",
+                Email = "bob@gmail.com",
+                Password = "0000"
+            };
+            
+            var user = Service._user;
+
+            if (user is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            user.Name = newUser.Name;
+            user.Email = newUser.Email;
+            user.Password = newUser.Password;
+
+            var update = _context.Users.Count();
+
+            Assert.Equal(2, update);
+        }
+
+        [Fact]
+        public void Delete()
+        {
+            var user = Service._user;
+            if (user is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _context.Users.Remove(user);
+
+            //Work
+            /*_context.SaveChanges();*/
+
+            var deleted = _context.Users.Count();
+
+            Assert.Equal(1, deleted);
         }
 
         private User Map(Register model)

@@ -10,7 +10,7 @@ namespace BrainGame.Logic
     {
         private readonly BrainGameContext _context;
         private readonly IRepository _repository;
-        private static User _user;
+        public static User _user;
 
         public Service(IRepository repository, BrainGameContext context)
         {
