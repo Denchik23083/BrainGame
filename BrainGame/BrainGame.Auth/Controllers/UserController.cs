@@ -42,17 +42,6 @@ namespace BrainGame.Auth.Controllers
             return NoContent();
         }
 
-        private UserModel Map(User model)
-        {
-            return new UserModel
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-            };
-        }
-
         private User Map(UserModel model)
         {
             return new User

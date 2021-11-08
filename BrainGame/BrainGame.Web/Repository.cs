@@ -8,7 +8,6 @@ namespace BrainGame.WebDb
     public class Repository : IRepository
     {
         private readonly BrainGameContext _context;
-        private static User _user;
 
         public Repository(BrainGameContext context)
         {
@@ -17,11 +16,6 @@ namespace BrainGame.WebDb
 
         public Register Register(Register register)
         {
-            if (register.Password != register.ConfirmPassword)
-            {
-                throw new ArgumentException();
-            }
-
             _context.Users.Add(Map(register));
             _context.SaveChanges();
 
@@ -30,47 +24,28 @@ namespace BrainGame.WebDb
 
         public User Login(Login login)
         {
-            var user = _context.Users.FirstOrDefault(
-                b => b.Email == login.Email && 
-                         b.Password == login.Password);
-
-            if (user is null)
-            {
-                return null;
-            }
-
-            _user = user;
+            var user = _context.Users
+                .FirstOrDefault(b =>
+                b.Email == login.Email && 
+                b.Password == login.Password);
 
             return user;
         }
 
-        public User User()
+        public User User(User user)
         {
-            var user = _user;
             return user;
         }
 
-        public void Update(User user)
+        public User Update(User user)
         {
-            var id = _user.Id;
+            var id = user.Id;
             var userToUpdate = _context.Users.FirstOrDefault(b => b.Id == id);
-
-            if (userToUpdate is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            userToUpdate.Name = user.Name;
-            userToUpdate.Email = user.Email;
-            userToUpdate.Password = user.Password;
-
-            _context.SaveChanges();
+            return userToUpdate;
         }
 
-        public void Remove()
+        public void Remove(int id)
         {
-            var id = _user.Id;
-
             var userToRemove = _context.Users.FirstOrDefault(b => b.Id == id);
 
             if (userToRemove is null)

@@ -8,10 +8,10 @@ namespace BrainGame.WebDb
 
         User Login(Login login);
 
-        User User();
+        User User(User user);
 
-        void Update(User user);
+        User Update(User user);
 
-        void Remove();
+        void Remove(int id);
     }
 }
