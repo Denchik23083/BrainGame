@@ -73,9 +73,16 @@ namespace BrainGame.Logic
             _repository.Remove(id);
         }
 
-        public Quiz Get(int id)
+        public Quiz GetQuestion(int id)
         {
-            return _repository.Get(id);
+            var question = _repository.GetQuestion(id);
+
+            if (question is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return question;
         }
     }
 }

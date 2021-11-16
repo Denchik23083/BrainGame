@@ -15,9 +15,9 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpGet("id")]
-        public IActionResult Get(int id)
+        public IActionResult GetQuestion(int id)
         {
-            return Ok(_service.Get(id));
+            return Ok(_service.GetQuestion(id));
         }
     }
 }

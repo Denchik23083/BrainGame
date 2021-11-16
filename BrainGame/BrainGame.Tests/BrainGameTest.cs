@@ -64,7 +64,7 @@ namespace BrainGame.Tests
         }
 
         [Fact]
-        public void Get()
+        public void GetUser()
         {
             var user = Service._user;
 
@@ -123,6 +123,21 @@ namespace BrainGame.Tests
             var deleted = _context.Users.Count();
 
             Assert.Equal(1, deleted);
+        }
+
+        [Fact]
+        public void GetQuestion()
+        {
+            var currentId = 1;
+            var question = _context.Quizzes.FirstOrDefault(b => b.Id == currentId);
+
+            if (question is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            Assert.NotNull(question);
+            Assert.Equal(currentId, question.Id);
         }
 
         private User Map(Register model)
