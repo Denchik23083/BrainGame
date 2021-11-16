@@ -52,6 +52,5 @@ namespace BrainGame.Auth.Controllers
                 Password = model.Password,
             };
         }
-    
     }
 }

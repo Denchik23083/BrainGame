@@ -9,6 +9,7 @@
       "BrainGame.Tests/1.0.0": {
         "dependencies": {
           "BrainGame.Db": "1.0.0",
+          "BrainGame.Logic": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "coverlet.collector": "1.2.0",
           "xunit": "2.4.0",
@@ -1393,6 +1394,23 @@
         "runtime": {
           "BrainGame.Db.dll": {}
         }
+      },
+      "BrainGame.Logic/1.0.0": {
+        "dependencies": {
+          "BrainGame.Db": "1.0.0",
+          "BrainGame.WebDb": "1.0.0"
+        },
+        "runtime": {
+          "BrainGame.Logic.dll": {}
+        }
+      },
+      "BrainGame.WebDb/1.0.0": {
+        "dependencies": {
+          "BrainGame.Db": "1.0.0"
+        },
+        "runtime": {
+          "BrainGame.WebDb.dll": {}
+        }
       }
     }
   },
@@ -2159,6 +2177,16 @@
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
     "BrainGame.Db/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BrainGame.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BrainGame.WebDb/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

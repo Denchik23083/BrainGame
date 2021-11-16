@@ -72,5 +72,10 @@ namespace BrainGame.Logic
             var id = _user.Id;
             _repository.Remove(id);
         }
+
+        public Quiz Get(int id)
+        {
+            return _repository.Get(id);
+        }
     }
 }

@@ -288,3 +288,7 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\obj\Debug\netcore
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\obj\Debug\netcoreapp3.1\BrainGame.Tests.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\obj\Debug\netcoreapp3.1\BrainGame.Tests.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\obj\Debug\netcoreapp3.1\BrainGame.Tests.genruntimeconfig.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\bin\Debug\netcoreapp3.1\BrainGame.Logic.dll
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\bin\Debug\netcoreapp3.1\BrainGame.WebDb.dll
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\bin\Debug\netcoreapp3.1\BrainGame.Logic.pdb
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Tests\bin\Debug\netcoreapp3.1\BrainGame.WebDb.pdb

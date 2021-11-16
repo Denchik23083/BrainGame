@@ -57,6 +57,13 @@ namespace BrainGame.WebDb
             _context.SaveChanges();
         }
 
+        public Quiz Get(int id)
+        {
+            var quiz = _context.Quizzes.FirstOrDefault(q => q.Id == id);
+
+            return quiz;
+        }
+
         private User Map(Register model)
         {
             return new User

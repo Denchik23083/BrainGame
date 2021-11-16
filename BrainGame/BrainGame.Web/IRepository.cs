@@ -13,5 +13,7 @@ namespace BrainGame.WebDb
         User Update(User user);
 
         void Remove(int id);
+
+        Quiz Get(int id);
     }
 }

@@ -16,5 +16,7 @@ namespace BrainGame.Logic
         void Update(User user);
 
         void Remove();
+
+        Quiz Get(int id);
     }
 }
