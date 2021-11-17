@@ -19,5 +19,13 @@ namespace BrainGame.Quiz.Controllers
         {
             return Ok(_service.GetQuestion(id));
         }
+
+        [HttpPost]
+        public IActionResult Correct(string answer)
+        {
+            _service.Correct(answer);
+
+            return NoContent();
+        }
     }
 }

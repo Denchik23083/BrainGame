@@ -9,16 +9,33 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BrainGame.Db.Migrations
 {
     [DbContext(typeof(BrainGameContext))]
-    [Migration("20211116184457_quiz")]
-    partial class quiz
+    [Migration("20211117163905_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Correct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CorrectAnswer")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Corrects");
+                });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz", b =>
                 {
@@ -27,12 +44,21 @@ namespace BrainGame.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Answers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CorrectAnswerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CorrectAnswerId");
 
                     b.ToTable("Quizzes");
                 });
@@ -62,6 +88,17 @@ namespace BrainGame.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Quiz", b =>
+                {
+                    b.HasOne("BrainGame.Db.Entities.Correct", "Correct")
+                        .WithMany()
+                        .HasForeignKey("CorrectAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Correct");
                 });
 #pragma warning restore 612, 618
         }

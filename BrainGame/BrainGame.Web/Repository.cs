@@ -2,12 +2,15 @@
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
+using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace BrainGame.WebDb
 {
     public class Repository : IRepository
     {
         private readonly BrainGameContext _context;
+        private static int? _id;
 
         public Repository(BrainGameContext context)
         {
@@ -61,7 +64,16 @@ namespace BrainGame.WebDb
         {
             var question = _context.Quizzes.FirstOrDefault(q => q.Id == id);
 
+            _id = question?.CorrectAnswerId;
+
             return question;
+        }
+
+        public Correct Correct()
+        {
+            var correct = _context.Corrects.FirstOrDefault(a => a.Id == _id);
+
+            return correct;
         }
 
         private User Map(Register model)
