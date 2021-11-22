@@ -26,6 +26,11 @@ namespace BrainGame.Auth.Controllers
         {
             var login = _service.Login(Map(model));
 
+            if (login is null)
+            {
+                return BadRequest();
+            }
+            
             return Ok(login);
         }
 
