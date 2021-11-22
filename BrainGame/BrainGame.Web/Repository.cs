@@ -69,9 +69,15 @@ namespace BrainGame.WebDb
             if (question?.Id == 1)
             {
                 var points = 0;
-                var point = new Quiz { Point = points };
 
-                _context.Quiz.Add(point);
+                var quiz = _context.Quiz.FirstOrDefault(b => b.Id == question.QuizId);
+                
+                if (quiz is null)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                quiz.Point = points;
                 _context.SaveChanges();
             }
 
