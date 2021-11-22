@@ -60,11 +60,20 @@ namespace BrainGame.WebDb
             _context.SaveChanges();
         }
 
-        public Quiz GetQuestion(int id)
+        public Questions GetQuestion(int id)
         {
-            var question = _context.Quizzes.FirstOrDefault(q => q.Id == id);
+            var question = _context.Questions.FirstOrDefault(q => q.Id == id);
 
             _id = question?.CorrectAnswerId;
+
+            if (question?.Id == 1)
+            {
+                var points = 0;
+                var point = new Quiz { Point = points };
+
+                _context.Quiz.Add(point);
+                _context.SaveChanges();
+            }
 
             return question;
         }

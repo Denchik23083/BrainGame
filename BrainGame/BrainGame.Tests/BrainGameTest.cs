@@ -129,7 +129,7 @@ namespace BrainGame.Tests
         public void GetQuestion()
         {
             var currentId = 1;
-            var question = _context.Quizzes.FirstOrDefault(b => b.Id == currentId);
+            var question = _context.Questions.FirstOrDefault(b => b.Id == currentId);
 
             if (question is null)
             {

@@ -13,11 +13,7 @@ namespace BrainGame.Db.EntityConfig
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.Question).IsRequired().HasMaxLength(255);
-            builder.Property(_ => _.Answers).IsRequired();
-            builder.HasOne(_ => _.Correct)
-                .WithMany()
-                .HasForeignKey(_ => _.CorrectAnswerId);
+            builder.Property(_ => _.Point).HasDefaultValue(0);
         }
     }
 }

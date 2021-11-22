@@ -12,6 +12,7 @@ namespace BrainGame.Logic
         private readonly IRepository _repository;
         public static User _user;
         private static string[] _array;
+        private static Quiz _quiz;
 
         public Service(IRepository repository, BrainGameContext context)
         {
@@ -74,7 +75,7 @@ namespace BrainGame.Logic
             _repository.Remove(id);
         }
 
-        public Quiz GetQuestion(int id)
+        public Questions GetQuestion(int id)
         {
             var question = _repository.GetQuestion(id);
 
@@ -83,10 +84,12 @@ namespace BrainGame.Logic
                 throw new ArgumentNullException();
             }
 
+            var quiz = _context.Quiz.FirstOrDefault(b => b.Id == question.QuizId);
+
             var answers = question.Answers;
             var array = answers.Split(',');
-
             _array = array;
+            _quiz = quiz;
 
             return question;
         }
@@ -94,19 +97,18 @@ namespace BrainGame.Logic
         public string Correct(string answer)
         {
             var correct = _repository.Correct();
-
             var correctAnswer = correct.CorrectAnswer;
-            
+
             if (answer == correctAnswer)
             {
-                var points = _context.Points.FirstOrDefault(p => p.Id == 1);
+                var getPoint = _context.Quiz.FirstOrDefault(p => p.Id == _quiz.Id);
 
-                if (points is null)
+                if (getPoint is null)
                 {
                     throw new ArgumentNullException();
                 }
 
-                points.Point++;
+                getPoint.Point++;
 
                 _context.SaveChanges();
             }
