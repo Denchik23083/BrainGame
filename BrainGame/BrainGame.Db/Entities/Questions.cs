@@ -19,6 +19,6 @@ namespace BrainGame.Db.Entities
 
         public int QuizId { get; set; }
 
-        public Quiz Quiz { get; set; }
+        public Quizes Quizes { get; set; }
     }
 }

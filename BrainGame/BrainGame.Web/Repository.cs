@@ -11,7 +11,7 @@ namespace BrainGame.WebDb
     {
         private readonly BrainGameContext _context;
         private static int? _id;
-        private static Quiz _quiz;
+        private static Quizes _quizes;
 
         public Repository(BrainGameContext context)
         {
@@ -61,11 +61,11 @@ namespace BrainGame.WebDb
             _context.SaveChanges();
         }
 
-        public Quiz Quiz(int id)
+        public Quizes Quiz(Quizes model)
         {
-            var quiz = _context.Quiz.FirstOrDefault(b => b.Id == id);
+            var quiz = _context.Quizes.FirstOrDefault(b => b.Id == model.Id);
 
-            _quiz = quiz;
+            _quizes = quiz;
 
             return quiz;
         }
@@ -80,7 +80,7 @@ namespace BrainGame.WebDb
             {
                 var points = 0;
 
-                _quiz.Point = points;
+                _quizes.Point = points;
                 _context.SaveChanges();
             }
 

@@ -17,7 +17,7 @@ namespace BrainGame.Logic
 
         void Remove();
 
-        Quiz Quiz(int id);
+        Quizes Quiz(Quizes model);
 
         Questions GetQuestion(int id);
 

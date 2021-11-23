@@ -18,7 +18,7 @@ namespace BrainGame.Db.EntityConfig
             builder.HasOne(_ => _.Correct)
                 .WithMany()
                 .HasForeignKey(_ => _.CorrectAnswerId);
-            builder.HasOne(_ => _.Quiz)
+            builder.HasOne(_ => _.Quizes)
                 .WithMany()
                 .HasForeignKey(_ => _.QuizId);
         }

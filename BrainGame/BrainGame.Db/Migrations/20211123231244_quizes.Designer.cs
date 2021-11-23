@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BrainGame.Db.Migrations
 {
     [DbContext(typeof(BrainGameContext))]
-    [Migration("20211122195149_Foo")]
-    partial class Foo
+    [Migration("20211123231244_quizes")]
+    partial class quizes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,12 +68,16 @@ namespace BrainGame.Db.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("BrainGame.Db.Entities.Quiz", b =>
+            modelBuilder.Entity("BrainGame.Db.Entities.Quizes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<int>("Point")
                         .ValueGeneratedOnAdd()
@@ -82,7 +86,7 @@ namespace BrainGame.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Quiz");
+                    b.ToTable("Quizes");
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.User", b =>
@@ -120,7 +124,7 @@ namespace BrainGame.Db.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BrainGame.Db.Entities.Quiz", "Quiz")
+                    b.HasOne("BrainGame.Db.Entities.Quizes", "Quizes")
                         .WithMany()
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -128,7 +132,7 @@ namespace BrainGame.Db.Migrations
 
                     b.Navigation("Correct");
 
-                    b.Navigation("Quiz");
+                    b.Navigation("Quizes");
                 });
 #pragma warning restore 612, 618
         }
