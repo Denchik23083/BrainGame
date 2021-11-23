@@ -21,6 +21,6 @@ namespace BrainGame.Logic
 
         Questions GetQuestion(int id);
 
-        string Correct(string answer);
+        void Correct(int answerId);
     }
 }

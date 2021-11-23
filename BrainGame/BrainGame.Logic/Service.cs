@@ -100,12 +100,12 @@ namespace BrainGame.Logic
             return question;
         }
 
-        public string Correct(string answer)
+        public void Correct(int answerId)
         {
             var correct = _repository.Correct();
-            var correctAnswer = correct.CorrectAnswer;
+            var correctAnswer = correct.Id;
 
-            if (answer == correctAnswer)
+            if (answerId == correctAnswer)
             {
                 var getPoint = _context.Quiz.FirstOrDefault(p => p.Id == _quiz.Id);
 
@@ -118,8 +118,6 @@ namespace BrainGame.Logic
 
                 _context.SaveChanges();
             }
-
-            return correctAnswer;
         }
     }
 }

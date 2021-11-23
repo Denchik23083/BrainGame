@@ -26,9 +26,9 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpPost]
-        public IActionResult Correct(string answer)
+        public IActionResult Correct(int answerId)
         {
-            _service.Correct(answer);
+            _service.Correct(answerId);
 
             return NoContent();
         }

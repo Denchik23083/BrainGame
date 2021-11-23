@@ -72,7 +72,7 @@ namespace BrainGame.WebDb
 
         public Questions GetQuestion(int id)
         {
-            var questions = _context.Questions.FirstOrDefault(q => q.Id == id && q.QuizId == _quiz.Id);
+            var questions = _context.Questions.FirstOrDefault(q => q.Id == id);
 
             _id = questions?.CorrectAnswerId;
 
