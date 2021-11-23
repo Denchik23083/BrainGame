@@ -18,7 +18,7 @@ namespace BrainGame.Db
         public DbSet<User> Users { get; set; }
 
         public DbSet<Questions> Questions { get; set; }
-
+        
         public DbSet<Correct> Corrects { get; set; }
 
         public DbSet<Quiz> Quiz { get; set; }

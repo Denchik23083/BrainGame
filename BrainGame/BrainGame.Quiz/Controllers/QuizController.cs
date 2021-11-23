@@ -14,18 +14,10 @@ namespace BrainGame.Quiz.Controllers
             _service = service;
         }
 
-        [HttpGet("id")]
-        public IActionResult GetQuestion(int id)
+        [HttpGet]
+        public IActionResult Quiz(int id)
         {
-            return Ok(_service.GetQuestion(id));
-        }
-
-        [HttpPost]
-        public IActionResult Correct(string answer)
-        {
-            _service.Correct(answer);
-
-            return NoContent();
+            return Ok(_service.Quiz(id));
         }
     }
 }

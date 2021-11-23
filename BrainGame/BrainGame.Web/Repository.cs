@@ -11,6 +11,7 @@ namespace BrainGame.WebDb
     {
         private readonly BrainGameContext _context;
         private static int? _id;
+        private static Quiz _quiz;
 
         public Repository(BrainGameContext context)
         {
@@ -29,8 +30,8 @@ namespace BrainGame.WebDb
         {
             var user = _context.Users
                 .FirstOrDefault(b =>
-                b.Email == login.Email && 
-                b.Password == login.Password);
+                    b.Email == login.Email &&
+                    b.Password == login.Password);
 
             return user;
         }
@@ -60,28 +61,30 @@ namespace BrainGame.WebDb
             _context.SaveChanges();
         }
 
+        public Quiz Quiz(int id)
+        {
+            var quiz = _context.Quiz.FirstOrDefault(b => b.Id == id);
+
+            _quiz = quiz;
+
+            return quiz;
+        }
+
         public Questions GetQuestion(int id)
         {
-            var question = _context.Questions.FirstOrDefault(q => q.Id == id);
+            var questions = _context.Questions.FirstOrDefault(q => q.Id == id && q.QuizId == _quiz.Id);
 
-            _id = question?.CorrectAnswerId;
+            _id = questions?.CorrectAnswerId;
 
-            if (question?.Id == 1)
+            if (questions?.Id == 1)
             {
                 var points = 0;
 
-                var quiz = _context.Quiz.FirstOrDefault(b => b.Id == question.QuizId);
-                
-                if (quiz is null)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                quiz.Point = points;
+                _quiz.Point = points;
                 _context.SaveChanges();
             }
 
-            return question;
+            return questions;
         }
 
         public Correct Correct()

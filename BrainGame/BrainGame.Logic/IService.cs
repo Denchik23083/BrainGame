@@ -17,6 +17,8 @@ namespace BrainGame.Logic
 
         void Remove();
 
+        Quiz Quiz(int id);
+
         Questions GetQuestion(int id);
 
         string Correct(string answer);

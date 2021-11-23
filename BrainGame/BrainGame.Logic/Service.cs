@@ -75,6 +75,15 @@ namespace BrainGame.Logic
             _repository.Remove(id);
         }
 
+        public Quiz Quiz(int id)
+        {
+            var quiz = _repository.Quiz(id);
+            
+            _quiz = quiz;
+
+            return quiz;
+        }
+
         public Questions GetQuestion(int id)
         {
             var question = _repository.GetQuestion(id);
@@ -84,12 +93,9 @@ namespace BrainGame.Logic
                 throw new ArgumentNullException();
             }
 
-            var quiz = _context.Quiz.FirstOrDefault(b => b.Id == question.QuizId);
-
             var answers = question.Answers;
             var array = answers.Split(',');
             _array = array;
-            _quiz = quiz;
 
             return question;
         }
