@@ -21,6 +21,6 @@ namespace BrainGame.Db
         
         public DbSet<Correct> Corrects { get; set; }
 
-        public DbSet<Quizes> Quizes { get; set; }
+        public DbSet<Quiz> Quizes { get; set; }
     }
 }

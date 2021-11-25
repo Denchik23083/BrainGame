@@ -6004,9 +6004,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
-      "projectName": "BrainGame.Quiz",
-      "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quizzes.csproj",
+      "projectName": "BrainGame.Quizzes",
+      "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quizzes.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace BrainGame.Quiz.Models
+namespace BrainGame.Db.Entities
 {
-    public class QuizesModel
+    public class Quiz
     {
         public int Id { get; set; }
 

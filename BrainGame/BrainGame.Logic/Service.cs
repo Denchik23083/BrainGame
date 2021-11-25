@@ -12,7 +12,7 @@ namespace BrainGame.Logic
         private readonly IRepository _repository;
         public static User _user;
         private static string[] _array;
-        private static Quizes _quizes;
+        private static Quiz _quiz;
 
         public Service(IRepository repository, BrainGameContext context)
         {
@@ -75,11 +75,11 @@ namespace BrainGame.Logic
             _repository.Remove(id);
         }
 
-        public Quizes Quiz(Quizes model)
+        public Quiz Quiz(Quiz model)
         {
             var quiz = _repository.Quiz(model);
             
-            _quizes = quiz;
+            _quiz = quiz;
 
             return quiz;
         }
@@ -107,7 +107,7 @@ namespace BrainGame.Logic
 
             if (answerId == correctAnswer)
             {
-                var getPoint = _context.Quizes.FirstOrDefault(p => p.Id == _quizes.Id);
+                var getPoint = _context.Quizes.FirstOrDefault(p => p.Id == _quiz.Id);
 
                 if (getPoint is null)
                 {

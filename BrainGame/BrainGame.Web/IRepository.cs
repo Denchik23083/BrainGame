@@ -14,7 +14,7 @@ namespace BrainGame.WebDb
 
         void Remove(int id);
 
-        Quizes Quiz(Quizes model);
+        Quiz Quiz(Quiz model);
 
         Questions GetQuestion(int id);
 

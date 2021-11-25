@@ -23,7 +23,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "BrainGame.Quiz/1.0.0": {
+      "BrainGame.Quizzes/1.0.0": {
         "dependencies": {
           "BrainGame.Logic": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.12",
@@ -311,10 +311,10 @@
           "WindowsBase": "4.0.0.0"
         },
         "runtime": {
-          "BrainGame.Quiz.dll": {}
+          "BrainGame.Quizzes.dll": {}
         },
         "compile": {
-          "BrainGame.Quiz.dll": {}
+          "BrainGame.Quizzes.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -3084,7 +3084,7 @@
     }
   },
   "libraries": {
-    "BrainGame.Quiz/1.0.0": {
+    "BrainGame.Quizzes/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

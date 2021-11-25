@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Quizzes.Models
 {
-    public class Quizes
+    public class QuizModel
     {
         public int Id { get; set; }
 
