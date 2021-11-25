@@ -12,7 +12,7 @@ namespace BrainGame.Logic
         private readonly IRepository _repository;
         public static User _user;
         private static string[] _array;
-        private static Quiz _quiz;
+        private static Quizzes _quiz;
 
         public Service(IRepository repository, BrainGameContext context)
         {
@@ -75,7 +75,7 @@ namespace BrainGame.Logic
             _repository.Remove(id);
         }
 
-        public Quiz Quiz(Quiz model)
+        public Quizzes Quiz(Quizzes model)
         {
             var quiz = _repository.Quiz(model);
             
@@ -84,9 +84,41 @@ namespace BrainGame.Logic
             return quiz;
         }
 
-        public Questions GetQuestion(int id)
+        public AnimalQuestions GetAnimalsQuestions(int id)
         {
-            var question = _repository.GetQuestion(id);
+            var question = _repository.GetAnimalsQuestions(id);
+
+            if (question is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var answers = question.Answers;
+            var array = answers.Split(',');
+            _array = array;
+
+            return question;
+        }
+
+        public PlantsQuestions GetPlantsQuestions(int id)
+        {
+            var question = _repository.GetPlantsQuestions(id);
+
+            if (question is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var answers = question.Answers;
+            var array = answers.Split(',');
+            _array = array;
+
+            return question;
+        }
+
+        public MushroomsQuestions GetMushroomsQuestions(int id)
+        {
+            var question = _repository.GetMushroomsQuestions(id);
 
             if (question is null)
             {
@@ -107,7 +139,7 @@ namespace BrainGame.Logic
 
             if (answerId == correctAnswer)
             {
-                var getPoint = _context.Quizes.FirstOrDefault(p => p.Id == _quiz.Id);
+                var getPoint = _context.Quizzes.FirstOrDefault(p => p.Id == _quiz.Id);
 
                 if (getPoint is null)
                 {

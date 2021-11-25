@@ -17,10 +17,14 @@ namespace BrainGame.Db
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Questions> Questions { get; set; }
-        
+        public DbSet<AnimalQuestions> AnimalQuestions { get; set; }
+
+        public DbSet<PlantsQuestions> PlantsQuestions { get; set; }
+
+        public DbSet<MushroomsQuestions> MushroomsQuestions { get; set; }
+
         public DbSet<Correct> Corrects { get; set; }
 
-        public DbSet<Quiz> Quizes { get; set; }
+        public DbSet<Quizzes> Quizzes { get; set; }
     }
 }

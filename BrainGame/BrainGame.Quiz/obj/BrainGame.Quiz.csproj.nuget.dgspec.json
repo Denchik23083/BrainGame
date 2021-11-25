@@ -163,8 +163,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj"
+              },
               "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj": {
                 "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj"
+              },
+              "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj"
               }
             }
           }
@@ -184,6 +190,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.12, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.2.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

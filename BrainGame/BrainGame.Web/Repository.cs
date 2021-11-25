@@ -11,7 +11,7 @@ namespace BrainGame.WebDb
     {
         private readonly BrainGameContext _context;
         private static int? _id;
-        private static Quiz _quiz;
+        private static Quizzes _quiz;
 
         public Repository(BrainGameContext context)
         {
@@ -61,18 +61,52 @@ namespace BrainGame.WebDb
             _context.SaveChanges();
         }
 
-        public Quiz Quiz(Quiz model)
+        public Quizzes Quiz(Quizzes model)
         {
-            var quiz = _context.Quizes.FirstOrDefault(b => b.Id == model.Id);
+            var quiz = _context.Quizzes.FirstOrDefault(b => b.Id == model.Id);
 
             _quiz = quiz;
 
             return quiz;
         }
 
-        public Questions GetQuestion(int id)
+        public AnimalQuestions GetAnimalsQuestions(int id)
         {
-            var questions = _context.Questions.FirstOrDefault(q => q.Id == id);
+            var questions = _context.AnimalQuestions.FirstOrDefault(q => q.Id == id);
+
+            _id = questions?.CorrectAnswerId;
+
+            if (questions?.Id == 1)
+            {
+                var points = 0;
+
+                _quiz.Point = points;
+                _context.SaveChanges();
+            }
+
+            return questions;
+        }
+
+        public PlantsQuestions GetPlantsQuestions(int id)
+        {
+            var questions = _context.PlantsQuestions.FirstOrDefault(q => q.Id == id);
+
+            _id = questions?.CorrectAnswerId;
+
+            if (questions?.Id == 1)
+            {
+                var points = 0;
+
+                _quiz.Point = points;
+                _context.SaveChanges();
+            }
+
+            return questions;
+        }
+
+        public MushroomsQuestions GetMushroomsQuestions(int id)
+        {
+            var questions = _context.MushroomsQuestions.FirstOrDefault(q => q.Id == id);
 
             _id = questions?.CorrectAnswerId;
 

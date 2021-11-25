@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BrainGame.Db.EntityConfig
 {
-    public class QuizConfiguration : IEntityTypeConfiguration<Quiz>
+    public class QuizConfiguration : IEntityTypeConfiguration<Quizzes>
     {
-        public void Configure(EntityTypeBuilder<Quiz> builder)
+        public void Configure(EntityTypeBuilder<Quizzes> builder)
         {
             builder.HasKey(_ => _.Id);
 

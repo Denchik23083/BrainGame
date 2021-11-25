@@ -17,9 +17,13 @@ namespace BrainGame.Logic
 
         void Remove();
 
-        Quiz Quiz(Quiz model);
+        Quizzes Quiz(Quizzes model);
 
-        Questions GetQuestion(int id);
+        AnimalQuestions GetAnimalsQuestions(int id);
+
+        PlantsQuestions GetPlantsQuestions(int id);
+
+        MushroomsQuestions GetMushroomsQuestions(int id);
 
         void Correct(int answerId);
     }
