@@ -25,6 +25,6 @@ namespace BrainGame.Logic
 
         MushroomsQuestions GetMushroomsQuestions(int id);
 
-        void Correct(int answerId);
+        void Correct(Correct correctAnswerUser);
     }
 }

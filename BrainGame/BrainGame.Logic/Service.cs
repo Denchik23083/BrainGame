@@ -132,12 +132,14 @@ namespace BrainGame.Logic
             return question;
         }
 
-        public void Correct(int answerId)
+        public void Correct(Correct correctAnswerUser)
         {
             var correct = _repository.Correct();
-            var correctAnswer = correct.Id;
+            var correctAnswer = correct.CorrectAnswer;
 
-            if (answerId == correctAnswer)
+            var correctUser = correctAnswerUser.CorrectAnswer;
+
+            if (correctAnswer == correctUser)
             {
                 var getPoint = _context.Quizzes.FirstOrDefault(p => p.Id == _quiz.Id);
 

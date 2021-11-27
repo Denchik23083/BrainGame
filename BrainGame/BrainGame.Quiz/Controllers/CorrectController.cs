@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BrainGame.Db.Entities;
 using BrainGame.Logic;
+using BrainGame.Quiz.Models;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -20,11 +22,20 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpPost]
-        public IActionResult Correct(int answerId)
+        public IActionResult Correct(CorrectModel model)
         {
-            _service.Correct(answerId);
+            _service.Correct(Map(model));
 
-            return Ok();
+            return NoContent();
+        }
+
+        private Correct Map(CorrectModel model)
+        {
+            return new Correct
+            {
+                Id = model.Id,
+                CorrectAnswer = model.CorrectAnswer
+            };
         }
     }
 }
