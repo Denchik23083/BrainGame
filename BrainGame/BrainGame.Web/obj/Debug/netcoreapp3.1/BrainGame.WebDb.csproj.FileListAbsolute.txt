@@ -34,3 +34,16 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreap
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.csproj.CopyComplete
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.pdb
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\bin\Debug\netcoreapp3.1\BrainGame.WebDb.deps.json
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\bin\Debug\netcoreapp3.1\BrainGame.WebDb.dll
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\bin\Debug\netcoreapp3.1\BrainGame.WebDb.pdb
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\bin\Debug\netcoreapp3.1\BrainGame.Db.dll
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\bin\Debug\netcoreapp3.1\BrainGame.Db.pdb
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.csprojAssemblyReference.cache
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.AssemblyInfo.cs
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.csproj.CopyComplete
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.dll
+C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Web\obj\Debug\netcoreapp3.1\BrainGame.WebDb.pdb
