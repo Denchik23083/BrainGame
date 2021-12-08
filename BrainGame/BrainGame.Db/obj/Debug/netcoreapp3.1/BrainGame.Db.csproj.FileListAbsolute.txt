@@ -44,3 +44,4 @@ C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Db\obj\Debug\netcoreapp3.1
 C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Db\obj\Debug\netcoreapp3.1\BrainGame.Db.dll
 C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Db\obj\Debug\netcoreapp3.1\BrainGame.Db.pdb
 C:\Users\1\source\repos\BrainGame\BrainGame\BrainGame.Db\obj\Debug\netcoreapp3.1\BrainGame.Db.genruntimeconfig.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Db\obj\Debug\netcoreapp3.1\BrainGame.Db.csprojAssemblyReference.cache

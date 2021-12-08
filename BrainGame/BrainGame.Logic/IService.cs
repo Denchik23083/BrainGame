@@ -26,5 +26,7 @@ namespace BrainGame.Logic
         MushroomsQuestions GetMushroomsQuestions(int id);
 
         void Correct(Correct correctAnswerUser);
+
+        IEnumerable<Quizzes> GetStatistics();
     }
 }

@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities;
+﻿using System.Collections.Generic;
+using BrainGame.Db.Entities;
 
 namespace BrainGame.WebDb
 {
@@ -23,5 +24,7 @@ namespace BrainGame.WebDb
         MushroomsQuestions GetMushroomsQuestions(int id);
 
         Correct Correct();
+
+        IEnumerable<Quizzes> GetStatistics();
     }
 }

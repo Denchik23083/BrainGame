@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
@@ -126,6 +127,11 @@ namespace BrainGame.WebDb
             var correct = _context.Corrects.FirstOrDefault(a => a.Id == _id);
 
             return correct;
+        }
+
+        public IEnumerable<Quizzes> GetStatistics()
+        {
+            return _context.Quizzes;
         }
 
         private User Map(Register model)

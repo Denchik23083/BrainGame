@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />
     <ProjectReference Include="..\BrainGame.Logic\BrainGame.Logic.csproj" />
   </ItemGroup>
 

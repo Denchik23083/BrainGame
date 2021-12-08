@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
@@ -152,6 +153,18 @@ namespace BrainGame.Logic
 
                 _context.SaveChanges();
             }
+        }
+
+        public IEnumerable<Quizzes> GetStatistics()
+        {
+            var statistics = _repository.GetStatistics();
+
+            if (statistics is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return statistics;
         }
     }
 }
