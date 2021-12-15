@@ -64,7 +64,7 @@ namespace BrainGame.WebDb
 
         public Quizzes Quiz(Quizzes model)
         {
-            var quiz = _context.Quizzes.FirstOrDefault(b => b.Id == model.Id);
+            var quiz = _context.Quizzes.FirstOrDefault(b => b.Name == model.Name);
 
             _quiz = quiz;
 

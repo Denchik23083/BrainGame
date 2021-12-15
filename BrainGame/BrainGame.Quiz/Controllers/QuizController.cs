@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using BrainGame.Db.Entities;
 using BrainGame.Logic;
 using BrainGame.Quiz.Models;
@@ -25,8 +20,8 @@ namespace BrainGame.Quiz.Controllers
         [HttpPost]
         public IActionResult GetQuiz(QuizzesModel model)
         {
-            model.Point = 0;
             var quiz = _service.Quiz(Map(model));
+
             _quiz = quiz;
 
             return Ok(quiz);
@@ -37,15 +32,15 @@ namespace BrainGame.Quiz.Controllers
         {
             object question = null;
 
-            if (_quiz.Name == "Животные")
+            if (_quiz.Name == "Animals")
             {
                 question = _service.GetAnimalsQuestions(id);
             }
-            else if (_quiz.Name == "Растения")
+            else if (_quiz.Name == "Plants")
             {
                 question = _service.GetPlantsQuestions(id);
             }
-            else if (_quiz.Name == "Грибы")
+            else if (_quiz.Name == "Mushrooms")
             {
                 question = _service.GetMushroomsQuestions(id);
             }
