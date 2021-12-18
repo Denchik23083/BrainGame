@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BrainGame.Db.Entities
+{
+    public class Answers
+    {
+        public int Id { get; set; }
+
+        public string Answer { get; set; }
+    }
+}

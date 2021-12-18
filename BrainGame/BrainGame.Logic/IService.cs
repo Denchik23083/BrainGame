@@ -28,5 +28,8 @@ namespace BrainGame.Logic
         void Correct(Correct correctAnswerUser);
 
         IEnumerable<Quizzes> GetStatistics();
+
+        IEnumerable<Answers> GetAnswers();
+
     }
 }

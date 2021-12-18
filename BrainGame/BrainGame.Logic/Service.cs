@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
 using BrainGame.WebDb;
@@ -11,9 +13,9 @@ namespace BrainGame.Logic
     {
         private readonly BrainGameContext _context;
         private readonly IRepository _repository;
-        public static User _user;
-        private static string[] _array;
+        private static User _user;
         private static Quizzes _quiz;
+        private static string _answers;
 
         public Service(IRepository repository, BrainGameContext context)
         {
@@ -95,8 +97,8 @@ namespace BrainGame.Logic
             }
 
             var answers = question.Answers;
-            var array = answers.Split(',');
-            _array = array;
+
+            _answers = answers;
 
             return question;
         }
@@ -111,8 +113,8 @@ namespace BrainGame.Logic
             }
 
             var answers = question.Answers;
-            var array = answers.Split(',');
-            _array = array;
+
+            _answers = answers;
 
             return question;
         }
@@ -127,8 +129,8 @@ namespace BrainGame.Logic
             }
 
             var answers = question.Answers;
-            var array = answers.Split(',');
-            _array = array;
+
+            _answers = answers;
 
             return question;
         }
@@ -165,6 +167,31 @@ namespace BrainGame.Logic
             }
 
             return statistics;
+        }
+
+        public IEnumerable<Answers> GetAnswers()
+        {
+            var array = _answers.Split(',');
+
+            var list = new List<Answers>();
+
+            var id = 1;
+
+            foreach (var answer in array)
+            {
+                var answers = new Answers 
+                {
+                    Id = id++,
+                    Answer = answer
+                };
+
+                list.Add(answers);
+            }
+
+            var listAnswers = list.ToArray();
+
+
+            return listAnswers;
         }
     }
 }

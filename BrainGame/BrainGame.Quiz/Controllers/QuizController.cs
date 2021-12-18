@@ -49,9 +49,11 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetStatistics()
+        public IActionResult GetAnswers()
         {
-            return Ok(_service.GetStatistics());
+            var answers = _service.GetAnswers();
+
+            return Ok(answers);
         }
 
         private Quizzes Map(QuizzesModel model)
