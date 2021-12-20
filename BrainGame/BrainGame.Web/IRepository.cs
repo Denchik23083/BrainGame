@@ -26,5 +26,7 @@ namespace BrainGame.WebDb
         Correct Correct();
 
         IEnumerable<Quizzes> GetStatistics();
+
+        Quizzes GetPoint();
     }
 }

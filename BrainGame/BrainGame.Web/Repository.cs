@@ -134,6 +134,13 @@ namespace BrainGame.WebDb
             return _context.Quizzes;
         }
 
+        public Quizzes GetPoint()
+        {
+            var point = _context.Quizzes.FirstOrDefault(p => p.Id == _quiz.Id);
+
+            return point;
+        }
+
         private User Map(Register model)
         {
             return new User

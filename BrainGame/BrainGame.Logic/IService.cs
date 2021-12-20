@@ -31,5 +31,6 @@ namespace BrainGame.Logic
 
         IEnumerable<Answers> GetAnswers();
 
+        Quizzes GetPoint();
     }
 }

@@ -169,6 +169,11 @@ namespace BrainGame.Logic
             return statistics;
         }
 
+        public Quizzes GetPoint()
+        {
+            return _repository.GetPoint();
+        }
+
         public IEnumerable<Answers> GetAnswers()
         {
             var array = _answers.Split(',');
