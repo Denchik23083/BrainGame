@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace BrainGame.WebDb
@@ -19,18 +21,18 @@ namespace BrainGame.WebDb
             _context = context;
         }
 
-        public Register Register(Register register)
+        public async Task<Register> Register(Register register)
         {
-            _context.Users.Add(Map(register));
-            _context.SaveChanges();
+            await _context.Users.AddAsync(Map(register));
+            await _context.SaveChangesAsync();
 
             return register;
         }
 
-        public User Login(Login login)
+        public async Task<User> Login(Login login)
         {
-            var user = _context.Users
-                .FirstOrDefault(b =>
+            var user = await _context.Users
+                .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
                     b.Password == login.Password);
 
@@ -42,16 +44,16 @@ namespace BrainGame.WebDb
             return user;
         }
 
-        public User Update(User user)
+        public async Task<User> Update(User user)
         {
             var id = user.Id;
-            var userToUpdate = _context.Users.FirstOrDefault(b => b.Id == id);
+            var userToUpdate = await _context.Users.FirstOrDefaultAsync(b => b.Id == id);
             return userToUpdate;
         }
 
-        public void Remove(int id)
+        public async Task Remove(int id)
         {
-            var userToRemove = _context.Users.FirstOrDefault(b => b.Id == id);
+            var userToRemove = await _context.Users.FirstOrDefaultAsync(b => b.Id == id);
 
             if (userToRemove is null)
             {
@@ -59,21 +61,21 @@ namespace BrainGame.WebDb
             }
 
             _context.Users.Remove(userToRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public Quizzes Quiz(Quizzes model)
+        public async Task<Quizzes> Quiz(Quizzes model)
         {
-            var quiz = _context.Quizzes.FirstOrDefault(b => b.Name == model.Name);
+            var quiz = await _context.Quizzes.FirstOrDefaultAsync(b => b.Name == model.Name);
 
             _quiz = quiz;
 
             return quiz;
         }
 
-        public AnimalQuestions GetAnimalsQuestions(int id)
+        public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
         {
-            var questions = _context.AnimalQuestions.FirstOrDefault(q => q.Id == id);
+            var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Id == id);
 
             _id = questions?.CorrectAnswerId;
 
@@ -82,15 +84,15 @@ namespace BrainGame.WebDb
                 var points = 0;
 
                 _quiz.Point = points;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return questions;
         }
 
-        public PlantsQuestions GetPlantsQuestions(int id)
+        public async Task<PlantsQuestions> GetPlantsQuestions(int id)
         {
-            var questions = _context.PlantsQuestions.FirstOrDefault(q => q.Id == id);
+            var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Id == id);
 
             _id = questions?.CorrectAnswerId;
 
@@ -99,15 +101,15 @@ namespace BrainGame.WebDb
                 var points = 0;
 
                 _quiz.Point = points;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return questions;
         }
 
-        public MushroomsQuestions GetMushroomsQuestions(int id)
+        public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
         {
-            var questions = _context.MushroomsQuestions.FirstOrDefault(q => q.Id == id);
+            var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Id == id);
 
             _id = questions?.CorrectAnswerId;
 
@@ -116,15 +118,15 @@ namespace BrainGame.WebDb
                 var points = 0;
 
                 _quiz.Point = points;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return questions;
         }
 
-        public Correct Correct()
+        public async Task<Correct> Correct()
         {
-            var correct = _context.Corrects.FirstOrDefault(a => a.Id == _id);
+            var correct = await _context.Corrects.FirstOrDefaultAsync(a => a.Id == _id);
 
             return correct;
         }
@@ -134,9 +136,9 @@ namespace BrainGame.WebDb
             return _context.Quizzes;
         }
 
-        public Quizzes GetPoint()
+        public async Task<Quizzes> GetPoint()
         {
-            var point = _context.Quizzes.FirstOrDefault(p => p.Id == _quiz.Id);
+            var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == _quiz.Id);
 
             return point;
         }

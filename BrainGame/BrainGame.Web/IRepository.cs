@@ -1,32 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
 namespace BrainGame.WebDb
 {
     public interface IRepository
     {
-        Register Register(Register register);
+        Task<Register> Register(Register register);
 
-        User Login(Login login);
+        Task<User> Login(Login login);
 
         User User(User user);
 
-        User Update(User user);
+        Task<User> Update(User user);
 
-        void Remove(int id);
+        Task Remove(int id);
 
-        Quizzes Quiz(Quizzes model);
+        Task<Quizzes> Quiz(Quizzes model);
 
-        AnimalQuestions GetAnimalsQuestions(int id);
+        Task<AnimalQuestions> GetAnimalsQuestions(int id);
 
-        PlantsQuestions GetPlantsQuestions(int id);
+        Task<PlantsQuestions> GetPlantsQuestions(int id);
 
-        MushroomsQuestions GetMushroomsQuestions(int id);
+        Task<MushroomsQuestions> GetMushroomsQuestions(int id);
 
-        Correct Correct();
+        Task<Correct> Correct();
 
         IEnumerable<Quizzes> GetStatistics();
 
-        Quizzes GetPoint();
+        Task<Quizzes> GetPoint();
     }
 }

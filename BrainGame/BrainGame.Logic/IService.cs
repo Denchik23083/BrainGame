@@ -1,36 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
 namespace BrainGame.Logic
 {
     public interface IService
     {
-        Register Register(Register register);
+        Task<Register> Register(Register register);
 
-        User Login(Login login);
+        Task<User> Login(Login login);
 
         User User();
 
-        void Update(User user);
+        Task Update(User user);
 
-        void Remove();
+        Task Remove();
 
-        Quizzes Quiz(Quizzes model);
+        Task<Quizzes> Quiz(Quizzes model);
 
-        AnimalQuestions GetAnimalsQuestions(int id);
+        Task<AnimalQuestions> GetAnimalsQuestions(int id);
 
-        PlantsQuestions GetPlantsQuestions(int id);
+        Task<PlantsQuestions> GetPlantsQuestions(int id);
 
-        MushroomsQuestions GetMushroomsQuestions(int id);
+        Task<MushroomsQuestions> GetMushroomsQuestions(int id);
 
-        void Correct(Correct correctAnswerUser);
+        Task Correct(Correct correctAnswerUser);
 
         IEnumerable<Quizzes> GetStatistics();
 
         IEnumerable<Answers> GetAnswers();
 
-        Quizzes GetPoint();
+        Task<Quizzes> GetPoint();
     }
 }

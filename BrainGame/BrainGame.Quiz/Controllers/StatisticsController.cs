@@ -23,7 +23,9 @@ namespace BrainGame.Quiz.Controllers
         [HttpGet]
         public IActionResult GetStatistics()
         {
-            return Ok(_service.GetStatistics());
+            var statistics = _service.GetStatistics();
+
+            return Ok(statistics);
         }
     }
 }

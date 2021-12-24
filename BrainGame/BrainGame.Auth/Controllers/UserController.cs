@@ -29,16 +29,16 @@ namespace BrainGame.Auth.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update(UserModel model)
+        public async Task<IActionResult> Update(UserModel model)
         {
-            _service.Update(Map(model));
+            await _service.Update(Map(model));
             return NoContent();
         }
 
         [HttpDelete]
-        public IActionResult Remove()
+        public async Task<IActionResult> Remove()
         {
-            _service.Remove();
+            await _service.Remove();
             return NoContent();
         }
 

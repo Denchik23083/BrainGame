@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using BrainGame.Db.Entities;
 using BrainGame.Logic;
 using BrainGame.Quiz.Models;
@@ -18,9 +19,9 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetQuiz(QuizzesModel model)
+        public async Task<IActionResult> GetQuiz(QuizzesModel model)
         {
-            var quiz = _service.Quiz(Map(model));
+            var quiz = await _service.Quiz(Map(model));
 
             _quiz = quiz;
 
@@ -28,30 +29,30 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpGet("id")]
-        public IActionResult Question(int id)
+        public async Task<IActionResult> Question(int id)
         {
             object question = null;
 
             if (_quiz.Name == "Animals")
             {
-                question = _service.GetAnimalsQuestions(id);
+                question = await _service.GetAnimalsQuestions(id);
             }
             else if (_quiz.Name == "Plants")
             {
-                question = _service.GetPlantsQuestions(id);
+                question = await _service.GetPlantsQuestions(id);
             }
             else if (_quiz.Name == "Mushrooms")
             {
-                question = _service.GetMushroomsQuestions(id);
+                question = await _service.GetMushroomsQuestions(id);
             }
 
             return Ok(question);
         }
 
         [HttpGet]
-        public IActionResult Point()
+        public async Task<IActionResult> Point()
         {
-            var point = _service.GetPoint();
+            var point = await _service.GetPoint();
 
             return Ok(point);
         }

@@ -22,9 +22,9 @@ namespace BrainGame.Auth.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
-            var register = _service.Register(Map(model));
+            var register = await _service.Register(Map(model));
 
             return Ok(register);
         }

@@ -22,9 +22,9 @@ namespace BrainGame.Quiz.Controllers
         }
 
         [HttpPost]
-        public IActionResult Correct(CorrectModel model)
+        public async Task<IActionResult> Correct(CorrectModel model)
         {
-            _service.Correct(Map(model));
+            await _service.Correct(Map(model));
 
             return NoContent();
         }

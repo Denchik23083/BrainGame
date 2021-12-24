@@ -22,9 +22,9 @@ namespace BrainGame.Auth.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel model)
         {
-            var login = _service.Login(Map(model));
+            var login = await _service.Login(Map(model));
 
             if (login is null)
             {
@@ -32,16 +32,6 @@ namespace BrainGame.Auth.Controllers
             }
             
             return Ok(login);
-        }
-
-        private LoginModel Map(Login model)
-        {
-            return new LoginModel
-            {
-                Id = model.Id,
-                Email = model.Email,
-                Password = model.Password,
-            };
         }
 
         private Login Map(LoginModel model)

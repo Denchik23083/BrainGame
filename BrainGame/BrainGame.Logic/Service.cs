@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
 using BrainGame.WebDb;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Logic
 {
@@ -23,19 +25,19 @@ namespace BrainGame.Logic
             _repository = repository;
         }
 
-        public Register Register(Register register)
+        public async Task<Register> Register(Register register)
         {
             if (register.Password != register.ConfirmPassword)
             {
                 throw new ArgumentException();
             }
 
-            return _repository.Register(register);
+            return await _repository.Register(register);
         }
 
-        public User Login(Login login)
+        public async Task<User> Login(Login login)
         {
-            var user = _repository.Login(login);
+            var user = await _repository.Login(login);
 
             if (user is null)
             {
@@ -56,9 +58,9 @@ namespace BrainGame.Logic
             return user;
         }
 
-        public void Update(User user)
+        public async Task Update(User user)
         {
-            var userToUpdate = _repository.Update(_user);
+            var userToUpdate = await _repository.Update(_user);
 
             if (userToUpdate is null)
             {
@@ -69,27 +71,27 @@ namespace BrainGame.Logic
             userToUpdate.Email = user.Email;
             userToUpdate.Password = user.Password;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove()
+        public async Task Remove()
         {
             var id = _user.Id;
-            _repository.Remove(id);
+            await _repository.Remove(id);
         }
 
-        public Quizzes Quiz(Quizzes model)
+        public async Task<Quizzes> Quiz(Quizzes model)
         {
-            var quiz = _repository.Quiz(model);
+            var quiz = await _repository.Quiz(model);
             
             _quiz = quiz;
 
             return quiz;
         }
 
-        public AnimalQuestions GetAnimalsQuestions(int id)
+        public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
         {
-            var question = _repository.GetAnimalsQuestions(id);
+            var question = await _repository.GetAnimalsQuestions(id);
 
             if (question is null)
             {
@@ -103,9 +105,9 @@ namespace BrainGame.Logic
             return question;
         }
 
-        public PlantsQuestions GetPlantsQuestions(int id)
+        public async Task<PlantsQuestions> GetPlantsQuestions(int id)
         {
-            var question = _repository.GetPlantsQuestions(id);
+            var question = await _repository.GetPlantsQuestions(id);
 
             if (question is null)
             {
@@ -119,9 +121,9 @@ namespace BrainGame.Logic
             return question;
         }
 
-        public MushroomsQuestions GetMushroomsQuestions(int id)
+        public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
         {
-            var question = _repository.GetMushroomsQuestions(id);
+            var question = await _repository.GetMushroomsQuestions(id);
 
             if (question is null)
             {
@@ -135,16 +137,16 @@ namespace BrainGame.Logic
             return question;
         }
 
-        public void Correct(Correct correctAnswerUser)
+        public async Task Correct(Correct correctAnswerUser)
         {
-            var correct = _repository.Correct();
+            var correct = await _repository.Correct();
             var correctAnswer = correct.CorrectAnswer;
 
             var correctUser = correctAnswerUser.CorrectAnswer;
 
             if (correctAnswer == correctUser)
             {
-                var getPoint = _context.Quizzes.FirstOrDefault(p => p.Id == _quiz.Id);
+                var getPoint = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == _quiz.Id);
 
                 if (getPoint is null)
                 {
@@ -153,7 +155,7 @@ namespace BrainGame.Logic
 
                 getPoint.Point++;
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -169,9 +171,9 @@ namespace BrainGame.Logic
             return statistics;
         }
 
-        public Quizzes GetPoint()
+        public async Task<Quizzes> GetPoint()
         {
-            return _repository.GetPoint();
+            return await _repository.GetPoint();
         }
 
         public IEnumerable<Answers> GetAnswers()
