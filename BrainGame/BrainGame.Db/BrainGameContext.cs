@@ -1,5 +1,4 @@
-﻿using System;
-using BrainGame.Db.Entities;
+﻿using BrainGame.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Db

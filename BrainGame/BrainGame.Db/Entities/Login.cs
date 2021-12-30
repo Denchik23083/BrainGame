@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Db.Entities
 {
     public class Login
     {

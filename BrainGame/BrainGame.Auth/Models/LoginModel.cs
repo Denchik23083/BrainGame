@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BrainGame.Auth.Models
+﻿namespace BrainGame.Auth.Models
 {
     public class LoginModel
     {

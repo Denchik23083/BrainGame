@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Db.Entities
 {
     public class PlantsQuestions
     {

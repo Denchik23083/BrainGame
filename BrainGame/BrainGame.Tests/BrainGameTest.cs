@@ -1,8 +1,6 @@
-using System;
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
-using BrainGame.Logic;
 using Xunit;
 
 namespace BrainGame.Tests

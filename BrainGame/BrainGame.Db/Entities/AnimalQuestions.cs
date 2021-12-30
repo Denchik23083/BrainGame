@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json.Linq;
-
-namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Db.Entities
 {
     public class AnimalQuestions
     {
