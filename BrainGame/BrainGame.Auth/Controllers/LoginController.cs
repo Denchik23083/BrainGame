@@ -10,9 +10,9 @@ namespace BrainGame.Auth.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IAuthService _service;
 
-        public LoginController(IService service)
+        public LoginController(IAuthService service)
         {
             _service = service;
         }

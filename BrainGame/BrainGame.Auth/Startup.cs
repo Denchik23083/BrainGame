@@ -24,6 +24,10 @@ namespace BrainGame.Auth
         {
             services.AddScoped<IService, Service>();
             services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

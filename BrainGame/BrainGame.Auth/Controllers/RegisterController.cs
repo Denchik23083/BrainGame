@@ -10,9 +10,9 @@ namespace BrainGame.Auth.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IAuthService _service;
 
-        public RegisterController(IService service)
+        public RegisterController(IAuthService service)
         {
             _service = service;
         }

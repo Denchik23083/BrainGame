@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
@@ -16,49 +15,6 @@ namespace BrainGame.WebDb
         public Repository(BrainGameContext context)
         {
             _context = context;
-        }
-
-        public async Task<Register> Register(Register register)
-        {
-            await _context.Users.AddAsync(Map(register));
-            await _context.SaveChangesAsync();
-
-            return register;
-        }
-
-        public async Task<User> Login(Login login)
-        {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(b =>
-                    b.Email == login.Email &&
-                    b.Password == login.Password);
-
-            return user;
-        }
-
-        public User User(User user)
-        {
-            return user;
-        }
-
-        public async Task<User> Update(User user)
-        {
-            var id = user.Id;
-            var userToUpdate = await _context.Users.FirstOrDefaultAsync(b => b.Id == id);
-            return userToUpdate;
-        }
-
-        public async Task Remove(int id)
-        {
-            var userToRemove = await _context.Users.FirstOrDefaultAsync(b => b.Id == id);
-
-            if (userToRemove is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            _context.Users.Remove(userToRemove);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<Quizzes> Quiz(Quizzes model)
@@ -138,17 +94,6 @@ namespace BrainGame.WebDb
             var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == _quiz.Id);
 
             return point;
-        }
-
-        private User Map(Register model)
-        {
-            return new User
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-            };
         }
     }
 }

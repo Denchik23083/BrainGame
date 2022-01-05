@@ -6,16 +6,6 @@ namespace BrainGame.Logic
 {
     public interface IService
     {
-        Task<Register> Register(Register register);
-
-        Task<User> Login(Login login);
-
-        User User();
-
-        Task Update(User user);
-
-        Task Remove();
-
         Task<Quizzes> Quiz(Quizzes model);
 
         Task<AnimalQuestions> GetAnimalsQuestions(int id);

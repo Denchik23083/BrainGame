@@ -10,9 +10,9 @@ namespace BrainGame.Auth.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IUserService _service;
 
-        public UserController(IService service)
+        public UserController(IUserService service)
         {
             _service = service;
         }
@@ -20,7 +20,7 @@ namespace BrainGame.Auth.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var user = _service.User();
+            var user = _service.Get();
             return Ok(user);
         }
 

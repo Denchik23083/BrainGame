@@ -22,61 +22,6 @@ namespace BrainGame.Logic
             _repository = repository;
         }
 
-        public async Task<Register> Register(Register register)
-        {
-            if (register.Password != register.ConfirmPassword)
-            {
-                throw new ArgumentException();
-            }
-
-            return await _repository.Register(register);
-        }
-
-        public async Task<User> Login(Login login)
-        {
-            var user = await _repository.Login(login);
-
-            if (user is null)
-            {
-                return null;
-            }
-
-            _user = user;
-
-            return user;
-        }
-
-        public User User()
-        {
-            var user = _user;
-
-            _repository.User(user);
-
-            return user;
-        }
-
-        public async Task Update(User user)
-        {
-            var userToUpdate = await _repository.Update(_user);
-
-            if (userToUpdate is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            userToUpdate.Name = user.Name;
-            userToUpdate.Email = user.Email;
-            userToUpdate.Password = user.Password;
-
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task Remove()
-        {
-            var id = _user.Id;
-            await _repository.Remove(id);
-        }
-
         public async Task<Quizzes> Quiz(Quizzes model)
         {
             var quiz = await _repository.Quiz(model);
