@@ -7,7 +7,7 @@ namespace BrainGame.Tests
 {
     public class BrainGameTest
     {
-        /*private readonly BrainGameContext _context;
+        private readonly BrainGameContext _context;
 
         public BrainGameTest(BrainGameContext context)
         {
@@ -28,7 +28,7 @@ namespace BrainGame.Tests
             _context.Users.Add(Map(register));
 
             //Work
-            *//*_context.SaveChanges();*//*
+            _context.SaveChanges();
 
             var create = _context.Users.Count();
 
@@ -70,6 +70,6 @@ namespace BrainGame.Tests
                 Email = model.Email,
                 Password = model.Password,
             };
-        }*/
+        }
     }
 }

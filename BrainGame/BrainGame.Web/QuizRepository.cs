@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.WebDb
 {
-    public class Repository : IRepository
+    public class QuizRepository : IQuizRepository
     {
         private readonly BrainGameContext _context;
         private static int? _id;
         private static Quizzes _quiz;
 
-        public Repository(BrainGameContext context)
+        public QuizRepository(BrainGameContext context)
         {
             _context = context;
         }
@@ -37,6 +36,8 @@ namespace BrainGame.WebDb
                 var points = 0;
 
                 _quiz.Point = points;
+
+                _context.Quizzes.Update(_quiz);
                 await _context.SaveChangesAsync();
             }
 
@@ -75,18 +76,6 @@ namespace BrainGame.WebDb
             }
 
             return questions;
-        }
-
-        public async Task<Correct> Correct()
-        {
-            var correct = await _context.Corrects.FirstOrDefaultAsync(a => a.Id == _id);
-
-            return correct;
-        }
-
-        public IEnumerable<Quizzes> GetStatistics()
-        {
-            return _context.Quizzes;
         }
 
         public async Task<Quizzes> GetPoint()

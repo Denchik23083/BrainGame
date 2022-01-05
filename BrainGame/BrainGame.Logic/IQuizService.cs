@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.WebDb
+namespace BrainGame.Logic
 {
-    public interface IRepository
+    public interface IQuizService
     {
-
         Task<Quizzes> Quiz(Quizzes model);
 
         Task<AnimalQuestions> GetAnimalsQuestions(int id);
@@ -14,10 +12,6 @@ namespace BrainGame.WebDb
         Task<PlantsQuestions> GetPlantsQuestions(int id);
 
         Task<MushroomsQuestions> GetMushroomsQuestions(int id);
-
-        Task<Correct> Correct();
-
-        IEnumerable<Quizzes> GetStatistics();
 
         Task<Quizzes> GetPoint();
     }

@@ -10,10 +10,10 @@ namespace BrainGame.Quiz.Controllers
     [ApiController]
     public class QuizController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IQuizService _service;
         private static Quizzes _quiz;
 
-        public QuizController(IService service)
+        public QuizController(IQuizService service)
         {
             _service = service;
         }

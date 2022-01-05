@@ -7,9 +7,9 @@ namespace BrainGame.Quiz.Controllers
     [ApiController]
     public class StatisticsController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IStatisticsService _service;
 
-        public StatisticsController(IService service)
+        public StatisticsController(IStatisticsService service)
         {
             _service = service;
         }

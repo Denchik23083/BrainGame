@@ -22,12 +22,18 @@ namespace BrainGame.Auth
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IService, Service>();
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IAnswersService, AnswersService>();
+            services.AddScoped<IAnswersRepository, AnswersRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
+            services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+            services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<IQuizRepository, QuizRepository>();
+            services.AddScoped<IAnswersService, AnswersService>();
+            services.AddScoped<IAnswersRepository, AnswersRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
