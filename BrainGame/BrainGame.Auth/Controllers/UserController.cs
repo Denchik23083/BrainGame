@@ -21,6 +21,7 @@ namespace BrainGame.Auth.Controllers
         public IActionResult Get()
         {
             var user = _service.Get();
+
             return Ok(user);
         }
 
@@ -28,6 +29,7 @@ namespace BrainGame.Auth.Controllers
         public async Task<IActionResult> Update(UserModel model)
         {
             await _service.Update(Map(model));
+
             return NoContent();
         }
 
@@ -35,6 +37,7 @@ namespace BrainGame.Auth.Controllers
         public async Task<IActionResult> Remove()
         {
             await _service.Remove();
+
             return NoContent();
         }
 

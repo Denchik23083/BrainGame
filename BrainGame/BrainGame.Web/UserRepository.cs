@@ -24,6 +24,7 @@ namespace BrainGame.WebDb
         {
             var id = user.Id;
             var userToUpdate = await _context.Users.FirstOrDefaultAsync(b => b.Id == id);
+
             return userToUpdate;
         }
 

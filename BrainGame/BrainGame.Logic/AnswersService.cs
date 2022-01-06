@@ -44,7 +44,6 @@ namespace BrainGame.Logic
             }
         }
         
-
         public IEnumerable<Answers> GetAnswers()
         {
             var array = QuizService._answers.Split(',');

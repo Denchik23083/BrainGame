@@ -5,11 +5,11 @@ using Xunit;
 
 namespace BrainGame.Tests
 {
-    public class BrainGameTest
+    public class AuthTests
     {
         private readonly BrainGameContext _context;
 
-        public BrainGameTest(BrainGameContext context)
+        public AuthTests(BrainGameContext context)
         {
             _context = context;
         }
@@ -26,8 +26,7 @@ namespace BrainGame.Tests
             };
 
             _context.Users.Add(Map(register));
-
-            //Work
+            
             _context.SaveChanges();
 
             var create = _context.Users.Count();
@@ -48,17 +47,9 @@ namespace BrainGame.Tests
             var user = _context.Users.FirstOrDefault(
                 b => b.Email == login.Email &&
                      b.Password == login.Password);
+            
+            Assert.NotNull(user);
 
-            bool isUser;
-
-            if (user is null)
-            {
-                isUser = false;
-            }
-
-            isUser = true;
-
-            Assert.True(isUser);
         }
 
         private User Map(Register model)

@@ -22,8 +22,6 @@ namespace BrainGame.Auth
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IAnswersService, AnswersService>();
-            services.AddScoped<IAnswersRepository, AnswersRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUserService, UserService>();
