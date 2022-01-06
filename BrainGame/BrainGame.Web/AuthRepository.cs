@@ -7,7 +7,7 @@ namespace BrainGame.WebDb
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly BrainGameContext _context;
+        public readonly BrainGameContext _context;
 
         public AuthRepository(BrainGameContext context)
         {
