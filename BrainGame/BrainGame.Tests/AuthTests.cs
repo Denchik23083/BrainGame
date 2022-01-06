@@ -1,8 +1,6 @@
 using System.Linq;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
-using BrainGame.Logic;
-using BrainGame.WebDb;
 using Xunit;
 
 namespace BrainGame.Tests
@@ -15,7 +13,6 @@ namespace BrainGame.Tests
         {
             _context = context;
         }
-
 
         [Fact]
         public void Register()
@@ -40,17 +37,19 @@ namespace BrainGame.Tests
         [Fact]
         public void Login()
         {
-            var login = new User
+            var login = new Login
             {
                 Email = "user@gmail.com",
                 Password = "0000",
             };
 
+
             var user = _context.Users.FirstOrDefault(
                 b => b.Email == login.Email &&
                      b.Password == login.Password);
             
-            Assert.Equal(user, login);
+            Assert.NotNull(user);
+
         }
 
         private User Map(Register model)

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Db", "BrainGame.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.WebDb", "BrainGame.Web\BrainGame.WebDb.csproj", "{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Quiz", "BrainGame.Quiz\BrainGame.Quiz.csproj", "{E8CC987E-36DA-42D1-A305-41CB178A60DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Tests", "BrainGame.Tests\BrainGame.Tests.csproj", "{96C820FF-A4D7-423B-AF40-3C211E05C7B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Quiz", "BrainGame.Quiz\BrainGame.Quiz.csproj", "{E8CC987E-36DA-42D1-A305-41CB178A60DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C820FF-A4D7-423B-AF40-3C211E05C7B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
