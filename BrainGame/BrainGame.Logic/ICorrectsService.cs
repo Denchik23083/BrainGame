@@ -4,10 +4,8 @@ using BrainGame.Db.Entities;
 
 namespace BrainGame.Logic
 {
-    public interface IAnswersService
+    public interface ICorrectsService
     {
         Task Correct(Correct correctAnswerUser);
-
-        IEnumerable<Answers> GetAnswers();
     }
 }

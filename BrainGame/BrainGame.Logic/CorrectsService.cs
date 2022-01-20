@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Logic
 {
-    public class AnswersService : IAnswersService
+    public class CorrectsService : ICorrectsService
     {
         private readonly BrainGameContext _context;
-        private readonly IAnswersRepository _repository;
+        private readonly ICorrectsRepository _repository;
 
-        public AnswersService(IAnswersRepository repository, BrainGameContext context)
+        public CorrectsService(ICorrectsRepository repository, BrainGameContext context)
         {
             _context = context;
             _repository = repository;
@@ -42,30 +42,6 @@ namespace BrainGame.Logic
 
                 await _context.SaveChangesAsync();
             }
-        }
-        
-        public IEnumerable<Answers> GetAnswers()
-        {
-            var array = QuizService._answers.Split(',');
-
-            var list = new List<Answers>();
-
-            var id = 1;
-
-            foreach (var answer in array)
-            {
-                var answers = new Answers 
-                {
-                    Id = id++,
-                    Answer = answer
-                };
-
-                list.Add(answers);
-            }
-
-            var listAnswers = list.ToArray();
-
-            return listAnswers;
         }
     }
 }

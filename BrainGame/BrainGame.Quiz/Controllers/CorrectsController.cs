@@ -8,21 +8,13 @@ namespace BrainGame.Quiz.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnswersController : ControllerBase
+    public class CorrectsController : ControllerBase
     {
-        private readonly IAnswersService _service;
+        private readonly ICorrectsService _service;
 
-        public AnswersController(IAnswersService service)
+        public CorrectsController(ICorrectsService service)
         {
             _service = service;
-        }
-
-        [HttpGet]
-        public IActionResult GetAnswers()
-        {
-            var answers = _service.GetAnswers();
-
-            return Ok(answers);
         }
 
         [HttpPost]

@@ -30,8 +30,8 @@ namespace BrainGame.Auth
             services.AddScoped<IStatisticsRepository, StatisticsRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuizRepository, QuizRepository>();
-            services.AddScoped<IAnswersService, AnswersService>();
-            services.AddScoped<IAnswersRepository, AnswersRepository>();
+            services.AddScoped<ICorrectsService, CorrectsService>();
+            services.AddScoped<ICorrectsRepository, CorrectsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

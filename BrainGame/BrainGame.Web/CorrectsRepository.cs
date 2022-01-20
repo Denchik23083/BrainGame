@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.WebDb
 {
-    public class AnswersRepository : IAnswersRepository
+    public class CorrectsRepository : ICorrectsRepository
     {
         private readonly BrainGameContext _context;
 
-        public AnswersRepository(BrainGameContext context)
+        public CorrectsRepository(BrainGameContext context)
         {
             _context = context;
         }

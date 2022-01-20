@@ -9,7 +9,6 @@ namespace BrainGame.Logic
     {
         private readonly IQuizRepository _repository;
         public static Quizzes _quiz;
-        public static string _answers;
         public static int _correctId;
 
         public QuizService(IQuizRepository repository)
@@ -34,10 +33,7 @@ namespace BrainGame.Logic
             {
                 throw new ArgumentNullException();
             }
-
-            var answers = question.Answers;
-
-            _answers = answers;
+            
             _correctId = question.CorrectAnswerId;
             
             return question;
@@ -51,10 +47,7 @@ namespace BrainGame.Logic
             {
                 throw new ArgumentNullException();
             }
-
-            var answers = question.Answers;
-
-            _answers = answers;
+            
             _correctId = question.CorrectAnswerId;
 
             return question;
@@ -68,10 +61,7 @@ namespace BrainGame.Logic
             {
                 throw new ArgumentNullException();
             }
-
-            var answers = question.Answers;
-
-            _answers = answers;
+            
             _correctId = question.CorrectAnswerId;
             
             return question;

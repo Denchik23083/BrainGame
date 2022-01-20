@@ -8,7 +8,6 @@ namespace BrainGame.WebDb
     public class QuizRepository : IQuizRepository
     {
         private readonly BrainGameContext _context;
-        private static int? _id;
         private static Quizzes _quiz;
 
         public QuizRepository(BrainGameContext context)
@@ -28,9 +27,7 @@ namespace BrainGame.WebDb
         public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
         {
             var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Id == id);
-
-            _id = questions?.CorrectAnswerId;
-
+            
             if (questions?.Id == 1)
             {
                 var points = 0;
@@ -47,9 +44,7 @@ namespace BrainGame.WebDb
         public async Task<PlantsQuestions> GetPlantsQuestions(int id)
         {
             var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Id == id);
-
-            _id = questions?.CorrectAnswerId;
-
+            
             if (questions?.Id == 1)
             {
                 var points = 0;
@@ -64,9 +59,7 @@ namespace BrainGame.WebDb
         public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
         {
             var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Id == id);
-
-            _id = questions?.CorrectAnswerId;
-
+            
             if (questions?.Id == 1)
             {
                 var points = 0;
