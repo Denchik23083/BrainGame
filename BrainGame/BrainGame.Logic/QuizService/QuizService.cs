@@ -71,5 +71,10 @@ namespace BrainGame.Logic.QuizService
         {
             return await _repository.GetPoint();
         }
+
+        public async Task RemovePoint()
+        {
+            await _repository.RemovePoint();
+        }
     }
 }

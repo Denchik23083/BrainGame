@@ -14,5 +14,7 @@ namespace BrainGame.WebDb.QuizRepository
         Task<MushroomsQuestions> GetMushroomsQuestions(int id);
 
         Task<Quizzes> GetPoint();
+
+        Task RemovePoint();
     }
 }

@@ -57,6 +57,14 @@ namespace BrainGame.Quiz.Controllers
             return Ok(point);
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> RemovePoint()
+        {
+            await _service.RemovePoint();
+
+            return NoContent();
+        }
+
         private Quizzes Map(QuizzesModel model)
         {
             return new Quizzes

@@ -19,13 +19,6 @@ namespace BrainGame.WebDb.QuizRepository
         {
             var quiz = await _context.Quizzes.FirstOrDefaultAsync(b => b.Name == model.Name);
             
-            var points = 0;
-
-            quiz.Point = points;
-
-            _context.Quizzes.Update(quiz);
-            await _context.SaveChangesAsync();
-
             _quiz = quiz;
 
             return quiz;
@@ -57,6 +50,16 @@ namespace BrainGame.WebDb.QuizRepository
             var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == _quiz.Id);
 
             return point;
+        }
+
+        public async Task RemovePoint()
+        {
+            var points = 0;
+
+            _quiz.Point = points;
+
+            _context.Quizzes.Update(_quiz);
+            await _context.SaveChangesAsync();
         }
     }
 }

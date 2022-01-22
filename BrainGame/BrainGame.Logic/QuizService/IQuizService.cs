@@ -14,5 +14,7 @@ namespace BrainGame.Logic.QuizService
         Task<MushroomsQuestions> GetMushroomsQuestions(int id);
 
         Task<Quizzes> GetPoint();
+
+        Task RemovePoint();
     }
 }
