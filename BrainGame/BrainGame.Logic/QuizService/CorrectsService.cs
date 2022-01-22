@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
-using BrainGame.WebDb;
+using BrainGame.WebDb.QuizRepository;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.Logic
+namespace BrainGame.Logic.QuizService
 {
     public class CorrectsService : ICorrectsService
     {
@@ -38,7 +37,7 @@ namespace BrainGame.Logic
 
                 getPoint.Point++;
 
-                _context.Quizzes.Update(QuizService._quiz);
+                //_context.Quizzes.Update(QuizService._quiz);
 
                 await _context.SaveChangesAsync();
             }

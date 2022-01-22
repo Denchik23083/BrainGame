@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.Logic
+namespace BrainGame.WebDb.QuizRepository
 {
-    public interface IStatisticsService
+    public interface IStatisticsRepository
     {
         IEnumerable<Quizzes> GetStatistics();
     }

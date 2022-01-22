@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Db.Entities;
-using BrainGame.Logic;
+using BrainGame.Logic.QuizService;
 using BrainGame.Quiz.Models;
 
 namespace BrainGame.Quiz.Controllers

@@ -3,7 +3,7 @@ using BrainGame.Db;
 using BrainGame.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb
+namespace BrainGame.WebDb.QuizRepository
 {
     public class QuizRepository : IQuizRepository
     {
@@ -18,6 +18,13 @@ namespace BrainGame.WebDb
         public async Task<Quizzes> Quiz(Quizzes model)
         {
             var quiz = await _context.Quizzes.FirstOrDefaultAsync(b => b.Name == model.Name);
+            
+            var points = 0;
+
+            quiz.Point = points;
+
+            _context.Quizzes.Update(quiz);
+            await _context.SaveChangesAsync();
 
             _quiz = quiz;
 
@@ -28,16 +35,6 @@ namespace BrainGame.WebDb
         {
             var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Id == id);
             
-            if (questions?.Id == 1)
-            {
-                var points = 0;
-
-                _quiz.Point = points;
-
-                _context.Quizzes.Update(_quiz);
-                await _context.SaveChangesAsync();
-            }
-
             return questions;
         }
 
@@ -45,14 +42,6 @@ namespace BrainGame.WebDb
         {
             var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Id == id);
             
-            if (questions?.Id == 1)
-            {
-                var points = 0;
-
-                _quiz.Point = points;
-                await _context.SaveChangesAsync();
-            }
-
             return questions;
         }
 
@@ -60,14 +49,6 @@ namespace BrainGame.WebDb
         {
             var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Id == id);
             
-            if (questions?.Id == 1)
-            {
-                var points = 0;
-
-                _quiz.Point = points;
-                await _context.SaveChangesAsync();
-            }
-
             return questions;
         }
 

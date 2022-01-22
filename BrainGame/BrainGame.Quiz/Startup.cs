@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using BrainGame.Db;
-using BrainGame.Logic;
-using BrainGame.WebDb;
+using BrainGame.Logic.AuthService;
+using BrainGame.Logic.QuizService;
+using BrainGame.WebDb.AuthRepository;
+using BrainGame.WebDb.QuizRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Quiz

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.Logic
+namespace BrainGame.Logic.AuthService
 {
     public interface IUserService
     {

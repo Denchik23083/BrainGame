@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using BrainGame.Db;
 using BrainGame.Db.Entities;
-using BrainGame.WebDb;
+using BrainGame.WebDb.AuthRepository;
 
-namespace BrainGame.Logic
+namespace BrainGame.Logic.AuthService
 {
     public class UserService : IUserService
     {

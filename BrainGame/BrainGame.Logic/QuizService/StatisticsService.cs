@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BrainGame.Db.Entities;
-using BrainGame.WebDb;
+using BrainGame.WebDb.QuizRepository;
 
-namespace BrainGame.Logic
+namespace BrainGame.Logic.QuizService
 {
     public class StatisticsService : IStatisticsService
     {

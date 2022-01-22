@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.WebDb
+namespace BrainGame.WebDb.QuizRepository
 {
     public interface IQuizRepository
     {

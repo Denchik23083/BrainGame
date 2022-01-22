@@ -2,7 +2,7 @@
 using BrainGame.Db;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.WebDb
+namespace BrainGame.WebDb.QuizRepository
 {
     public class StatisticsRepository : IStatisticsRepository
     {

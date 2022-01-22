@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.Logic
+namespace BrainGame.Logic.QuizService
 {
     public interface ICorrectsService
     {

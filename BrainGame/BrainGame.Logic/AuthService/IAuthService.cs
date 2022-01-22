@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 
-namespace BrainGame.WebDb
+namespace BrainGame.Logic.AuthService
 {
-    public interface IAuthRepository
+    public interface IAuthService
     {
         Task<Register> Register(Register register);
 

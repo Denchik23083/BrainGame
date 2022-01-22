@@ -4,7 +4,7 @@ using BrainGame.Db;
 using BrainGame.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb
+namespace BrainGame.WebDb.AuthRepository
 {
     public class UserRepository : IUserRepository
     {
