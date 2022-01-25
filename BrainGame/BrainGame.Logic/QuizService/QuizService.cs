@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BrainGame.Db.Entities;
 using BrainGame.WebDb.QuizRepository;
@@ -10,6 +11,8 @@ namespace BrainGame.Logic.QuizService
         private readonly IQuizRepository _repository;
         public static Quizzes _quiz;
         public static int _correctId;
+        public static List<Quizzes> StatisticsList = new List<Quizzes>();
+        private static int _countQuiz;
 
         public QuizService(IQuizRepository repository)
         {
@@ -69,7 +72,13 @@ namespace BrainGame.Logic.QuizService
 
         public async Task<Quizzes> GetPoint()
         {
-            return await _repository.GetPoint();
+            var getPoint = await _repository.GetPoint();
+
+            getPoint.Id = ++_countQuiz;
+
+            StatisticsList.Add(getPoint);
+
+            return getPoint;
         }
 
         public async Task RemovePoint()

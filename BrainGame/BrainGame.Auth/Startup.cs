@@ -29,7 +29,6 @@ namespace BrainGame.Auth
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStatisticsService, StatisticsService>();
-            services.AddScoped<IStatisticsRepository, StatisticsRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuizRepository, QuizRepository>();
             services.AddScoped<ICorrectsService, CorrectsService>();

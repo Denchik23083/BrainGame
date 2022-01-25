@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BrainGame.Db.Entities;
-using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
 {
     public class StatisticsService : IStatisticsService
     {
-        private readonly IStatisticsRepository _repository;
-
-        public StatisticsService(IStatisticsRepository repository)
-        {
-            _repository = repository;
-        }
-
         public IEnumerable<Quizzes> GetStatistics()
         {
-            var statistics = _repository.GetStatistics();
+            var statistics = QuizService.StatisticsList;
 
             if (statistics is null)
             {
@@ -24,6 +17,11 @@ namespace BrainGame.Logic.QuizService
             }
 
             return statistics;
+        }
+
+        public void Clear()
+        {
+            QuizService.StatisticsList.Clear();
         }
     }
 }

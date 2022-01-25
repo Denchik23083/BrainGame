@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using BrainGame.Logic.QuizService;
 
 namespace BrainGame.Quiz.Controllers
@@ -20,6 +21,14 @@ namespace BrainGame.Quiz.Controllers
             var statistics = _service.GetStatistics();
 
             return Ok(statistics);
+        }
+
+        [HttpDelete]
+        public IActionResult ClearStatistics()
+        {
+            _service.Clear();
+
+            return NoContent();
         }
     }
 }
