@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Net.Http;
 using BrainGame.Db.Entities;
 
 namespace BrainGame.Logic.QuizService
@@ -22,6 +22,7 @@ namespace BrainGame.Logic.QuizService
         public void Clear()
         {
             QuizService.StatisticsList.Clear();
+            QuizService._countQuiz = 0;
         }
     }
 }

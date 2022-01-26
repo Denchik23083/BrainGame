@@ -12,7 +12,7 @@ namespace BrainGame.Logic.QuizService
         public static Quizzes _quiz;
         public static int _correctId;
         public static List<Quizzes> StatisticsList = new List<Quizzes>();
-        private static int _countQuiz;
+        public static int _countQuiz;
 
         public QuizService(IQuizRepository repository)
         {

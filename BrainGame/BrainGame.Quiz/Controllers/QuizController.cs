@@ -33,38 +33,22 @@ namespace BrainGame.Quiz.Controllers
         {
             object question = null;
 
-            if (_quiz.Name == "Animals")
+            switch (_quiz.Name)
             {
-                question = await _service.GetAnimalsQuestions(id);
-            }
-            else if (_quiz.Name == "Plants")
-            {
-                question = await _service.GetPlantsQuestions(id);
-            }
-            else if (_quiz.Name == "Mushrooms")
-            {
-                question = await _service.GetMushroomsQuestions(id);
+                case "Animals":
+                    question = await _service.GetAnimalsQuestions(id);
+                    break;
+                case "Plants":
+                    question = await _service.GetPlantsQuestions(id);
+                    break;
+                case "Mushrooms":
+                    question = await _service.GetMushroomsQuestions(id);
+                    break;
             }
 
             return Ok(question);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Point()
-        {
-            var point = await _service.GetPoint();
-
-            return Ok(point);
-        }
-
-        [HttpDelete]
-        public async Task<IActionResult> RemovePoint()
-        {
-            await _service.RemovePoint();
-
-            return NoContent();
-        }
-
+        
         private Quizzes Map(QuizzesModel model)
         {
             return new Quizzes
