@@ -9,7 +9,7 @@ namespace BrainGame.Logic.QuizService
     {
         public IEnumerable<Quizzes> GetStatistics()
         {
-            var statistics = QuizService.StatisticsList;
+            var statistics = PointService.StatisticsList;
 
             if (statistics is null)
             {
@@ -21,8 +21,8 @@ namespace BrainGame.Logic.QuizService
 
         public void Clear()
         {
-            QuizService.StatisticsList.Clear();
-            QuizService._countQuiz = 0;
+            PointService.StatisticsList.Clear();
+            PointService._countQuiz = 0;
         }
     }
 }

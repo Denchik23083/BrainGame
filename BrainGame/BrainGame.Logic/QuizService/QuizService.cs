@@ -13,6 +13,7 @@ namespace BrainGame.Logic.QuizService
         public static int _correctId;
         public static List<Quizzes> StatisticsList = new List<Quizzes>();
         public static int _countQuiz;
+        public static Quizzes _getPoint;
 
         public QuizService(IQuizRepository repository)
         {
@@ -68,22 +69,6 @@ namespace BrainGame.Logic.QuizService
             _correctId = question.CorrectAnswerId;
             
             return question;
-        }
-
-        public async Task<Quizzes> GetPoint()
-        {
-            var getPoint = await _repository.GetPoint();
-
-            getPoint.Id = ++_countQuiz;
-
-            StatisticsList.Add(getPoint);
-
-            return getPoint;
-        }
-
-        public async Task RemovePoint()
-        {
-            await _repository.RemovePoint();
         }
     }
 }

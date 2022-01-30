@@ -10,5 +10,7 @@ namespace BrainGame.Logic.AuthService
         Task Update(User user);
 
         Task Remove();
+
+        Task Password(User model);
     }
 }

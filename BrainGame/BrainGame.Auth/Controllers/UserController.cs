@@ -41,6 +41,17 @@ namespace BrainGame.Auth.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Password(PasswordModel model)
+        {
+            if (model.Password == model.ConfirmPassword)
+            {
+                await _service.Password(Map(model));
+            }
+
+            return NoContent();
+        }
+
         private User Map(UserModel model)
         {
             return new User
@@ -48,6 +59,13 @@ namespace BrainGame.Auth.Controllers
                 Id = model.Id,
                 Name = model.Name,
                 Email = model.Email,
+            };
+        }
+
+        private User Map(PasswordModel model)
+        {
+            return new User
+            {
                 Password = model.Password,
             };
         }

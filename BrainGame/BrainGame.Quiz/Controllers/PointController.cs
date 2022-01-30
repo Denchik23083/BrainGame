@@ -8,9 +8,9 @@ namespace BrainGame.Quiz.Controllers
     [ApiController]
     public class PointController : ControllerBase
     {
-        private readonly IQuizService _service;
+        private readonly IPointService _service;
 
-        public PointController(IQuizService service)
+        public PointController(IPointService service)
         {
             _service = service;
         }
@@ -21,6 +21,14 @@ namespace BrainGame.Quiz.Controllers
             var point = await _service.GetPoint();
 
             return Ok(point);
+        }
+
+        [HttpPost]
+        public IActionResult Result()
+        {
+            _service.Result();
+
+            return NoContent();
         }
 
         [HttpDelete]

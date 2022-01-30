@@ -32,6 +32,8 @@ namespace BrainGame.Quiz
             services.AddScoped<IQuizRepository, QuizRepository>();
             services.AddScoped<ICorrectsService, CorrectsService>();
             services.AddScoped<ICorrectsRepository, CorrectsRepository>();
+            services.AddScoped<IPointService, PointService>();
+            services.AddScoped<IPointRepository, PointRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

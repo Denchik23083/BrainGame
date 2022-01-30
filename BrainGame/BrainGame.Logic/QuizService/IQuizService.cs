@@ -12,9 +12,5 @@ namespace BrainGame.Logic.QuizService
         Task<PlantsQuestions> GetPlantsQuestions(int id);
 
         Task<MushroomsQuestions> GetMushroomsQuestions(int id);
-
-        Task<Quizzes> GetPoint();
-
-        Task RemovePoint();
     }
 }
