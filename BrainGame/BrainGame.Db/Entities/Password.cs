@@ -1,6 +1,6 @@
-﻿namespace BrainGame.Auth.Models
+﻿namespace BrainGame.Db.Entities
 {
-    public class PasswordModel
+    public class Password
     {
         public string OldPassword { get; set; }
 

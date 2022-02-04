@@ -42,19 +42,24 @@ namespace BrainGame.Logic.AuthService
             await _context.SaveChangesAsync();
         }
 
-        public async Task Password(User model)
+        public async Task Password(Password model)
         {
-            var userToUpdate = await _repository.Update(AuthService._user);
-
-            if (userToUpdate is null)
+            if (model.OldPassword == AuthService._user.Password && model.NewPassword == model.ConfirmPassword)
             {
-                throw new ArgumentNullException();
+                var userToUpdate = await _repository.Update(AuthService._user);
+
+                if (userToUpdate is null)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                AuthService._user.Password = model.NewPassword;
+
+                userToUpdate.Password = model.NewPassword;
+
+                _context.Users.Update(userToUpdate);
+                await _context.SaveChangesAsync();
             }
-
-            userToUpdate.Password = model.Password;
-
-            _context.Users.Update(userToUpdate);
-            await _context.SaveChangesAsync();
         }
 
         public async Task Remove()

@@ -44,7 +44,7 @@ namespace BrainGame.Auth.Controllers
         [HttpPost]
         public async Task<IActionResult> Password(PasswordModel model)
         {
-            if (model.Password == model.ConfirmPassword)
+            if (model.NewPassword == model.ConfirmPassword)
             {
                 await _service.Password(Map(model));
             }
@@ -62,11 +62,13 @@ namespace BrainGame.Auth.Controllers
             };
         }
 
-        private User Map(PasswordModel model)
+        private Password Map(PasswordModel model)
         {
-            return new User
+            return new Password
             {
-                Password = model.Password,
+                OldPassword = model.OldPassword,
+                NewPassword = model.NewPassword,
+                ConfirmPassword = model.ConfirmPassword,
             };
         }
     }
