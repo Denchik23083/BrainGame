@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NsV1+Zj8WNDxIvyQMNPNF5bxIMBLygAR0QmTE0MOwZYRQIo8CrgurZ5+EpjqwPL67Z5okD4/7c/+6LRpSNTTIA==",
+  "dgSpecHash": "1pj6Gq17cRT6cQB2MPH44lLC/gx8H/BH66xCWK3kaC3DjUPKF4jM8OZvrH3F6S12JMSZBforbCeRXq80K/enTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Auth\\BrainGame.Auth.csproj",
   "expectedPackageFiles": [
@@ -105,7 +105,8 @@
     "C:\\Users\\User\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
   ],
   "logs": []
 }

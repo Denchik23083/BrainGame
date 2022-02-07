@@ -116,7 +116,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Db.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Logic.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.WebDb.pdb
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.csprojAssemblyReference.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.AssemblyInfoInputs.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.AssemblyInfo.cs
@@ -124,7 +123,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\staticwebassets\BrainGame.Quiz.StaticWebAssets.Manifest.cache
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\staticwebassets\BrainGame.Quiz.StaticWebAssets.xml
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\scopedcss\bundle\BrainGame.Quiz.styles.css
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.RazorTargetAssemblyInfo.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.csproj.CopyComplete
@@ -132,3 +130,4 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\ref\BrainGame.Quiz.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.genruntimeconfig.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.csproj.AssemblyReference.cache

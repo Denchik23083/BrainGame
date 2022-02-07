@@ -250,7 +250,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Db.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Logic.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.WebDb.pdb
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.csprojAssemblyReference.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.AssemblyInfoInputs.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.AssemblyInfo.cs
@@ -258,7 +257,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\staticwebassets\BrainGame.Auth.StaticWebAssets.Manifest.cache
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\staticwebassets\BrainGame.Auth.StaticWebAssets.xml
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\scopedcss\bundle\BrainGame.Auth.styles.css
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.RazorTargetAssemblyInfo.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.csproj.CopyComplete
@@ -266,3 +264,4 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\ref\BrainGame.Auth.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.genruntimeconfig.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.csproj.AssemblyReference.cache

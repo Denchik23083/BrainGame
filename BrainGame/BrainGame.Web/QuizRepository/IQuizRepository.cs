@@ -5,7 +5,7 @@ namespace BrainGame.WebDb.QuizRepository
 {
     public interface IQuizRepository
     {
-        Task<Quizzes> Quiz(Quizzes model);
+        Task<Quizzes> GetQuiz(Quizzes model);
 
         Task<AnimalQuestions> GetAnimalsQuestions(int id);
 

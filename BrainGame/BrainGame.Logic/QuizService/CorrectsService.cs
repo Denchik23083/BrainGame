@@ -20,7 +20,7 @@ namespace BrainGame.Logic.QuizService
 
         public async Task Correct(Correct correctAnswerUser)
         {
-            var correct = await _repository.Correct(QuizService._correctId);
+            var correct = await _repository.Correct(QuizService.CorrectId);
             var correctAnswer = correct.CorrectAnswer;
 
             var correctUser = correctAnswerUser.CorrectAnswer;
@@ -28,7 +28,7 @@ namespace BrainGame.Logic.QuizService
             if (correctAnswer == correctUser)
             {
                 var getPoint = await _context.Quizzes
-                                    .FirstOrDefaultAsync(p => p.Id == QuizService._quiz.Id);
+                                    .FirstOrDefaultAsync(p => p.Id == QuizService.Quiz.Id);
 
                 if (getPoint is null)
                 {
@@ -36,8 +36,6 @@ namespace BrainGame.Logic.QuizService
                 }
 
                 getPoint.Point++;
-
-                //_context.Quizzes.Update(QuizService._quiz);
 
                 await _context.SaveChangesAsync();
             }

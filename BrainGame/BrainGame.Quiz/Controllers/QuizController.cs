@@ -11,7 +11,7 @@ namespace BrainGame.Quiz.Controllers
     public class QuizController : ControllerBase
     {
         private readonly IQuizService _service;
-        private static Quizzes _quiz;
+        public static Quizzes Quiz;
 
         public QuizController(IQuizService service)
         {
@@ -21,9 +21,9 @@ namespace BrainGame.Quiz.Controllers
         [HttpPost]
         public async Task<IActionResult> GetQuiz(QuizzesModel model)
         {
-            var quiz = await _service.Quiz(Map(model));
+            var quiz = await _service.GetQuiz(Map(model));
 
-            _quiz = quiz;
+            Quiz = quiz;
 
             return Ok(quiz);
         }
@@ -33,7 +33,7 @@ namespace BrainGame.Quiz.Controllers
         {
             object question = null;
 
-            switch (_quiz.Name)
+            switch (Quiz.Name)
             {
                 case "Animals":
                     question = await _service.GetAnimalsQuestions(id);

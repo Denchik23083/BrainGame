@@ -8,7 +8,7 @@ namespace BrainGame.Logic.AuthService
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
-        public static User _user;
+        public static User User;
 
         public AuthService(IAuthRepository repository)
         {
@@ -34,7 +34,7 @@ namespace BrainGame.Logic.AuthService
                 return null;
             }
 
-            _user = user;
+            User = user;
 
             return user;
         }

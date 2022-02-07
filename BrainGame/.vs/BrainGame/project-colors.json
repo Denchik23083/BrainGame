@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "56594077-9bb0-4637-883d-f610753f8fbb": {
+      "ProjectGuid": "56594077-9bb0-4637-883d-f610753f8fbb",
+      "DisplayName": "BrainGame.Logic",
+      "ColorIndex": 0
+    },
+    "baaf95e8-ccf4-48da-93ec-f9d2b573fc60": {
+      "ProjectGuid": "baaf95e8-ccf4-48da-93ec-f9d2b573fc60",
+      "DisplayName": "BrainGame.Auth",
+      "ColorIndex": 1
+    },
+    "15b50e27-a7e1-4bdb-9034-da3e0990c95d": {
+      "ProjectGuid": "15b50e27-a7e1-4bdb-9034-da3e0990c95d",
+      "DisplayName": "BrainGame.WebDb",
+      "ColorIndex": 2
+    },
+    "2e2286f3-8454-48ac-adcb-b04145f912a3": {
+      "ProjectGuid": "2e2286f3-8454-48ac-adcb-b04145f912a3",
+      "DisplayName": "BrainGame.Db",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

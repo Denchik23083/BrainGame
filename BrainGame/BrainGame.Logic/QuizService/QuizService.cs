@@ -9,22 +9,22 @@ namespace BrainGame.Logic.QuizService
     public class QuizService : IQuizService
     {
         private readonly IQuizRepository _repository;
-        public static Quizzes _quiz;
-        public static int _correctId;
+        public static Quizzes Quiz;
+        public static int CorrectId;
         public static List<Quizzes> StatisticsList = new List<Quizzes>();
-        public static int _countQuiz;
-        public static Quizzes _getPoint;
+        public static int CountQuiz;
+        public static Quizzes GetPoint;
 
         public QuizService(IQuizRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<Quizzes> Quiz(Quizzes model)
+        public async Task<Quizzes> GetQuiz(Quizzes model)
         {
-            var quiz = await _repository.Quiz(model);
+            var quiz = await _repository.GetQuiz(model);
 
-            _quiz = quiz;
+            Quiz = quiz;
 
             return quiz;
         }
@@ -38,7 +38,7 @@ namespace BrainGame.Logic.QuizService
                 throw new ArgumentNullException();
             }
             
-            _correctId = question.CorrectAnswerId;
+            CorrectId = question.CorrectAnswerId;
             
             return question;
         }
@@ -52,7 +52,7 @@ namespace BrainGame.Logic.QuizService
                 throw new ArgumentNullException();
             }
             
-            _correctId = question.CorrectAnswerId;
+            CorrectId = question.CorrectAnswerId;
 
             return question;
         }
@@ -66,7 +66,7 @@ namespace BrainGame.Logic.QuizService
                 throw new ArgumentNullException();
             }
             
-            _correctId = question.CorrectAnswerId;
+            CorrectId = question.CorrectAnswerId;
             
             return question;
         }

@@ -9,8 +9,8 @@ namespace BrainGame.Logic.QuizService
     public class PointService : IPointService
     {
         private readonly IPointRepository _repository;
-        public static Quizzes _getPoint;
-        public static int _countQuiz;
+        public static Quizzes GetPoints;
+        public static int CountQuiz;
         public static List<Quizzes> StatisticsList = new List<Quizzes>();
 
         public PointService(IPointRepository repository)
@@ -22,15 +22,16 @@ namespace BrainGame.Logic.QuizService
         {
             var getPoint = await _repository.GetPoint();
 
-            _getPoint = getPoint;
+            GetPoints = getPoint;
 
             return getPoint;
         }
+
         public void Result()
         {
-            _getPoint.Id = ++_countQuiz;
+            GetPoints.Id = ++CountQuiz;
 
-            StatisticsList.Add(_getPoint);
+            StatisticsList.Add(GetPoints);
         }
 
         public async Task RemovePoint()

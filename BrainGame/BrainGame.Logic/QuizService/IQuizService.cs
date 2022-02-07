@@ -5,7 +5,7 @@ namespace BrainGame.Logic.QuizService
 {
     public interface IQuizService
     {
-        Task<Quizzes> Quiz(Quizzes model);
+        Task<Quizzes> GetQuiz(Quizzes model);
 
         Task<AnimalQuestions> GetAnimalsQuestions(int id);
 

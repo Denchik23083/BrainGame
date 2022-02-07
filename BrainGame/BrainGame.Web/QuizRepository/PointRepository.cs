@@ -16,7 +16,7 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<Quizzes> GetPoint()
         {
-            var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == QuizRepository._quiz.Id);
+            var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == QuizRepository.Quiz.Id);
 
             return point;
         }
@@ -25,9 +25,9 @@ namespace BrainGame.WebDb.QuizRepository
         {
             var points = 0;
 
-            QuizRepository._quiz.Point = points;
+            QuizRepository.Quiz.Point = points;
 
-            _context.Quizzes.Update(QuizRepository._quiz);
+            _context.Quizzes.Update(QuizRepository.Quiz);
             await _context.SaveChangesAsync();
         }
     }

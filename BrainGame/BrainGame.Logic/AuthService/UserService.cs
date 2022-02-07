@@ -19,7 +19,7 @@ namespace BrainGame.Logic.AuthService
 
         public User Get()
         {
-            var user = AuthService._user;
+            var user = AuthService.User;
 
             _repository.Get(user);
 
@@ -28,7 +28,7 @@ namespace BrainGame.Logic.AuthService
 
         public async Task Update(User user)
         {
-            var userToUpdate = await _repository.Update(AuthService._user);
+            var userToUpdate = await _repository.Update(AuthService.User);
 
             if (userToUpdate is null)
             {
@@ -44,16 +44,16 @@ namespace BrainGame.Logic.AuthService
 
         public async Task Password(Password model)
         {
-            if (model.OldPassword == AuthService._user.Password && model.NewPassword == model.ConfirmPassword)
+            if (model.OldPassword == AuthService.User.Password && model.NewPassword == model.ConfirmPassword)
             {
-                var userToUpdate = await _repository.Update(AuthService._user);
+                var userToUpdate = await _repository.Update(AuthService.User);
 
                 if (userToUpdate is null)
                 {
                     throw new ArgumentNullException();
                 }
 
-                AuthService._user.Password = model.NewPassword;
+                AuthService.User.Password = model.NewPassword;
 
                 userToUpdate.Password = model.NewPassword;
 
@@ -64,7 +64,7 @@ namespace BrainGame.Logic.AuthService
 
         public async Task Remove()
         {
-            var id = AuthService._user.Id;
+            var id = AuthService.User.Id;
             await _repository.Remove(id);
         }
     }

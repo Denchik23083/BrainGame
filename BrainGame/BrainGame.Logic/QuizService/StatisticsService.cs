@@ -22,7 +22,7 @@ namespace BrainGame.Logic.QuizService
         public void Clear()
         {
             PointService.StatisticsList.Clear();
-            PointService._countQuiz = 0;
+            PointService.CountQuiz = 0;
         }
     }
 }
