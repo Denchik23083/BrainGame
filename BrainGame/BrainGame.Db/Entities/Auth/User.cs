@@ -1,6 +1,6 @@
-﻿namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Db.Entities.Auth
 {
-    public class Register
+    public class User
     {
         public int Id { get; set; }
 
@@ -9,7 +9,5 @@
         public string Email { get; set; }
 
         public string Password { get; set; }
-
-        public string ConfirmPassword { get; set; }
     }
 }

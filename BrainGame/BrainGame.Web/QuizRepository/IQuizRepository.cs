@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.WebDb.QuizRepository
 {
@@ -7,10 +7,6 @@ namespace BrainGame.WebDb.QuizRepository
     {
         Task<Quizzes> GetQuiz(Quizzes model);
 
-        Task<AnimalQuestions> GetAnimalsQuestions(int id);
-
-        Task<PlantsQuestions> GetPlantsQuestions(int id);
-
-        Task<MushroomsQuestions> GetMushroomsQuestions(int id);
+        Task<Questions> GetQuestions(int id);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BrainGame.Db;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.AuthRepository;
 
 namespace BrainGame.Logic.AuthService

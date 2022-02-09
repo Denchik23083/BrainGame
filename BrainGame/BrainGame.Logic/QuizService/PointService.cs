@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService

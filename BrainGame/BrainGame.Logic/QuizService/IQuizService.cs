@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.Logic.QuizService
 {
@@ -7,10 +7,6 @@ namespace BrainGame.Logic.QuizService
     {
         Task<Quizzes> GetQuiz(Quizzes model);
 
-        Task<AnimalQuestions> GetAnimalsQuestions(int id);
-
-        Task<PlantsQuestions> GetPlantsQuestions(int id);
-
-        Task<MushroomsQuestions> GetMushroomsQuestions(int id);
+        Task<Questions> GetQuestions(int id);
     }
 }

@@ -3,14 +3,16 @@ using BrainGame.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BrainGame.Db.Migrations
 {
     [DbContext(typeof(BrainGameContext))]
-    partial class BrainGameContextModelSnapshot : ModelSnapshot
+    [Migration("20220209182449_quiestions")]
+    partial class quiestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

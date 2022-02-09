@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
@@ -29,37 +29,9 @@ namespace BrainGame.Logic.QuizService
             return quiz;
         }
 
-        public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
+        public async Task<Questions> GetQuestions(int id)
         {
-            var question = await _repository.GetAnimalsQuestions(id);
-
-            if (question is null)
-            {
-                throw new ArgumentNullException();
-            }
-            
-            CorrectId = question.CorrectAnswerId;
-            
-            return question;
-        }
-
-        public async Task<PlantsQuestions> GetPlantsQuestions(int id)
-        {
-            var question = await _repository.GetPlantsQuestions(id);
-
-            if (question is null)
-            {
-                throw new ArgumentNullException();
-            }
-            
-            CorrectId = question.CorrectAnswerId;
-
-            return question;
-        }
-
-        public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
-        {
-            var question = await _repository.GetMushroomsQuestions(id);
+            var question = await _repository.GetQuestions(id);
 
             if (question is null)
             {

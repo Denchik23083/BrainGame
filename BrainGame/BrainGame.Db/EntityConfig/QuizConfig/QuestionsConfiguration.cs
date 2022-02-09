@@ -1,12 +1,12 @@
-﻿using BrainGame.Db.Entities;
+﻿using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig
+namespace BrainGame.Db.EntityConfig.QuizConfig
 {
-    public class AnimalQuestionsConfiguration : IEntityTypeConfiguration<AnimalQuestions>
+    public class QuestionsConfiguration : IEntityTypeConfiguration<Questions>
     {
-        public void Configure(EntityTypeBuilder<AnimalQuestions> builder)
+        public void Configure(EntityTypeBuilder<Questions> builder)
         {
             builder.HasKey(_ => _.Id);
 

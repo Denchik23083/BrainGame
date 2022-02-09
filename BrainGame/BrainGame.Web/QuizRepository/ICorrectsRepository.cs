@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.WebDb.QuizRepository
 {

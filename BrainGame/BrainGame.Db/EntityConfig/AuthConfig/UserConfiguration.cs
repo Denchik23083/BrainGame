@@ -1,8 +1,8 @@
-﻿using BrainGame.Db.Entities;
+﻿using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig
+namespace BrainGame.Db.EntityConfig.AuthConfig
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

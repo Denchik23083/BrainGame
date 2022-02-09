@@ -8,4 +8,8 @@
     <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="QuizRepository\NewFolder\" />
+  </ItemGroup>
+
 </Project>

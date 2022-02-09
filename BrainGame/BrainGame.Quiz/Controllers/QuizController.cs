@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.Logic.QuizService;
 using BrainGame.Quiz.Models;
 
@@ -31,20 +31,7 @@ namespace BrainGame.Quiz.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> Question(int id)
         {
-            object question = null;
-
-            switch (Quiz.Name)
-            {
-                case "Animals":
-                    question = await _service.GetAnimalsQuestions(id);
-                    break;
-                case "Plants":
-                    question = await _service.GetPlantsQuestions(id);
-                    break;
-                case "Mushrooms":
-                    question = await _service.GetMushroomsQuestions(id);
-                    break;
-            }
+            var question = await _service.GetQuestions(id);
 
             return Ok(question);
         }

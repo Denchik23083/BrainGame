@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.Logic.QuizService
 {

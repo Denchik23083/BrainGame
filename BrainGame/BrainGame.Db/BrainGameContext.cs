@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities;
+﻿using BrainGame.Db.Entities.Auth;
+using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Db
@@ -16,11 +17,7 @@ namespace BrainGame.Db
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<AnimalQuestions> AnimalQuestions { get; set; }
-
-        public DbSet<PlantsQuestions> PlantsQuestions { get; set; }
-
-        public DbSet<MushroomsQuestions> MushroomsQuestions { get; set; }
+        public DbSet<Questions> Questions { get; set; }
 
         public DbSet<Correct> Corrects { get; set; }
 

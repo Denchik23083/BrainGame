@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BrainGame.Db;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.WebDb.QuizRepository
@@ -24,23 +24,9 @@ namespace BrainGame.WebDb.QuizRepository
             return quiz;
         }
 
-        public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
+        public async Task<Questions> GetQuestions(int id)
         {
-            var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Number == id);
-            
-            return questions;
-        }
-
-        public async Task<PlantsQuestions> GetPlantsQuestions(int id)
-        {
-            var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Number == id);
-            
-            return questions;
-        }
-
-        public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
-        {
-            var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Number == id);
+            var questions = await _context.Questions.FirstOrDefaultAsync(q => q.Number == id && q.QuizId == Quiz.Id);
             
             return questions;
         }

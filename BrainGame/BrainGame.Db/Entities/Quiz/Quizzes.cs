@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Db.Entities
+﻿namespace BrainGame.Db.Entities.Quiz
 {
     public class Quizzes
     {

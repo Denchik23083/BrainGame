@@ -1,8 +1,8 @@
-﻿using BrainGame.Db.Entities;
+﻿using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig
+namespace BrainGame.Db.EntityConfig.QuizConfig
 {
     public class CorrectConfiguration : IEntityTypeConfiguration<Correct>
     {

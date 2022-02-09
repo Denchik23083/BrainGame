@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BrainGame.Db;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 using Microsoft.EntityFrameworkCore;
 

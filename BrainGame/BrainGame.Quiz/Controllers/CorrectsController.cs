@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Logic.QuizService;
 using BrainGame.Quiz.Models;

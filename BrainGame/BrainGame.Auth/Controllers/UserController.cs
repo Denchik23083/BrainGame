@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using BrainGame.Auth.Models;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 
 namespace BrainGame.Auth.Controllers

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BrainGame.Db.Entities;
+using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.Logic.QuizService
 {
