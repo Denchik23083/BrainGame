@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />
+    <Compile Remove="QuizRepository\NewFolder\**" />
+    <EmbeddedResource Remove="QuizRepository\NewFolder\**" />
+    <None Remove="QuizRepository\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="QuizRepository\NewFolder\" />
+    <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />
   </ItemGroup>
 
 </Project>
