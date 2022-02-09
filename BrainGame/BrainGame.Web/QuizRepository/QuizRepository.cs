@@ -26,21 +26,21 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<AnimalQuestions> GetAnimalsQuestions(int id)
         {
-            var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Id == id);
+            var questions = await _context.AnimalQuestions.FirstOrDefaultAsync(q => q.Number == id);
             
             return questions;
         }
 
         public async Task<PlantsQuestions> GetPlantsQuestions(int id)
         {
-            var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Id == id);
+            var questions = await _context.PlantsQuestions.FirstOrDefaultAsync(q => q.Number == id);
             
             return questions;
         }
 
         public async Task<MushroomsQuestions> GetMushroomsQuestions(int id)
         {
-            var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Id == id);
+            var questions = await _context.MushroomsQuestions.FirstOrDefaultAsync(q => q.Number == id);
             
             return questions;
         }

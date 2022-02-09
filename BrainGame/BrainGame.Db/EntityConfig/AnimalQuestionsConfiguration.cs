@@ -10,6 +10,7 @@ namespace BrainGame.Db.EntityConfig
         {
             builder.HasKey(_ => _.Id);
 
+            builder.Property(_ => _.Number).IsRequired();
             builder.Property(_ => _.Question).IsRequired().HasMaxLength(255);
             builder.Property(_ => _.Answers).IsRequired();
             builder.HasOne(_ => _.Correct)

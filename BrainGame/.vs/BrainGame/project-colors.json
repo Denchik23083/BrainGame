@@ -20,7 +20,12 @@
       "ProjectGuid": "2e2286f3-8454-48ac-adcb-b04145f912a3",
       "DisplayName": "BrainGame.Db",
       "ColorIndex": 3
+    },
+    "e8cc987e-36da-42d1-a305-41cb178a60db": {
+      "ProjectGuid": "e8cc987e-36da-42d1-a305-41cb178a60db",
+      "DisplayName": "BrainGame.Quiz",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }
