@@ -72,7 +72,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Quiz.runtimeconfig.json
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Quiz.runtimeconfig.dev.json
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Quiz.dll
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\ref\BrainGame.Quiz.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\BrainGame.Quiz.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\Humanizer.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
@@ -131,3 +130,4 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\r
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.genruntimeconfig.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\BrainGame.Quiz.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Quiz\obj\Debug\net5.0\refint\BrainGame.Quiz.dll

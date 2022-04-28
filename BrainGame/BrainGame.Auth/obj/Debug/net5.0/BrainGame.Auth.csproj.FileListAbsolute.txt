@@ -206,7 +206,6 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\B
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Auth.runtimeconfig.json
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Auth.runtimeconfig.dev.json
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Auth.dll
-C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\ref\BrainGame.Auth.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\BrainGame.Auth.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\Humanizer.dll
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
@@ -265,3 +264,4 @@ C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\r
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.pdb
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.genruntimeconfig.cache
 C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\BrainGame.Auth.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BrainGame\BrainGame\BrainGame.Auth\obj\Debug\net5.0\refint\BrainGame.Auth.dll

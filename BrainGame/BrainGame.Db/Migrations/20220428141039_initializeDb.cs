@@ -2,7 +2,7 @@
 
 namespace BrainGame.Db.Migrations
 {
-    public partial class quizes : Migration
+    public partial class initializeDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace BrainGame.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Quizes",
+                name: "Quizzes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -30,7 +30,7 @@ namespace BrainGame.Db.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Quizes", x => x.Id);
+                    table.PrimaryKey("PK_Quizzes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,6 +54,7 @@ namespace BrainGame.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<int>(type: "int", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Answers = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CorrectAnswerId = table.Column<int>(type: "int", nullable: false),
@@ -69,11 +70,47 @@ namespace BrainGame.Db.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Questions_Quizes_QuizId",
+                        name: "FK_Questions_Quizzes_QuizId",
                         column: x => x.QuizId,
-                        principalTable: "Quizes",
+                        principalTable: "Quizzes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Corrects",
+                columns: new[] { "Id", "CorrectAnswer" },
+                values: new object[,]
+                {
+                    { 1, "Собака" },
+                    { 2, "Их нет" },
+                    { 3, "Пингвин" },
+                    { 4, "Арахис" },
+                    { 5, "Мухоморы" },
+                    { 6, "Боровик" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Quizzes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Animals" },
+                    { 2, "Animals" },
+                    { 3, "Mushrooms" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Questions",
+                columns: new[] { "Id", "Answers", "CorrectAnswerId", "Number", "Question", "QuizId" },
+                values: new object[,]
+                {
+                    { 1, "Собака,Кошка,Хомяк", 1, 1, "Кто гавкает?", 1 },
+                    { 3, "Орел,Пингвин,Ворон", 3, 2, "Какая птица не умеет летать?", 1 },
+                    { 4, "Зеленые,Желтые,Их нет", 2, 1, "Какого цвета листья у деревьев зимой?", 2 },
+                    { 5, "Арахис,Фисташки,Грецкие", 4, 2, "Как называется земляной орех?", 2 },
+                    { 2, "Лисички,Опята,Мухоморы", 5, 1, "Какие грибы ядовитые?", 3 },
+                    { 6, "Волнушка,Боровик,Лисичка", 6, 2, "Как еще называют Белый гриб?", 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -99,7 +136,7 @@ namespace BrainGame.Db.Migrations
                 name: "Corrects");
 
             migrationBuilder.DropTable(
-                name: "Quizes");
+                name: "Quizzes");
         }
     }
 }

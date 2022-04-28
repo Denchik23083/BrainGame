@@ -60,6 +60,38 @@ namespace BrainGame.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Corrects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CorrectAnswer = "Собака"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CorrectAnswer = "Их нет"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CorrectAnswer = "Пингвин"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CorrectAnswer = "Арахис"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CorrectAnswer = "Мухоморы"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CorrectAnswer = "Боровик"
+                        });
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Questions", b =>
@@ -94,6 +126,62 @@ namespace BrainGame.Db.Migrations
                     b.HasIndex("QuizId");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Answers = "Собака,Кошка,Хомяк",
+                            CorrectAnswerId = 1,
+                            Number = 1,
+                            Question = "Кто гавкает?",
+                            QuizId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Answers = "Лисички,Опята,Мухоморы",
+                            CorrectAnswerId = 5,
+                            Number = 1,
+                            Question = "Какие грибы ядовитые?",
+                            QuizId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Answers = "Орел,Пингвин,Ворон",
+                            CorrectAnswerId = 3,
+                            Number = 2,
+                            Question = "Какая птица не умеет летать?",
+                            QuizId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Answers = "Зеленые,Желтые,Их нет",
+                            CorrectAnswerId = 2,
+                            Number = 1,
+                            Question = "Какого цвета листья у деревьев зимой?",
+                            QuizId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Answers = "Арахис,Фисташки,Грецкие",
+                            CorrectAnswerId = 4,
+                            Number = 2,
+                            Question = "Как называется земляной орех?",
+                            QuizId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Answers = "Волнушка,Боровик,Лисичка",
+                            CorrectAnswerId = 6,
+                            Number = 2,
+                            Question = "Как еще называют Белый гриб?",
+                            QuizId = 3
+                        });
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Quizzes", b =>
@@ -115,6 +203,26 @@ namespace BrainGame.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Quizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Animals",
+                            Point = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Animals",
+                            Point = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Mushrooms",
+                            Point = 0
+                        });
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Questions", b =>

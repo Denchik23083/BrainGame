@@ -80,6 +80,18 @@ namespace BrainGame.Auth
             {
                 endpoints.MapControllers();
             });
+
+            EnsureDbCreated(app);
+        }
+
+        private void EnsureDbCreated(IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<BrainGameContext>();
+
+            context!.Database.EnsureCreated();
         }
     }
 }
