@@ -20,7 +20,7 @@ namespace BrainGame.Db
                 new Quizzes
                 {
                     Id = 2,
-                    Name = "Animals",
+                    Name = "Plants",
                     Point = 0
                 },
                 new Quizzes
