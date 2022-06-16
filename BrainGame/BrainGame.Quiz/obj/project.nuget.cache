@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iGd4ML5JWkHg3UJhIAT1SwvkOywoAqmE5WTH9utG7IAx1ZXhlS8eEHUyDLhy72hqES+cxyDEUuhZSN5Ghp6OIQ==",
+  "dgSpecHash": "3DAWsPHkvmcle5IRjql5OiiAGvvzj8MLFS28fgqTA2U4QxZCKqbgP0fcb8x0C3qgChBd6/PYvie/qBmjXZG26Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
   "expectedPackageFiles": [
@@ -105,8 +105,7 @@
     "C:\\Users\\User\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
