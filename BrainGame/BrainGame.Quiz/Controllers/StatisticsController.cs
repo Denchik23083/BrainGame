@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BrainGame.Logic.QuizService;
+using BrainGame.Logic.StatisticsService;
 
 namespace BrainGame.Quiz.Controllers
 {

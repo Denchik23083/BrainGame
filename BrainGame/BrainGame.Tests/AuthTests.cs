@@ -1,65 +1,77 @@
 using System.Linq;
 using BrainGame.Db;
-using BrainGame.Db.Entities;
-using BrainGame.Logic;
-using BrainGame.WebDb;
+using BrainGame.Db.Entities.Auth;
 using Xunit;
 
 namespace BrainGame.Tests
 {
     public class AuthTests
     {
-        private readonly BrainGameContext _context;
-
-        public AuthTests(BrainGameContext context)
-        {
-            _context = context;
-        }
-
         [Fact]
-        public void Register()
+        public void Register_Test()
         {
+            var context = new TestsBrainGameContext();
+
             var register = new Register
             {
-                Name = "Ted222",
-                Email = "admin@gmail.com",
+                Name = "Nata",
+                Email = "nata@gmail.com",
                 Password = "0000",
                 ConfirmPassword = "0000"
             };
 
-            _context.Users.Add(Map(register));
+            Assert.True(register.Password == register.ConfirmPassword);
 
-            _context.SaveChanges();
+            var user = Map(register);
 
-            var create = _context.Users.Count();
+            context.Users.Add(user);
+            context.SaveChanges();
 
-            Assert.Equal(2, create);
+            var registeredUser = context.Users.FirstOrDefault(b => b.Email == user.Email 
+                                                                   && b.Password == user.Password);
+            Assert.NotNull(registeredUser);
+
+            context.Users.Remove(registeredUser);
+            context.SaveChanges();
+
+            var registeredUserRemove = context.Users.FirstOrDefault(l => l.Email == registeredUser.Email &&
+                                                                         l.Password == registeredUser.Password);
+            Assert.Null(registeredUserRemove);
         }
 
         [Fact]
-        public void Login()
+        public void Login_Test()
         {
+            var context = new TestsBrainGameContext();
+
             var login = new Login
             {
                 Email = "user@gmail.com",
-                Password = "0000",
+                Password = "0000"
             };
 
+            var user = Map(login);
 
+            var loginUser = context.Users.FirstOrDefault(b => b.Email == user.Email
+                                                              && b.Password == user.Password);
 
-            var repo = new AuthRepository(_context);
-            var log = new AuthService(repo).Login(login);
-            var logResult = log.Result;
-            
-
+            Assert.NotNull(loginUser);
         }
 
         private User Map(Register model)
         {
             return new User
             {
-                Id = model.Id,
                 Name = model.Name,
+                Email = model.Email,
+                Password = model.Password,
+            };
+        }
+
+        private User Map(Login model)
+        {
+            return new User
+            {
                 Email = model.Email,
                 Password = model.Password,
             };

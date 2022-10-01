@@ -14,20 +14,15 @@ namespace BrainGame.WebDb.QuizRepository
             _context = context;
         }
 
-        public async Task<Quizzes> GetPoint()
+        public async Task<Quizzes> GetPoint(int quizId)
         {
-            var point = await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == QuizRepository.Quiz.Id);
-
-            return point;
+            return await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == quizId);
         }
 
-        public async Task RemovePoint()
+        public async Task RemovePoint(Quizzes quizzes)
         {
-            var points = 0;
+            quizzes.Point = 0;
 
-            QuizRepository.Quiz.Point = points;
-
-            _context.Quizzes.Update(QuizRepository.Quiz);
             await _context.SaveChangesAsync();
         }
     }

@@ -14,32 +14,20 @@ namespace BrainGame.WebDb.AuthRepository
             _context = context;
         }
 
-        public async Task<Register> Register(Register register)
+        public async Task<User> Register(User register)
         {
-            await _context.Users.AddAsync(Map(register));
+            await _context.Users.AddAsync(register);
             await _context.SaveChangesAsync();
 
             return register;
         }
 
-        public async Task<User> Login(Login login)
+        public async Task<User> Login(User login)
         {
-            var user = await _context.Users
+            return await _context.Users
                 .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
                     b.Password == login.Password);
-
-            return user;
-        }
-        private User Map(Register model)
-        {
-            return new User
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-            };
         }
     }
 }

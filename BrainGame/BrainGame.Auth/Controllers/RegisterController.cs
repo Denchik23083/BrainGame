@@ -20,6 +20,11 @@ namespace BrainGame.Auth.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
+            if (model.Password != model.ConfirmPassword)
+            {
+                return BadRequest();
+            }
+
             var register = await _service.Register(Map(model));
 
             return Ok(register);

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BrainGame.Auth.Models;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
+using BrainGame.Logic.UserService;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -18,9 +19,9 @@ namespace BrainGame.Auth.Controllers
         }
         
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var user = _service.Get();
+            var user = await _service.GetUser();
 
             return Ok(user);
         }
@@ -44,9 +45,15 @@ namespace BrainGame.Auth.Controllers
         [HttpPost]
         public async Task<IActionResult> Password(PasswordModel model)
         {
+            if (model.OldPassword != AuthService.User.Password || model.NewPassword != model.ConfirmPassword)
+            {
+                return BadRequest();
+            }
+                
             await _service.Password(Map(model));
 
             return NoContent();
+
         }
 
         private User Map(UserModel model)

@@ -19,6 +19,62 @@ namespace BrainGame.Db.EntityConfig.QuizConfig
             builder.HasOne(_ => _.Quizzes)
                 .WithMany()
                 .HasForeignKey(_ => _.QuizId);
+
+            builder.HasData(
+                new Questions
+                {
+                    Id = 1,
+                    Number = 1,
+                    Question = "Кто гавкает?",
+                    Answers = "Собака,Кошка,Хомяк",
+                    CorrectAnswerId = 1,
+                    QuizId = 1
+                },
+                new Questions
+                {
+                    Id = 2,
+                    Number = 1,
+                    Question = "Какие грибы ядовитые?",
+                    Answers = "Лисички,Опята,Мухоморы",
+                    CorrectAnswerId = 5,
+                    QuizId = 3
+                },
+                new Questions
+                {
+                    Id = 3,
+                    Number = 2,
+                    Question = "Какая птица не умеет летать?",
+                    Answers = "Орел,Пингвин,Ворон",
+                    CorrectAnswerId = 3,
+                    QuizId = 1
+                },
+                new Questions
+                {
+                    Id = 4,
+                    Number = 1,
+                    Question = "Какого цвета листья у деревьев зимой?",
+                    Answers = "Зеленые,Желтые,Их нет",
+                    CorrectAnswerId = 2,
+                    QuizId = 2
+                },
+                new Questions
+                {
+                    Id = 5,
+                    Number = 2,
+                    Question = "Как называется земляной орех?",
+                    Answers = "Арахис,Фисташки,Грецкие",
+                    CorrectAnswerId = 4,
+                    QuizId = 2
+                },
+                new Questions
+                {
+                    Id = 6,
+                    Number = 2,
+                    Question = "Как еще называют Белый гриб?",
+                    Answers = "Волнушка,Боровик,Лисичка",
+                    CorrectAnswerId = 6,
+                    QuizId = 3
+                });
         }
     }
 }

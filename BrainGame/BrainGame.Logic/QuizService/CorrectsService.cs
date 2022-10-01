@@ -1,43 +1,35 @@
 ﻿using System;
 using System.Threading.Tasks;
-using BrainGame.Db;
 using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
-using Microsoft.EntityFrameworkCore;
 
 namespace BrainGame.Logic.QuizService
 {
     public class CorrectsService : ICorrectsService
     {
-        private readonly BrainGameContext _context;
         private readonly ICorrectsRepository _repository;
+        private readonly IQuizRepository _quizRepository;
 
-        public CorrectsService(ICorrectsRepository repository, BrainGameContext context)
+        public CorrectsService(ICorrectsRepository repository, IQuizRepository quizRepository)
         {
-            _context = context;
+            _quizRepository = quizRepository;
             _repository = repository;
         }
 
         public async Task Correct(Correct correctAnswerUser)
         {
-            var correct = await _repository.Correct(QuizService.CorrectId);
-            var correctAnswer = correct.CorrectAnswer;
-
-            var correctUser = correctAnswerUser.CorrectAnswer;
-
-            if (correctAnswer == correctUser)
+            var correct = await _repository.Correct(QuizService.Questions.CorrectAnswerId);
+            
+            if (correct.CorrectAnswer.Equals(correctAnswerUser.CorrectAnswer))
             {
-                var getPoint = await _context.Quizzes
-                                    .FirstOrDefaultAsync(p => p.Id == QuizService.Quiz.Id);
+                var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
 
-                if (getPoint is null)
+                if (quiz is null)
                 {
                     throw new ArgumentNullException();
                 }
 
-                getPoint.Point++;
-
-                await _context.SaveChangesAsync();
+                await _quizRepository.AddPoints(quiz);
             }
         }
     }

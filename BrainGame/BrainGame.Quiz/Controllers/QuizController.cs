@@ -11,7 +11,6 @@ namespace BrainGame.Quiz.Controllers
     public class QuizController : ControllerBase
     {
         private readonly IQuizService _service;
-        public static Quizzes Quiz;
 
         public QuizController(IQuizService service)
         {
@@ -22,8 +21,6 @@ namespace BrainGame.Quiz.Controllers
         public async Task<IActionResult> GetQuiz(QuizzesModel model)
         {
             var quiz = await _service.GetQuiz(Map(model));
-
-            Quiz = quiz;
 
             return Ok(quiz);
         }

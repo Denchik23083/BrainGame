@@ -43,6 +43,15 @@ namespace BrainGame.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "user@gmail.com",
+                            Name = "Ted",
+                            Password = "0000"
+                        });
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Correct", b =>
@@ -214,7 +223,7 @@ namespace BrainGame.Db.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "Animals",
+                            Name = "Plants",
                             Point = 0
                         },
                         new

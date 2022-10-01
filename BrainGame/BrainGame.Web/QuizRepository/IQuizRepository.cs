@@ -7,6 +7,8 @@ namespace BrainGame.WebDb.QuizRepository
     {
         Task<Quizzes> GetQuiz(Quizzes model);
 
-        Task<Questions> GetQuestions(int id);
+        Task<Questions> GetQuestions(int id, int quizId);
+
+        Task AddPoints(Quizzes quizzes);
     }
 }

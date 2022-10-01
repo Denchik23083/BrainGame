@@ -13,6 +13,15 @@ namespace BrainGame.Db.EntityConfig.AuthConfig
             builder.Property(_ => _.Name).IsRequired().HasMaxLength(255);
             builder.Property(_ => _.Email).IsRequired().HasMaxLength(255);
             builder.Property(_ => _.Password).IsRequired().HasMaxLength(255);
+
+            builder.HasData(
+                new User
+                {
+                    Id = 1,
+                    Name = "Ted",
+                    Email = "user@gmail.com",
+                    Password = "0000"
+                });
         }
     }
 }

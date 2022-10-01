@@ -8,7 +8,6 @@ namespace BrainGame.WebDb.QuizRepository
     public class QuizRepository : IQuizRepository
     {
         private readonly BrainGameContext _context;
-        public static Quizzes Quiz;
 
         public QuizRepository(BrainGameContext context)
         {
@@ -17,18 +16,19 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<Quizzes> GetQuiz(Quizzes model)
         {
-            var quiz = await _context.Quizzes.FirstOrDefaultAsync(b => b.Name == model.Name);
-            
-            Quiz = quiz;
-
-            return quiz;
+            return await _context.Quizzes.FirstOrDefaultAsync(b => b.Name.Equals(model.Name));
         }
 
-        public async Task<Questions> GetQuestions(int id)
+        public async Task<Questions> GetQuestions(int id, int quizId)
         {
-            var questions = await _context.Questions.FirstOrDefaultAsync(q => q.Number == id && q.QuizId == Quiz.Id);
-            
-            return questions;
+            return await _context.Questions.FirstOrDefaultAsync(q => q.Number == id && q.QuizId == quizId);
+        }
+
+        public async Task AddPoints(Quizzes quizzes)
+        {
+            quizzes.Point++;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -5,8 +5,8 @@ namespace BrainGame.WebDb.QuizRepository
 {
     public interface IPointRepository
     {
-        Task<Quizzes> GetPoint();
+        Task<Quizzes> GetPoint(int quizId);
 
-        Task RemovePoint();
+        Task RemovePoint(Quizzes quizzes);
     }
 }

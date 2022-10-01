@@ -5,8 +5,8 @@ namespace BrainGame.WebDb.AuthRepository
 {
     public interface IAuthRepository
     {
-        Task<Register> Register(Register register);
+        Task<User> Register(User register);
 
-        Task<User> Login(Login login);
+        Task<User> Login(User login);
     }
 }

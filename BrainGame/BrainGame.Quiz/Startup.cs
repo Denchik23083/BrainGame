@@ -10,6 +10,9 @@ using BrainGame.Logic.QuizService;
 using BrainGame.WebDb.AuthRepository;
 using BrainGame.WebDb.QuizRepository;
 using Microsoft.EntityFrameworkCore;
+using BrainGame.Logic.UserService;
+using BrainGame.Logic.StatisticsService;
+using BrainGame.WebDb.UserRepository;
 
 namespace BrainGame.Quiz
 {
@@ -48,6 +51,13 @@ namespace BrainGame.Quiz
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddDbContext<TestsBrainGameContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("TestsBrainGame");
+
+                options.UseSqlServer(connectionString);
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("devCors", builder =>
@@ -81,6 +91,7 @@ namespace BrainGame.Quiz
             });
 
             EnsureDbCreated(app);
+            EnsureTestsDbCreated(app);
         }
 
         private void EnsureDbCreated(IApplicationBuilder app)
@@ -89,6 +100,16 @@ namespace BrainGame.Quiz
 
             using var scope = scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetService<BrainGameContext>();
+
+            context!.Database.EnsureCreated();
+        }
+
+        private void EnsureTestsDbCreated(IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<TestsBrainGameContext>();
 
             context!.Database.EnsureCreated();
         }
