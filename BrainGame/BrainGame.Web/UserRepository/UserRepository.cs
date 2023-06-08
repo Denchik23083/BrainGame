@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +13,9 @@ namespace BrainGame.WebDb.UserRepository
             _context = context;
         }
 
-        public async Task<User> GetUser(User user)
+        public async Task<User> GetUser(User? user)
         {
-            return await _context.Users.FirstOrDefaultAsync(b => b.Id == user.Id);
+            return (await _context.Users.FirstOrDefaultAsync(b => b.Id == user!.Id))!;
         }
 
         public async Task Update(User userToUpdate, User user)

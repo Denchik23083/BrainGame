@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,10 +23,10 @@ namespace BrainGame.WebDb.AuthRepository
 
         public async Task<User> Login(User login)
         {
-            return await _context.Users
+            return (await _context.Users
                 .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
-                    b.Password == login.Password);
+                    b.Password == login.Password))!;
         }
     }
 }

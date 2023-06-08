@@ -1,14 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="QuizRepository\NewFolder\**" />
-    <EmbeddedResource Remove="QuizRepository\NewFolder\**" />
-    <None Remove="QuizRepository\NewFolder\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />

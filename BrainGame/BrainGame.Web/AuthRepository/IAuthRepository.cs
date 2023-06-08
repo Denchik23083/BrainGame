@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Db.Entities.Auth;
 
 namespace BrainGame.WebDb.AuthRepository
 {

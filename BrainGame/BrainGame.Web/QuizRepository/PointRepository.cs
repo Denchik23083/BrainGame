@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +15,7 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<Quizzes> GetPoint(int quizId)
         {
-            return await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == quizId);
+            return (await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == quizId))!;
         }
 
         public async Task RemovePoint(Quizzes quizzes)

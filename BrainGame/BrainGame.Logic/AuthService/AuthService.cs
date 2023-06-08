@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.AuthRepository;
 
 namespace BrainGame.Logic.AuthService
@@ -7,7 +6,7 @@ namespace BrainGame.Logic.AuthService
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
-        public static User User;
+        public static User User = null!;
 
         public AuthService(IAuthRepository repository)
         {
@@ -25,7 +24,7 @@ namespace BrainGame.Logic.AuthService
 
             if (user is null)
             {
-                return null;
+                throw new ArgumentNullException();
             }
 
             User = user;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
@@ -8,8 +6,8 @@ namespace BrainGame.Logic.QuizService
     public class QuizService : IQuizService
     {
         private readonly IQuizRepository _repository;
-        public static Quizzes Quiz;
-        public static Questions Questions;
+        public static Quizzes Quiz = null!;
+        public static Questions Questions = null!;
 
         public QuizService(IQuizRepository repository)
         {

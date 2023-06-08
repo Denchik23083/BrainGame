@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
@@ -20,7 +18,7 @@ namespace BrainGame.Logic.QuizService
         {
             var correct = await _repository.Correct(QuizService.Questions.CorrectAnswerId);
             
-            if (correct.CorrectAnswer.Equals(correctAnswerUser.CorrectAnswer))
+            if (correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer))
             {
                 var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
 

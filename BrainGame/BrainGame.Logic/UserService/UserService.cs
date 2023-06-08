@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.UserRepository;
 
 namespace BrainGame.Logic.UserService
@@ -20,7 +18,7 @@ namespace BrainGame.Logic.UserService
 
             if (user is null)
             {
-                return null;
+                throw new ArgumentNullException();
             }
 
             return await _repository.GetUser(user);

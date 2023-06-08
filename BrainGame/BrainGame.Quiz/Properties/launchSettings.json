@@ -1,5 +1,13 @@
 ﻿{
   "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:38893",
+      "sslPort": 44301
+    }
+  },
   "profiles": {
     "BrainGame.Quiz": {
       "commandName": "Project",

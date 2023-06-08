@@ -7,13 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Auth", "BrainGame
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Logic", "BrainGame.Logic\BrainGame.Logic.csproj", "{56594077-9BB0-4637-883D-F610753F8FBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Db", "BrainGame.Db\BrainGame.Db.csproj", "{2E2286F3-8454-48AC-ADCB-B04145F912A3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.WebDb", "BrainGame.Web\BrainGame.WebDb.csproj", "{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Quiz", "BrainGame.Quiz\BrainGame.Quiz.csproj", "{E8CC987E-36DA-42D1-A305-41CB178A60DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Tests", "BrainGame.Tests\BrainGame.Tests.csproj", "{CD26975E-AB2E-4AC4-8C8B-4B94EA393786}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Db", "BrainGame.Db\BrainGame.Db.csproj", "{83046E52-9B66-40CC-B150-01B76FD6E561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{56594077-9BB0-4637-883D-F610753F8FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56594077-9BB0-4637-883D-F610753F8FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56594077-9BB0-4637-883D-F610753F8FBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E2286F3-8454-48AC-ADCB-B04145F912A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B50E27-A7E1-4BDB-9034-DA3E0990C95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,10 +35,10 @@ Global
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8CC987E-36DA-42D1-A305-41CB178A60DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD26975E-AB2E-4AC4-8C8B-4B94EA393786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD26975E-AB2E-4AC4-8C8B-4B94EA393786}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD26975E-AB2E-4AC4-8C8B-4B94EA393786}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD26975E-AB2E-4AC4-8C8B-4B94EA393786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83046E52-9B66-40CC-B150-01B76FD6E561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83046E52-9B66-40CC-B150-01B76FD6E561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83046E52-9B66-40CC-B150-01B76FD6E561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83046E52-9B66-40CC-B150-01B76FD6E561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

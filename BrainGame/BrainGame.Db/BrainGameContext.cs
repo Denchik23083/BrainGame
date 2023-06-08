@@ -8,13 +8,13 @@ namespace BrainGame.Db
     {
         public BrainGameContext(DbContextOptions<BrainGameContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
 
-        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Questions> Questions { get; set; } = null!;
 
-        public DbSet<Correct> Corrects { get; set; }
+        public DbSet<Correct> Corrects { get; set; } = null!;
 
-        public DbSet<Quizzes> Quizzes { get; set; }
+        public DbSet<Quizzes> Quizzes { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

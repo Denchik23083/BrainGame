@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
@@ -9,9 +7,9 @@ namespace BrainGame.Logic.QuizService
     {
         private readonly IPointRepository _repository;
         private readonly IQuizRepository _quizRepository;
-        public static Quizzes GetPoints;
+        public static Quizzes GetPoints = null!;
         public static int CountQuiz;
-        public static List<Quizzes> StatisticsList = new List<Quizzes>();
+        public static List<Quizzes> StatisticsList = new();
 
         public PointService(IPointRepository repository, IQuizRepository quizRepository)
         {

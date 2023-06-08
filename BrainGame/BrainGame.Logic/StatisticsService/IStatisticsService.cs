@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Db.Entities.Quiz;
 
 namespace BrainGame.Logic.StatisticsService
 {

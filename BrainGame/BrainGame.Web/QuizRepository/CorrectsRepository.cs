@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +15,7 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<Correct> Correct(int id)
         {
-            return await _context.Corrects.FirstOrDefaultAsync(b => b.Id == id);
+            return (await _context.Corrects.FirstOrDefaultAsync(b => b.Id == id))!;
         }
     }
 }
