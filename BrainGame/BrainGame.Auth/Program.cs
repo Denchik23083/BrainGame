@@ -70,4 +70,7 @@ app.MapControllers();
 app.Run();
 
 
-public partial class Program { }
+namespace BrainGame.Auth
+{
+    public partial class Program { }
+}

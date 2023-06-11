@@ -20,16 +20,7 @@ namespace BrainGame.Logic.AuthService
 
         public async Task<User> Login(Login login)
         {
-            var user = await _repository.Login(Map(login));
-
-            if (user is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            User = user;
-
-            return user;
+            return await _repository.Login(Map(login));
         }
 
         private User Map(Login model)

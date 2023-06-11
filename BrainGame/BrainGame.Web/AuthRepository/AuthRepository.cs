@@ -23,10 +23,17 @@ namespace BrainGame.WebDb.AuthRepository
 
         public async Task<User> Login(User login)
         {
-            return (await _context.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
-                    b.Password == login.Password))!;
+                    b.Password == login.Password);
+
+            if (user is null)
+            {
+                throw new ArgumentException(nameof(user));
+            }
+
+            return user;
         }
     }
 }
