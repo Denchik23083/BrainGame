@@ -13,35 +13,14 @@ namespace BrainGame.Logic.AuthService
             _repository = repository;
         }
 
-        public async Task<User> Register(Register register)
+        public async Task<User> Register(User register)
         {
-            return await _repository.Register(Map(register));
+            return await _repository.Register(register);
         }
 
-        public async Task<User> Login(Login login)
+        public async Task<User> Login(User login)
         {
-            return await _repository.Login(Map(login));
-        }
-
-        private User Map(Login model)
-        {
-            return new User
-            {
-                Id = model.Id,
-                Email = model.Email,
-                Password = model.Password,
-            };
-        }
-
-        private User Map(Register model)
-        {
-            return new User
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-            };
+            return await _repository.Login(login);
         }
     }
 }

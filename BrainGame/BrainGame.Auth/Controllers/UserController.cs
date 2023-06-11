@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using BrainGame.Auth.Models;
+using BrainGame.Core;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 using BrainGame.Logic.UserService;
@@ -11,10 +13,12 @@ namespace BrainGame.Auth.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
         
         [HttpGet]
@@ -28,7 +32,14 @@ namespace BrainGame.Auth.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(UserModel model)
         {
-            await _service.Update(Map(model));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var mappedUser = _mapper.Map<User>(model);
+
+            await _service.Update(mappedUser);
 
             return NoContent();
         }
@@ -44,35 +55,21 @@ namespace BrainGame.Auth.Controllers
         [HttpPost]
         public async Task<IActionResult> Password(PasswordModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (model.OldPassword != AuthService.User.Password || model.NewPassword != model.ConfirmPassword)
             {
                 return BadRequest();
             }
-                
-            await _service.Password(Map(model));
+
+            var mappedPassword = _mapper.Map<Password>(model);
+
+            await _service.Password(mappedPassword);
 
             return NoContent();
-
-        }
-
-        private User Map(UserModel model)
-        {
-            return new User
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-            };
-        }
-
-        private Password Map(PasswordModel model)
-        {
-            return new Password
-            {
-                OldPassword = model.OldPassword,
-                NewPassword = model.NewPassword,
-                ConfirmPassword = model.ConfirmPassword,
-            };
         }
     }
 }

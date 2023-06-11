@@ -4,8 +4,8 @@ namespace BrainGame.Logic.AuthService
 {
     public interface IAuthService
     {
-        Task<User> Register(Register register);
+        Task<User> Register(User register);
 
-        Task<User> Login(Login login);
+        Task<User> Login(User login);
     }
 }

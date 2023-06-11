@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using BrainGame.Auth.Models;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
@@ -10,35 +11,32 @@ namespace BrainGame.Auth.Controllers
     public class RegisterController : ControllerBase
     {
         private readonly IAuthService _service;
+        private readonly IMapper _mapper;
 
-        public RegisterController(IAuthService service)
+        public RegisterController(IAuthService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (model.Password != model.ConfirmPassword)
             {
                 return BadRequest();
             }
 
-            var register = await _service.Register(Map(model));
+            var mappedRegister = _mapper.Map<User>(model);
+
+            var register = await _service.Register(mappedRegister);
 
             return Ok(register);
-        }
-
-        private Register Map(RegisterModel model)
-        {
-            return new Register
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-                ConfirmPassword = model.ConfirmPassword,
-            };
         }
     }
 }

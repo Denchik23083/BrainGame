@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Core;
+using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.UserRepository;
 
 namespace BrainGame.Logic.UserService

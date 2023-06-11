@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Db.Entities.Auth
+﻿namespace BrainGame.Core
 {
     public class Password
     {

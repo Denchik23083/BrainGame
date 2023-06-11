@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BrainGame.Core\BrainGame.Core.csproj" />
-    <ProjectReference Include="..\BrainGame.Db\BrainGame.Db.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -2124,6 +2124,16 @@
           }
         }
       },
+      "BrainGame.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        }
+      },
       "BrainGame.Db/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2155,6 +2165,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "BrainGame.Core": "1.0.0",
           "BrainGame.Db": "1.0.0"
         },
         "compile": {
@@ -6749,6 +6760,11 @@
         "xunit.extensibility.core.2.4.1.nupkg.sha512",
         "xunit.extensibility.core.nuspec"
       ]
+    },
+    "BrainGame.Core/1.0.0": {
+      "type": "project",
+      "path": "../BrainGame.Core/BrainGame.Core.csproj",
+      "msbuildProject": "../BrainGame.Core/BrainGame.Core.csproj"
     },
     "BrainGame.Db/1.0.0": {
       "type": "project",

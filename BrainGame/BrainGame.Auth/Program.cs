@@ -6,7 +6,11 @@ using BrainGame.Logic.UserService;
 using BrainGame.WebDb.AuthRepository;
 using BrainGame.WebDb.QuizRepository;
 using BrainGame.WebDb.UserRepository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using BrainGame.Auth.Utilities;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +30,26 @@ builder.Services.AddScoped<ICorrectsRepository, CorrectsRepository>();
 builder.Services.AddScoped<IPointService, PointService>();
 builder.Services.AddScoped<IPointRepository, PointRepository>();
 
-//builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+
+        var secretKey = builder.Configuration["SecretKey"];
+
+        var secret = Encoding.UTF8.GetBytes(secretKey);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false,
+            ValidateIssuer = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secret)
+        };
+    });
 
 builder.Services.AddDbContext<BrainGameContext>(options =>
 {
@@ -63,14 +86,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
 
-
-namespace BrainGame.Auth
-{
-    public partial class Program { }
-}
+public partial class Program { }

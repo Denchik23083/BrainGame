@@ -738,6 +738,16 @@
           }
         }
       },
+      "BrainGame.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        }
+      },
       "BrainGame.Db/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1917,6 +1927,11 @@
         "version.txt"
       ]
     },
+    "BrainGame.Core/1.0.0": {
+      "type": "project",
+      "path": "../BrainGame.Core/BrainGame.Core.csproj",
+      "msbuildProject": "../BrainGame.Core/BrainGame.Core.csproj"
+    },
     "BrainGame.Db/1.0.0": {
       "type": "project",
       "path": "../BrainGame.Db/BrainGame.Db.csproj",
@@ -1925,6 +1940,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BrainGame.Core >= 1.0.0",
       "BrainGame.Db >= 1.0.0"
     ]
   },
@@ -1955,6 +1971,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj"
+            },
             "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj": {
               "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj"
             }

@@ -5,6 +5,7 @@ using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BrainGame.Auth.Controllers
@@ -14,10 +15,14 @@ namespace BrainGame.Auth.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IAuthService _service;
+        private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
 
-        public LoginController(IAuthService service)
+        public LoginController(IAuthService service, IConfiguration configuration, IMapper mapper)
         {
             _service = service;
+            _configuration = configuration;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -27,8 +32,10 @@ namespace BrainGame.Auth.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var mappedLogin = _mapper.Map<User>(model);
             
-            var user = await _service.Login(Map(model));
+            var user = await _service.Login(mappedLogin);
 
             var tokenModel = GetToken(user);
 
@@ -37,7 +44,9 @@ namespace BrainGame.Auth.Controllers
 
         private TokenModel GetToken(User user)
         {
-            var secret = Encoding.UTF8.GetBytes("SuperDuperSecretKey");
+            var secretKey = _configuration["SecretKey"];
+
+            var secret = Encoding.UTF8.GetBytes(secretKey);
 
             var claims = new List<Claim>
             {
@@ -56,15 +65,6 @@ namespace BrainGame.Auth.Controllers
             var stringToken = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             return new TokenModel { JwtToken = stringToken };
-        }
-
-        private Login Map(LoginModel model)
-        {
-            return new Login
-            {
-                Email = model.Email,
-                Password = model.Password,
-            };
         }
     }
 }
