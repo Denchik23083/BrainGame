@@ -1,9 +1,7 @@
 ﻿namespace BrainGame.Auth.Models
 {
-    public class TokenModel
+    public class RefreshTokenModel
     {
-        public string? JwtToken { get; set; }
-
         public Guid RefreshToken { get; set; }
     }
 }
