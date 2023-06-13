@@ -39,6 +39,8 @@ namespace BrainGame.Auth.Controllers
 
             if (user is null)
             {
+                //comment
+
                 return BadRequest();
             }
 
