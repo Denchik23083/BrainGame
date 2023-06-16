@@ -10,10 +10,8 @@ namespace BrainGame.Auth.Utilities
         public MappingProfile()
         {
             CreateMap<LoginModel, User>();
-            CreateMap<User, LoginModel>();
 
             CreateMap<RegisterModel, User>();
-            CreateMap<User, RegisterModel>();
 
             CreateMap<UserModel, User>();
             CreateMap<User, UserModel>();

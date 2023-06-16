@@ -13,9 +13,9 @@ namespace BrainGame.Logic.AuthService
             _repository = repository;
         }
 
-        public async Task<User> Register(User register)
+        public async Task Register(User register)
         {
-            return await _repository.Register(register);
+            await _repository.Register(register);
         }
 
         public async Task<User> Login(User login)

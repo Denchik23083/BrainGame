@@ -35,18 +35,18 @@ namespace BrainGame.Auth.Controllers
 
             var mappedLogin = _mapper.Map<User>(model);
 
-            var user = await _service.Login(mappedLogin);
-
-            if (user is null)
+            try
             {
-                //comment
+                var user = await _service.Login(mappedLogin);
 
+                var tokenModel = await GetUserToken(user);
+
+                return Ok(tokenModel);
+            }
+            catch (ArgumentException)
+            {
                 return BadRequest();
             }
-
-            var tokenModel = await GetUserToken(user);
-
-            return Ok(tokenModel);
         }
 
         [HttpPost("refresh")]
@@ -57,14 +57,20 @@ namespace BrainGame.Auth.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = await _service.RefreshLogin(model.RefreshToken);
+            try
+            {
+                var user = await _service.RefreshLogin(model.RefreshToken);
 
-            var tokenModel = await GetUserToken(user);
+                var tokenModel = await GetUserToken(user);
 
-            return Ok(tokenModel);
+                return Ok(tokenModel);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
         }
-
-
+        
         private async Task<TokenModel> GetUserToken(User user)
         {
             var secretKey = _configuration["SecretKey"];
