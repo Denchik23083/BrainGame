@@ -29,14 +29,14 @@ namespace BrainGame.Auth.Controllers
 
             if (model.Password != model.ConfirmPassword)
             {
-                return BadRequest();
+                return BadRequest("Your password must match confirmPassword");
             }
 
             var mappedRegister = _mapper.Map<User>(model);
 
-            var register = await _service.Register(mappedRegister);
+            await _service.Register(mappedRegister);
 
-            return Ok(register);
+            return NoContent();
         }
     }
 }

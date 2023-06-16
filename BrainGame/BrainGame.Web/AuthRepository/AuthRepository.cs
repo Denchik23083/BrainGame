@@ -13,12 +13,10 @@ namespace BrainGame.WebDb.AuthRepository
             _context = context;
         }
 
-        public async Task<User> Register(User register)
+        public async Task Register(User register)
         {
             await _context.Users.AddAsync(register);
             await _context.SaveChangesAsync();
-
-            return register;
         }
 
         public async Task<User> Login(User login)
@@ -31,7 +29,7 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (user is null)
             {
-                throw new ArgumentException(nameof(user));
+                throw new ArgumentException("not found");
             }
 
             return user;
@@ -45,12 +43,12 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (refreshToken is null)
             {
-                throw new ArgumentNullException(nameof(refreshToken));
+                throw new ArgumentException("not found");
             }
 
             if (refreshToken.User is null)
             {
-                throw new ArgumentNullException(nameof(refreshToken.User));
+                throw new ArgumentException("not found");
             }
 
             return refreshToken.User;
