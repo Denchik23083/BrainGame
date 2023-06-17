@@ -22,6 +22,35 @@ namespace BrainGame.Db.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genders", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Type = "Мужской"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Type = "Женский"
+                        });
+                });
+
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.RefreshToken", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +87,9 @@ namespace BrainGame.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int?>("GenderId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -70,14 +102,25 @@ namespace BrainGame.Db.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GenderId");
+
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "user@gmail.com",
+                            Email = "admin@gmail.com",
+                            GenderId = 1,
                             Name = "Ted",
+                            Password = "0000"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "user@gmail.com",
+                            GenderId = 2,
+                            Name = "Anna",
                             Password = "0000"
                         });
                 });
@@ -274,6 +317,15 @@ namespace BrainGame.Db.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.User", b =>
+                {
+                    b.HasOne("BrainGame.Db.Entities.Auth.Gender", "Gender")
+                        .WithMany("Users")
+                        .HasForeignKey("GenderId");
+
+                    b.Navigation("Gender");
+                });
+
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Questions", b =>
                 {
                     b.HasOne("BrainGame.Db.Entities.Quiz.Correct", "Correct")
@@ -291,6 +343,11 @@ namespace BrainGame.Db.Migrations
                     b.Navigation("Correct");
 
                     b.Navigation("Quizzes");
+                });
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.Gender", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.User", b =>

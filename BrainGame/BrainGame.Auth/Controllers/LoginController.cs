@@ -33,19 +33,19 @@ namespace BrainGame.Auth.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mappedLogin = _mapper.Map<User>(model);
-
             try
             {
+                var mappedLogin = _mapper.Map<User>(model);
+
                 var user = await _service.Login(mappedLogin);
 
                 var tokenModel = await GetUserToken(user);
 
                 return Ok(tokenModel);
             }
-            catch (ArgumentException)
+            catch (ArgumentException e)
             {
-                return BadRequest();
+                return NotFound(e.Message);
             }
         }
 
@@ -65,9 +65,9 @@ namespace BrainGame.Auth.Controllers
 
                 return Ok(tokenModel);
             }
-            catch (ArgumentException)
+            catch (ArgumentException e)
             {
-                return BadRequest();
+                return NotFound(e.Message);
             }
         }
         
@@ -80,7 +80,8 @@ namespace BrainGame.Auth.Controllers
             var claims = new List<Claim>
             {
                 new (ClaimTypes.Name, user.Name!),
-                new (ClaimTypes.Email, user.Email!)
+                new (ClaimTypes.Email, user.Email!),
+                new (ClaimTypes.Gender, user.Gender!.Type!),
             };
 
             var now = DateTime.Now;

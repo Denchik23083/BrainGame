@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace BrainGame.Db.Migrations
 {
-    public partial class init : Migration
+    public partial class genders : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +20,19 @@ namespace BrainGame.Db.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Corrects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Genders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,11 +57,17 @@ namespace BrainGame.Db.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    GenderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Genders_GenderId",
+                        column: x => x.GenderId,
+                        principalTable: "Genders",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -79,6 +99,25 @@ namespace BrainGame.Db.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RefreshTokens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Value = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshTokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefreshTokens_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Corrects",
                 columns: new[] { "Id", "CorrectAnswer" },
@@ -93,6 +132,15 @@ namespace BrainGame.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Genders",
+                columns: new[] { "Id", "Type" },
+                values: new object[,]
+                {
+                    { 1, "Male" },
+                    { 2, "Female" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Quizzes",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -101,11 +149,6 @@ namespace BrainGame.Db.Migrations
                     { 2, "Plants" },
                     { 3, "Mushrooms" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Email", "Name", "Password" },
-                values: new object[] { 1, "user@gmail.com", "Ted", "0000" });
 
             migrationBuilder.InsertData(
                 table: "Questions",
@@ -120,6 +163,15 @@ namespace BrainGame.Db.Migrations
                     { 6, "Волнушка,Боровик,Лисичка", 6, 2, "Как еще называют Белый гриб?", 3 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "GenderId", "Name", "Password" },
+                values: new object[,]
+                {
+                    { 1, "admin@gmail.com", 1, "Ted", "0000" },
+                    { 2, "user@gmail.com", 2, "Anna", "0000" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_CorrectAnswerId",
                 table: "Questions",
@@ -129,6 +181,18 @@ namespace BrainGame.Db.Migrations
                 name: "IX_Questions_QuizId",
                 table: "Questions",
                 column: "QuizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RefreshTokens_UserId",
+                table: "RefreshTokens",
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_GenderId",
+                table: "Users",
+                column: "GenderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -137,13 +201,19 @@ namespace BrainGame.Db.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "Corrects");
 
             migrationBuilder.DropTable(
                 name: "Quizzes");
+
+            migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Genders");
         }
     }
 }

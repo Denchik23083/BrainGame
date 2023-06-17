@@ -23,13 +23,14 @@ namespace BrainGame.WebDb.AuthRepository
         {
             var user = await _context.Users
                 .Include(_ => _.RefreshToken)
+                .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
                     b.Password == login.Password);
 
             if (user is null)
             {
-                throw new ArgumentException("not found");
+                throw new ArgumentException("user not found");
             }
 
             return user;
@@ -39,16 +40,17 @@ namespace BrainGame.WebDb.AuthRepository
         {
             var refreshToken = await _context.RefreshTokens
                 .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Value == value);
 
             if (refreshToken is null)
             {
-                throw new ArgumentException("not found");
+                throw new ArgumentException("refreshToken not found");
             }
 
             if (refreshToken.User is null)
             {
-                throw new ArgumentException("not found");
+                throw new ArgumentException("user with this refreshToken not found");
             }
 
             return refreshToken.User;

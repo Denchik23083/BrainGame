@@ -10,6 +10,10 @@
 
         public string? Password { get; set; }
 
+        public int? GenderId { get; set; }
+
+        public Gender? Gender { get; set; }
+
         public RefreshToken? RefreshToken { get; set; }
     }
 }
