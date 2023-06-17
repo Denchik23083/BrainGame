@@ -10,6 +10,8 @@ namespace BrainGame.Db
 
         public DbSet<User> Users { get; set; } = null!;
 
+        public DbSet<Gender> Genders { get; set; } = null!;
+
         public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
 
         public DbSet<Questions> Questions { get; set; } = null!;

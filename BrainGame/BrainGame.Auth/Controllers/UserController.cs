@@ -20,13 +20,25 @@ namespace BrainGame.Auth.Controllers
             _service = service;
             _mapper = mapper;
         }
-        
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var user = await _service.GetUser();
 
-            return Ok(user);
+        [HttpPost]
+        public async Task<IActionResult> Password(PasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (model.OldPassword != AuthService.User.Password || model.NewPassword != model.ConfirmPassword)
+            {
+                return BadRequest();
+            }
+
+            var mappedPassword = _mapper.Map<Password>(model);
+
+            await _service.Password(mappedPassword);
+
+            return NoContent();
         }
 
         [HttpPut]
@@ -48,26 +60,6 @@ namespace BrainGame.Auth.Controllers
         public async Task<IActionResult> Remove()
         {
             await _service.Remove();
-
-            return NoContent();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Password(PasswordModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (model.OldPassword != AuthService.User.Password || model.NewPassword != model.ConfirmPassword)
-            {
-                return BadRequest();
-            }
-
-            var mappedPassword = _mapper.Map<Password>(model);
-
-            await _service.Password(mappedPassword);
 
             return NoContent();
         }
