@@ -1,4 +1,4 @@
-﻿using BrainGame.Core;
+﻿using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.UserRepository;
 

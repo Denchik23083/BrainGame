@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Core
+﻿namespace BrainGame.Core.Utilities
 {
     public class Password
     {
