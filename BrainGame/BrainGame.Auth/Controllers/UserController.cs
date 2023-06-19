@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Auth.Models;
-using BrainGame.Core;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 using BrainGame.Logic.UserService;
+using BrainGame.Core.Utilities;
 
 namespace BrainGame.Auth.Controllers
 {

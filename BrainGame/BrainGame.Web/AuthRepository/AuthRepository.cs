@@ -1,4 +1,5 @@
-﻿using BrainGame.Db;
+﻿using BrainGame.Core.Exceptions;
+using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,7 +31,7 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (user is null)
             {
-                throw new ArgumentException("user not found");
+                throw new UserNotFoundException("user not found");
             }
 
             return user;
@@ -45,12 +46,12 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (refreshToken is null)
             {
-                throw new ArgumentException("refreshToken not found");
+                throw new RefreshTokenNotFoundException("refreshToken not found");
             }
 
             if (refreshToken.User is null)
             {
-                throw new ArgumentException("user with this refreshToken not found");
+                throw new UserNotFoundException("user with this refreshToken not found");
             }
 
             return refreshToken.User;

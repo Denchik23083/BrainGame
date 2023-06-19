@@ -7,6 +7,7 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
+using BrainGame.Core.Exceptions;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -43,7 +44,7 @@ namespace BrainGame.Auth.Controllers
 
                 return Ok(tokenModel);
             }
-            catch (ArgumentException e)
+            catch (UserNotFoundException e)
             {
                 return NotFound(e.Message);
             }
@@ -65,7 +66,12 @@ namespace BrainGame.Auth.Controllers
 
                 return Ok(tokenModel);
             }
-            catch (ArgumentException e)
+            catch (RefreshTokenNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+
+            catch (UserNotFoundException e)
             {
                 return NotFound(e.Message);
             }

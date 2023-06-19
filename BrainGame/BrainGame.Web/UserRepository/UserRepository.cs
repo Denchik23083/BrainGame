@@ -1,4 +1,4 @@
-﻿using BrainGame.Core;
+﻿using BrainGame.Core.Utilities;
 using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
