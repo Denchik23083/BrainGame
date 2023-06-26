@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BrainGame.Core.Utilities;
+using BrainGame.Quiz.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,18 +15,35 @@ namespace BrainGame.Quiz.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet]
-        [Authorize]
-        public IEnumerable<WeatherForecast> Get()
+        private static List<WeatherModel> Weathers = new List<WeatherModel>
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+            new WeatherModel
+            {
+                Date = DateTime.Now.AddDays(-1),
+                TemperatureC = new Random().Next(-20, 55),
+                Summary = Summaries[new Random().Next(Summaries.Length)]
+            }            
+        };        
+
+        [HttpGet]
+        [RequireRole(Role.User)]
+        public IActionResult GetAll()
+        {
+            return Ok(Weathers);
+        }
+
+        [HttpPost]
+        [RequireRole(Role.Admin)]
+        public IActionResult CreateWeather(WeatherModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Weathers.Add(model);
+
+            return NoContent();
         }
     }
 }

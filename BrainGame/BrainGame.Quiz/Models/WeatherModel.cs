@@ -1,6 +1,6 @@
 ﻿namespace BrainGame.Quiz
 {
-    public class WeatherForecast
+    public class WeatherModel
     {
         public int Id { get; set; }
 

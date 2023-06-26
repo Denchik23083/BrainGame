@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -83,18 +84,21 @@ namespace BrainGame.Auth.Controllers
 
             var secret = Encoding.UTF8.GetBytes(secretKey);
 
+            var role = user.Email!.Contains("admin") ? Role.Admin : Role.User;
+
             var claims = new List<Claim>
             {
                 new (ClaimTypes.Name, user.Name!),
                 new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.Gender, user.Gender!.Type!),
+                new (ClaimTypes.Role, role.ToString()),
             };
 
             var now = DateTime.Now;
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddMinutes(10),
+                expires: now.AddHours(10),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 

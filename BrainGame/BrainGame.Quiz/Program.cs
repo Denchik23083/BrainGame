@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc.Filters;
+using BrainGame.Quiz.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
