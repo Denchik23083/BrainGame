@@ -6,7 +6,7 @@ namespace BrainGame.Quiz.Utilities
 {
     public class RequireRoleAttribute : TypeFilterAttribute
     {
-        public RequireRoleAttribute(Role role) : base(typeof(RequireRoleFilter))
+        public RequireRoleAttribute(RoleType role) : base(typeof(RequireClaimFilter))
         {
             Arguments = new object[] { new Claim(ClaimTypes.Role, role.ToString()) };
         }

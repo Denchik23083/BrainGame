@@ -84,7 +84,7 @@ namespace BrainGame.Auth.Controllers
 
             var secret = Encoding.UTF8.GetBytes(secretKey);
 
-            var role = user.Email!.Contains("admin") ? Role.Admin : Role.User;
+            var role = user.Email!.Contains("admin") ? Core.Utilities.RoleType.Admin : Core.Utilities.RoleType.User;
 
             var claims = new List<Claim>
             {

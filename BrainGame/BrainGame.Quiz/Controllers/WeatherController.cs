@@ -15,25 +15,25 @@ namespace BrainGame.Quiz.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private static List<WeatherModel> Weathers = new List<WeatherModel>
+        private static List<WeatherModel> Weathers = new()
         {
             new WeatherModel
             {
-                Date = DateTime.Now.AddDays(-1),
+                Date = DateTime.Now,
                 TemperatureC = new Random().Next(-20, 55),
                 Summary = Summaries[new Random().Next(Summaries.Length)]
             }            
         };        
 
         [HttpGet]
-        [RequireRole(Role.User)]
+        [RequireRole(RoleType.User)]
         public IActionResult GetAll()
         {
             return Ok(Weathers);
         }
 
         [HttpPost]
-        [RequireRole(Role.Admin)]
+        [RequireRole(RoleType.Admin)]
         public IActionResult CreateWeather(WeatherModel model)
         {
             if (!ModelState.IsValid)
