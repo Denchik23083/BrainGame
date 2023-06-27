@@ -47,7 +47,7 @@ namespace BrainGame.Auth.Controllers
             }
             catch (UserNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
         }
 
@@ -69,12 +69,12 @@ namespace BrainGame.Auth.Controllers
             }
             catch (RefreshTokenNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
 
             catch (UserNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
         }
         
@@ -84,15 +84,18 @@ namespace BrainGame.Auth.Controllers
 
             var secret = Encoding.UTF8.GetBytes(secretKey);
 
-            var role = user.Email!.Contains("admin") ? Core.Utilities.RoleType.Admin : Core.Utilities.RoleType.User;
-
             var claims = new List<Claim>
             {
                 new (ClaimTypes.Name, user.Name!),
                 new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.Gender, user.Gender!.Type!),
-                new (ClaimTypes.Role, role.ToString()),
+                new (ClaimTypes.Role, user.Role!.RoleType.ToString()!)
             };
+
+            var permissions = user.Role!.RolePermissions!
+                .Select(_ => new Claim("permission", _.PermissionType.ToString()!));
+
+            claims.AddRange(permissions);
 
             var now = DateTime.Now;
 

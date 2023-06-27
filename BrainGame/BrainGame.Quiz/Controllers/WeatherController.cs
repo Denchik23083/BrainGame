@@ -1,7 +1,5 @@
 ﻿using BrainGame.Core.Utilities;
 using BrainGame.Quiz.Utilities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrainGame.Quiz.Controllers
@@ -26,14 +24,14 @@ namespace BrainGame.Quiz.Controllers
         };        
 
         [HttpGet]
-        [RequireRole(RoleType.User)]
+        [RequirePermission(PermissionType.GetQuiz)]
         public IActionResult GetAll()
         {
             return Ok(Weathers);
         }
 
         [HttpPost]
-        [RequireRole(RoleType.Admin)]
+        [RequirePermission(PermissionType.EditQuiz)]
         public IActionResult CreateWeather(WeatherModel model)
         {
             if (!ModelState.IsValid)

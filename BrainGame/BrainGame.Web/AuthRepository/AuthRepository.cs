@@ -23,6 +23,8 @@ namespace BrainGame.WebDb.AuthRepository
         public async Task<User> Login(User login)
         {
             var user = await _context.Users
+                .Include(_ => _.Role)
+                .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.RefreshToken)
                 .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(b =>
@@ -40,6 +42,9 @@ namespace BrainGame.WebDb.AuthRepository
         public async Task<User> RefreshLogin(Guid value)
         {
             var refreshToken = await _context.RefreshTokens
+                .Include(_ => _.User)
+                .ThenInclude(_ => _!.Role)
+                .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.User)
                 .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Value == value);
