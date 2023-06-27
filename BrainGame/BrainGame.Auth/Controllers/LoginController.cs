@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -46,7 +47,7 @@ namespace BrainGame.Auth.Controllers
             }
             catch (UserNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
         }
 
@@ -68,12 +69,12 @@ namespace BrainGame.Auth.Controllers
             }
             catch (RefreshTokenNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
 
             catch (UserNotFoundException e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
         }
         
@@ -88,13 +89,19 @@ namespace BrainGame.Auth.Controllers
                 new (ClaimTypes.Name, user.Name!),
                 new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.Gender, user.Gender!.Type!),
+                new (ClaimTypes.Role, user.Role!.RoleType.ToString()!)
             };
+
+            var permissions = user.Role!.RolePermissions!
+                .Select(_ => new Claim("permission", _.PermissionType.ToString()!));
+
+            claims.AddRange(permissions);
 
             var now = DateTime.Now;
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddMinutes(10),
+                expires: now.AddHours(10),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 

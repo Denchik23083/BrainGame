@@ -42,12 +42,12 @@ namespace BrainGame.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Мужской"
+                            Type = "Male"
                         },
                         new
                         {
                             Id = 2,
-                            Type = "Женский"
+                            Type = "Female"
                         });
                 });
 
@@ -72,6 +72,116 @@ namespace BrainGame.Db.Migrations
                         .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("RefreshTokens");
+                });
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("RoleType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleType = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleType = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleType = 2
+                        });
+                });
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.RolePermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("PermissionType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RolePermissions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PermissionType = 0,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PermissionType = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            PermissionType = 2,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            PermissionType = 3,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            PermissionType = 4,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            PermissionType = 0,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            PermissionType = 1,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            PermissionType = 2,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            PermissionType = 0,
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.User", b =>
@@ -100,28 +210,44 @@ namespace BrainGame.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("Users");
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "admin@gmail.com",
+                            Email = "god@gmail.com",
                             GenderId = 1,
-                            Name = "Ted",
-                            Password = "0000"
+                            Name = "God",
+                            Password = "0000",
+                            RoleId = 1
                         },
                         new
                         {
                             Id = 2,
+                            Email = "admin@gmail.com",
+                            GenderId = 1,
+                            Name = "Ted",
+                            Password = "0000",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
                             Email = "user@gmail.com",
                             GenderId = 2,
                             Name = "Anna",
-                            Password = "0000"
+                            Password = "0000",
+                            RoleId = 3
                         });
                 });
 
@@ -317,13 +443,28 @@ namespace BrainGame.Db.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.RolePermission", b =>
+                {
+                    b.HasOne("BrainGame.Db.Entities.Auth.Role", "Role")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("RoleId");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.User", b =>
                 {
                     b.HasOne("BrainGame.Db.Entities.Auth.Gender", "Gender")
                         .WithMany("Users")
                         .HasForeignKey("GenderId");
 
+                    b.HasOne("BrainGame.Db.Entities.Auth.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
                     b.Navigation("Gender");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Questions", b =>
@@ -348,6 +489,11 @@ namespace BrainGame.Db.Migrations
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.Gender", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("BrainGame.Db.Entities.Auth.Role", b =>
+                {
+                    b.Navigation("RolePermissions");
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.User", b =>

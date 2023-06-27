@@ -14,6 +14,10 @@
 
         public Gender? Gender { get; set; }
 
+        public int? RoleId { get; set; }
+
+        public Role? Role { get; set; }
+
         public RefreshToken? RefreshToken { get; set; }
     }
 }

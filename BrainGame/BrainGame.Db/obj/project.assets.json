@@ -737,6 +737,16 @@
             "rid": "win"
           }
         }
+      },
+      "BrainGame.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BrainGame.Core.dll": {}
+        }
       }
     }
   },
@@ -1902,10 +1912,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BrainGame.Core/1.0.0": {
+      "type": "project",
+      "path": "../BrainGame.Core/BrainGame.Core.csproj",
+      "msbuildProject": "../BrainGame.Core/BrainGame.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BrainGame.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16"
     ]
@@ -1936,7 +1952,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj": {
+              "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
