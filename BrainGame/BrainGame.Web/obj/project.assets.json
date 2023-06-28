@@ -1946,19 +1946,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anna\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj",
       "projectName": "BrainGame.WebDb",
-      "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj",
-      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1972,11 +1972,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj"
+            "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Core\\BrainGame.Core.csproj"
             },
-            "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj"
+            "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Db\\BrainGame.Db.csproj"
             }
           }
         }
@@ -2006,7 +2006,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

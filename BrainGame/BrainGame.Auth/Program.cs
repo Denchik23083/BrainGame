@@ -1,3 +1,5 @@
+using System.Text;
+using BrainGame.Auth.Utilities;
 using BrainGame.Db;
 using BrainGame.Logic.AuthService;
 using BrainGame.Logic.QuizService;
@@ -8,8 +10,6 @@ using BrainGame.WebDb.QuizRepository;
 using BrainGame.WebDb.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
-using BrainGame.Auth.Utilities;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -93,4 +93,7 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+namespace BrainGame.Auth
+{
+    public partial class Program { }
+}

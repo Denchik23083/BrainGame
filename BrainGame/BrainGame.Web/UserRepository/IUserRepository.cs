@@ -1,16 +1,15 @@
-﻿using BrainGame.Core.Utilities;
-using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Db.Entities.Auth;
 
 namespace BrainGame.WebDb.UserRepository
 {
     public interface IUserRepository
     {
-        Task<User> GetUser(User? user);
+        Task<User> GetUser(string userEmail);
+        
+        Task EditUser(User userToUpdate);
 
-        Task Update(User userToUpdate, User user);
+        Task EditPassword(User userToUpdate);
 
-        Task Remove(User userToRemove);
-
-        Task Password(User userToUpdate, Password model);
+        Task RemoveUser(User userToRemove);
     }
 }

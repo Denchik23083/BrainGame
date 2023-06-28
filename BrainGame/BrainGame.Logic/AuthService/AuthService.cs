@@ -6,7 +6,6 @@ namespace BrainGame.Logic.AuthService
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
-        public static User User = null!;
 
         public AuthService(IAuthRepository repository)
         {

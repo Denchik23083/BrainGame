@@ -1,4 +1,4 @@
-﻿using BrainGame.Core.Utilities;
+﻿using BrainGame.Core.Exceptions;
 using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
@@ -14,29 +14,37 @@ namespace BrainGame.WebDb.UserRepository
             _context = context;
         }
 
-        public async Task<User> GetUser(User? user)
+        public async Task<User> GetUser(string userEmail)
         {
-            return (await _context.Users.FirstOrDefaultAsync(b => b.Id == user!.Id))!;
+            var user = await _context.Users
+                .Include(_ => _.Role)
+                .ThenInclude(_ => _!.RolePermissions)
+                .Include(_ => _.RefreshToken)
+                .Include(_ => _.Gender)
+                .FirstOrDefaultAsync(b => b.Email == userEmail);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return user;
         }
-
-        public async Task Update(User userToUpdate, User user)
+        
+        public async Task EditUser(User userToUpdate)
         {
-            userToUpdate.Name = user.Name;
-            userToUpdate.Email = user.Email;
-
             await _context.SaveChangesAsync();
         }
 
-        public async Task Remove(User userToRemove)
+        public async Task EditPassword(User userToUpdate)
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveUser(User userToRemove)
         {
             _context.Users.Remove(userToRemove);
-
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task Password(User userToUpdate, Password model)
-        {
-            userToUpdate.Password = model.NewPassword;
+            _context.RefreshTokens.Remove(userToRemove.RefreshToken!);
 
             await _context.SaveChangesAsync();
         }
