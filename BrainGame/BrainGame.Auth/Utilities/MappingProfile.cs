@@ -12,12 +12,6 @@ namespace BrainGame.Auth.Utilities
             CreateMap<LoginModel, User>();
 
             CreateMap<RegisterModel, User>();
-
-            CreateMap<UserModel, User>();
-            CreateMap<User, UserModel>();
-
-            CreateMap<PasswordModel, Password>();
-            CreateMap<Password, PasswordModel>();
         }
     }
 }

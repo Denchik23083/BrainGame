@@ -8,7 +8,6 @@ using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using BrainGame.Core.Exceptions;
-using BrainGame.Core.Utilities;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -101,7 +100,7 @@ namespace BrainGame.Auth.Controllers
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddHours(10),
+                expires: now.AddDays(7),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 

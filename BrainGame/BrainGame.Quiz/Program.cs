@@ -1,14 +1,15 @@
+using System.Text;
 using BrainGame.Db;
 using BrainGame.Logic.AuthService;
 using BrainGame.Logic.QuizService;
 using BrainGame.Logic.StatisticsService;
 using BrainGame.Logic.UserService;
+using BrainGame.Quiz.Utilities;
 using BrainGame.WebDb.AuthRepository;
 using BrainGame.WebDb.QuizRepository;
 using BrainGame.WebDb.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +30,7 @@ builder.Services.AddScoped<ICorrectsRepository, CorrectsRepository>();
 builder.Services.AddScoped<IPointService, PointService>();
 builder.Services.AddScoped<IPointRepository, PointRepository>();
 
-//builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -92,5 +93,7 @@ app.MapControllers();
 
 app.Run();
 
-
-public partial class Program { }
+namespace BrainGame.Quiz
+{
+    public partial class Program { }
+}

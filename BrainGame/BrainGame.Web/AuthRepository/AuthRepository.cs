@@ -33,7 +33,7 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (user is null)
             {
-                throw new UserNotFoundException("user not found");
+                throw new UserNotFoundException("User not found");
             }
 
             return user;
@@ -51,12 +51,12 @@ namespace BrainGame.WebDb.AuthRepository
 
             if (refreshToken is null)
             {
-                throw new RefreshTokenNotFoundException("refreshToken not found");
+                throw new RefreshTokenNotFoundException("RefreshToken not found");
             }
 
             if (refreshToken.User is null)
             {
-                throw new UserNotFoundException("user with this refreshToken not found");
+                throw new UserNotFoundException("User with this refreshToken not found");
             }
 
             return refreshToken.User;

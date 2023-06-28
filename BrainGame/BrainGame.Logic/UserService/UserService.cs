@@ -1,4 +1,5 @@
-﻿using BrainGame.Core.Utilities;
+﻿using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.UserRepository;
 
@@ -13,52 +14,61 @@ namespace BrainGame.Logic.UserService
             _repository = repository;
         }
 
-        public async Task<User> GetUser()
+        public async Task<User> GetUser(string userEmail)
         {
-            var user = AuthService.AuthService.User;
+            var user = await _repository.GetUser(userEmail);
 
             if (user is null)
             {
-                throw new ArgumentNullException();
+                throw new UserNotFoundException("User not found");
             }
 
-            return await _repository.GetUser(user);
+            return user;
         }
 
-        public async Task Update(User user)
+        public async Task EditUser(User user, string userEmail)
         {
-            var userToUpdate = await _repository.GetUser(AuthService.AuthService.User);
+            var userToUpdate = await _repository.GetUser(userEmail);
 
             if (userToUpdate is null)
             {
-                throw new ArgumentNullException();
+                throw new UserNotFoundException("User not found");
             }
 
-            await _repository.Update(userToUpdate, user);
+            userToUpdate.Name = user.Name;
+            userToUpdate.Email = user.Email;
+
+            await _repository.EditUser(userToUpdate);
         }
 
-        public async Task Remove()
+        public async Task EditPassword(Password password, string userEmail)
         {
-            var userToRemove = await _repository.GetUser(AuthService.AuthService.User);
+            var userToUpdate = await _repository.GetUser(userEmail);
+
+            if (userToUpdate is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            if (userToUpdate.Password == password.OldPassword
+                && password.NewPassword == password.ConfirmPassword)
+            {
+                userToUpdate.Password = password.NewPassword;
+
+                await _repository.EditPassword(userToUpdate);
+            }
+        }
+
+        public async Task RemoveUser(string userEmail)
+        {
+            var userToRemove = await _repository.GetUser(userEmail);
 
             if (userToRemove is null)
             {
-                throw new ArgumentNullException();
+                throw new UserNotFoundException("User not found");
             }
 
-            await _repository.Remove(userToRemove);
-        }
-
-        public async Task Password(Password model)
-        {
-            var userToUpdate = await _repository.GetUser(AuthService.AuthService.User);
-
-            if (userToUpdate is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            await _repository.Password(userToUpdate, model);
+            await _repository.RemoveUser(userToRemove);
         }
     }
 }

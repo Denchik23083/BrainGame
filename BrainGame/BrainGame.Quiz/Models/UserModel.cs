@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Auth.Models
+﻿namespace BrainGame.Quiz.Models
 {
     public class UserModel
     {

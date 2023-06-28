@@ -1,4 +1,5 @@
 ﻿using BrainGame.Core.Utilities;
+using BrainGame.Quiz.Models;
 using BrainGame.Quiz.Utilities;
 using Microsoft.AspNetCore.Mvc;
 

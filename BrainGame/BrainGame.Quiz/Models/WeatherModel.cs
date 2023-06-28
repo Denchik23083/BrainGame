@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Quiz
+﻿namespace BrainGame.Quiz.Models
 {
     public class WeatherModel
     {
