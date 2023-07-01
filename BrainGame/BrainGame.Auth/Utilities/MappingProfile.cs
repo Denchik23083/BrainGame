@@ -12,6 +12,8 @@ namespace BrainGame.Auth.Utilities
             CreateMap<LoginModel, User>();
 
             CreateMap<RegisterModel, User>();
+
+            CreateMap<RefreshTokenModel, RefreshToken>();
         }
     }
 }
