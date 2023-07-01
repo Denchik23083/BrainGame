@@ -60,7 +60,9 @@ namespace BrainGame.Auth.Controllers
 
             try
             {
-                var user = await _service.RefreshLogin(model.RefreshToken);
+                var mappedRefresh = _mapper.Map<RefreshToken>(model);
+
+                var user = await _service.RefreshLogin(mappedRefresh);
 
                 var tokenModel = await GetUserToken(user);
 
@@ -100,7 +102,7 @@ namespace BrainGame.Auth.Controllers
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddDays(7),
+                expires: now.AddMinutes(5),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 

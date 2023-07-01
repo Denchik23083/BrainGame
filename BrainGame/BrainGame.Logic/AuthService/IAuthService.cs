@@ -8,7 +8,7 @@ namespace BrainGame.Logic.AuthService
 
         Task<User> Login(User login);
 
-        Task<User> RefreshLogin(Guid value);
+        Task<User> RefreshLogin(RefreshToken refresh);
 
         Task CreateRefreshToken(Guid refreshToken, User user);
 
