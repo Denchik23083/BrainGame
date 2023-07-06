@@ -89,7 +89,7 @@ namespace BrainGame.Auth.Controllers
             {
                 new (ClaimTypes.Name, user.Name!),
                 new (ClaimTypes.Email, user.Email!),
-                new (ClaimTypes.Gender, user.Gender!.Type!),
+                new (ClaimTypes.Gender, user.Gender!.Type.ToString()!),
                 new (ClaimTypes.Role, user.Role!.RoleType.ToString()!)
             };
 

@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Core.Utilities;
+using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,11 +11,11 @@ namespace BrainGame.Db.EntityConfig.AuthConfig
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.Type).IsRequired();
+            builder.Property(_ => _.Type).HasConversion<int>();
 
             builder.ToTable("Genders").HasData(
-                new Gender { Id = 1, Type = "Male" },
-                new Gender { Id = 2, Type = "Female" });
+                new Gender { Id = 1, Type = GenderType.Male },
+                new Gender { Id = 2, Type = GenderType.Female });
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BrainGame.Db.Migrations
 {
     [DbContext(typeof(BrainGameContext))]
-    [Migration("20230627103632_init")]
-    partial class init
+    [Migration("20230706145152_genderType")]
+    partial class genderType
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,8 @@ namespace BrainGame.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -44,12 +43,12 @@ namespace BrainGame.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Male"
+                            Type = 0
                         },
                         new
                         {
                             Id = 2,
-                            Type = "Female"
+                            Type = 1
                         });
                 });
 

@@ -30,9 +30,8 @@ namespace BrainGame.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -42,12 +41,12 @@ namespace BrainGame.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Type = "Male"
+                            Type = 0
                         },
                         new
                         {
                             Id = 2,
-                            Type = "Female"
+                            Type = 1
                         });
                 });
 
