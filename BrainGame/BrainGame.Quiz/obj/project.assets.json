@@ -2214,7 +2214,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "BrainGame.Core": "1.0.0",
           "BrainGame.Db": "1.0.0"
         },
         "compile": {
@@ -6884,8 +6883,8 @@
     },
     "BrainGame.WebDb/1.0.0": {
       "type": "project",
-      "path": "../BrainGame.Web/BrainGame.WebDb.csproj",
-      "msbuildProject": "../BrainGame.Web/BrainGame.WebDb.csproj"
+      "path": "../BrainGame.WebDb/BrainGame.WebDb.csproj",
+      "msbuildProject": "../BrainGame.WebDb/BrainGame.WebDb.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6893,7 +6892,6 @@
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "BrainGame.Logic >= 1.0.0",
-      "BrainGame.WebDb >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
       "Swashbuckle.AspNetCore >= 6.2.3",
@@ -6901,19 +6899,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anna\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
       "projectName": "BrainGame.Quiz",
-      "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
-      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\BrainGame.Quiz.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Quiz\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6921,17 +6919,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj"
-            },
-            "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Web\\BrainGame.WebDb.csproj"
+            "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\BrainGame\\BrainGame\\BrainGame.Logic\\BrainGame.Logic.csproj"
             }
           }
         }
@@ -6992,7 +6988,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

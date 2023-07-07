@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BrainGame.Logic\BrainGame.Logic.csproj" />
-    <ProjectReference Include="..\BrainGame.Web\BrainGame.WebDb.csproj" />
   </ItemGroup>
 
 </Project>
