@@ -30,7 +30,12 @@ namespace BrainGame.WebDb.UserRepository
 
             return user;
         }
-        
+
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            return await _context.Genders.ToListAsync();
+        }
+
         public async Task EditUser(User userToUpdate)
         {
             await _context.SaveChangesAsync();

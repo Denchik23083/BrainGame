@@ -1,6 +1,4 @@
-﻿using BrainGame.Core.Utilities;
-
-namespace BrainGame.Auth.Models
+﻿namespace BrainGame.Auth.Models
 {
     public class RegisterModel
     {
@@ -8,7 +6,7 @@ namespace BrainGame.Auth.Models
 
         public string? Email { get; set; }
 
-        public GenderType Type { get; set; }
+        public int? GenderId { get; set; }
         
         public string? Password { get; set; }
         

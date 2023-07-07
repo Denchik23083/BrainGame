@@ -26,6 +26,18 @@ namespace BrainGame.Logic.UserService
             return user;
         }
 
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            var genders = await _repository.GetGenders();
+
+            if (genders is null)
+            {
+                throw new GenderNotFoundException("genders not found");
+            }
+
+            return genders;
+        }
+
         public async Task EditUser(User user, string userEmail)
         {
             var userToUpdate = await _repository.GetUser(userEmail);

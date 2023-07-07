@@ -14,6 +14,8 @@ namespace BrainGame.Logic.AuthService
 
         public async Task Register(User register)
         {
+            register.RoleId = 3;
+
             await _repository.Register(register);
         }
 

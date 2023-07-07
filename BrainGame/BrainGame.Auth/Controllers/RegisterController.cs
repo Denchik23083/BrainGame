@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using BrainGame.Auth.Models;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
+using BrainGame.Core.Exceptions;
+using BrainGame.Logic.UserService;
 
 namespace BrainGame.Auth.Controllers
 {
@@ -11,12 +13,29 @@ namespace BrainGame.Auth.Controllers
     public class RegisterController : ControllerBase
     {
         private readonly IAuthService _service;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public RegisterController(IAuthService service, IMapper mapper)
+        public RegisterController(IAuthService service, IUserService userService, IMapper mapper)
         {
             _service = service;
+            _userService = userService;
             _mapper = mapper;
+        }
+
+        [HttpGet("gender")]
+        public async Task<IActionResult> GetGenders()
+        {
+            try
+            {
+                var genders = await _userService.GetGenders();
+
+                return Ok(genders);
+            }
+            catch (GenderNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
