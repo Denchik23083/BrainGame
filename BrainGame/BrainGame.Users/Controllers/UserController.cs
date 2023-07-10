@@ -5,11 +5,11 @@ using BrainGame.Core.Exceptions;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.UserService;
 using BrainGame.Core.Utilities;
-using BrainGame.Quiz.Models;
-using BrainGame.Quiz.Utilities;
 using Microsoft.AspNetCore.Authorization;
+using BrainGame.Users.Models;
+using BrainGame.Users.Utilities;
 
-namespace BrainGame.Quiz.Controllers
+namespace BrainGame.Users.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

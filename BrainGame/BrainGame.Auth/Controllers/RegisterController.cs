@@ -30,7 +30,9 @@ namespace BrainGame.Auth.Controllers
             {
                 var genders = await _userService.GetGenders();
 
-                return Ok(genders);
+                var mapperGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
+
+                return Ok(mapperGenders);
             }
             catch (GenderNotFoundException e)
             {

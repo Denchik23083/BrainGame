@@ -21,8 +21,8 @@ namespace BrainGame.Quiz.Controllers
                 Date = DateTime.Now,
                 TemperatureC = new Random().Next(-20, 55),
                 Summary = Summaries[new Random().Next(Summaries.Length)]
-            }            
-        };        
+            }
+        };
 
         [HttpGet]
         [RequirePermission(PermissionType.GetQuiz)]
