@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>c1a051db-edcc-4c59-9084-7a934f74ecda</UserSecretsId>
+    <UserSecretsId>5e134d65-5fd0-4ac9-94b9-4333ff1e5231</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>

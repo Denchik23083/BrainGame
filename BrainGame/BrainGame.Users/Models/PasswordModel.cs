@@ -1,4 +1,4 @@
-﻿namespace BrainGame.Quiz.Models
+﻿namespace BrainGame.Users.Models
 {
     public class PasswordModel
     {
