@@ -24,7 +24,7 @@ namespace BrainGame.Quiz.Controllers
             return NoContent();
         }
 
-        private Correct Map(CorrectModel model)
+        private static Correct Map(CorrectModel model)
         {
             return new Correct
             {

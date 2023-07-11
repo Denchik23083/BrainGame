@@ -32,7 +32,7 @@ namespace BrainGame.Quiz.Controllers
             return Ok(question);
         }
 
-        private Quizzes Map(QuizzesModel model)
+        private static Quizzes Map(QuizzesModel model)
         {
             return new Quizzes
             {

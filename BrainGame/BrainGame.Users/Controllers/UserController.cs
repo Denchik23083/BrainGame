@@ -1,13 +1,13 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.UserService;
-using BrainGame.Core.Utilities;
-using Microsoft.AspNetCore.Authorization;
 using BrainGame.Users.Models;
 using BrainGame.Users.Utilities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrainGame.Users.Controllers
 {

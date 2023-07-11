@@ -14,7 +14,7 @@ namespace BrainGame.Quiz.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private static List<WeatherModel> Weathers = new()
+        private static readonly List<WeatherModel> Weathers = new()
         {
             new WeatherModel
             {
