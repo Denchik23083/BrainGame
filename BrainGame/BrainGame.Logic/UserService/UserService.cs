@@ -14,9 +14,35 @@ namespace BrainGame.Logic.UserService
             _repository = repository;
         }
 
-        public async Task<User> GetUser(string userEmail)
+        public async Task<IEnumerable<User>> GetUsers()
         {
-            var user = await _repository.GetUser(userEmail);
+            var roleId = 3;
+
+            var users = await _repository.GetUsers(roleId);
+
+            if (users is null)
+            {
+                throw new GenderNotFoundException("Users not found");
+            }
+
+            return users;
+        }
+
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            var genders = await _repository.GetGenders();
+
+            if (genders is null)
+            {
+                throw new GenderNotFoundException("Genders not found");
+            }
+
+            return genders;
+        }
+
+        public async Task<User> GetUser(int id)
+        {
+            var user = await _repository.GetUser(id);
 
             if (user is null)
             {
@@ -26,21 +52,9 @@ namespace BrainGame.Logic.UserService
             return user;
         }
 
-        public async Task<IEnumerable<Gender>> GetGenders()
+        public async Task EditUser(User user, int id)
         {
-            var genders = await _repository.GetGenders();
-
-            if (genders is null)
-            {
-                throw new GenderNotFoundException("genders not found");
-            }
-
-            return genders;
-        }
-
-        public async Task EditUser(User user, string userEmail)
-        {
-            var userToUpdate = await _repository.GetUser(userEmail);
+            var userToUpdate = await _repository.GetUser(id);
 
             if (userToUpdate is null)
             {
@@ -53,9 +67,9 @@ namespace BrainGame.Logic.UserService
             await _repository.EditUser(userToUpdate);
         }
 
-        public async Task EditPassword(Password password, string userEmail)
+        public async Task EditPassword(Password password, int id)
         {
-            var userToUpdate = await _repository.GetUser(userEmail);
+            var userToUpdate = await _repository.GetUser(id);
 
             if (userToUpdate is null)
             {

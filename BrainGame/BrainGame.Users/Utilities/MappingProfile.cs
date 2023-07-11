@@ -9,11 +9,10 @@ namespace BrainGame.Users.Utilities
     {
         public MappingProfile()
         {
-            CreateMap<UserModel, User>();
-            CreateMap<User, UserModel>();
+            CreateMap<UserWriteModel, User>();
+            CreateMap<User, UserReadModel>();
 
             CreateMap<PasswordModel, Password>();
-            CreateMap<Password, PasswordModel>();
         }
     }
 }

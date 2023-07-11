@@ -5,6 +5,7 @@ using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.UserService;
 using BrainGame.Users.Models;
+using BrainGame.Users.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,27 @@ namespace BrainGame.Users.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [RequirePermission(PermissionType.RemoveUser)]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _service.GetUsers();
+
+                var mapperUsers = _mapper.Map<IEnumerable<UserReadModel>>(users);
+
+                return Ok(mapperUsers);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> EditUser(UserModel model)
+        public async Task<IActionResult> EditUser(UserWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -34,12 +53,19 @@ namespace BrainGame.Users.Controllers
 
             try
             {
-                var userEmail = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.Email)!.Value;
+                var userId = HttpContext.User.Claims
+                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
+
+                var result = int.TryParse(userId, out var id);
+
+                if (!result)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
 
                 var mappedUser = _mapper.Map<User>(model);
 
-                await _service.EditUser(mappedUser, userEmail);
+                await _service.EditUser(mappedUser, id);
 
                 return NoContent();
             }
@@ -60,12 +86,19 @@ namespace BrainGame.Users.Controllers
 
             try
             {
-                var userEmail = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.Email)!.Value;
+                var userId = HttpContext.User.Claims
+                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
+
+                var result = int.TryParse(userId, out var id);
+
+                if (!result)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
 
                 var mappedPassword = _mapper.Map<Password>(model);
 
-                await _service.EditPassword(mappedPassword, userEmail);
+                await _service.EditPassword(mappedPassword, id);
 
                 return NoContent();
             }

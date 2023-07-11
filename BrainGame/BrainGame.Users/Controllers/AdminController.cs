@@ -2,7 +2,6 @@
 using BrainGame.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Users.Utilities;
-using AutoMapper;
 using BrainGame.Logic.UserService;
 
 namespace BrainGame.Users.Controllers

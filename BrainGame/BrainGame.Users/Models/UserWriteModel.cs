@@ -1,6 +1,6 @@
 ﻿namespace BrainGame.Users.Models
 {
-    public class UserModel
+    public class UserWriteModel
     {
         public string? Name { get; set; }
 

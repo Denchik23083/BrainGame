@@ -5,13 +5,15 @@ namespace BrainGame.Logic.UserService
 {
     public interface IUserService
     {
-        Task<User> GetUser(string userEmail);
+        Task<IEnumerable<User>> GetUsers();
 
         Task<IEnumerable<Gender>> GetGenders();
 
-        Task EditUser(User user, string userEmail);
+        Task<User> GetUser(int id);
 
-        Task EditPassword(Password password, string userEmail);
+        Task EditUser(User user, int id);
+
+        Task EditPassword(Password password, int id);
 
         Task RemoveUser(int id);
     }

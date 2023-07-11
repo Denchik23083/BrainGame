@@ -1,11 +1,9 @@
 using System.Text;
 using BrainGame.Db;
-using BrainGame.Logic.AuthService;
 using BrainGame.Logic.QuizService;
 using BrainGame.Logic.StatisticsService;
 using BrainGame.Logic.UserService;
 using BrainGame.Quiz.Utilities;
-using BrainGame.WebDb.AuthRepository;
 using BrainGame.WebDb.QuizRepository;
 using BrainGame.WebDb.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
