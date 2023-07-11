@@ -1,13 +1,12 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.UserService;
-using BrainGame.Core.Utilities;
-using Microsoft.AspNetCore.Authorization;
 using BrainGame.Users.Models;
-using BrainGame.Users.Utilities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrainGame.Users.Controllers
 {
@@ -67,25 +66,6 @@ namespace BrainGame.Users.Controllers
                 var mappedPassword = _mapper.Map<Password>(model);
 
                 await _service.EditPassword(mappedPassword, userEmail);
-
-                return NoContent();
-            }
-            catch (UserNotFoundException e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        [HttpDelete]
-        [RequirePermission(PermissionType.RemoveUser)]
-        public async Task<IActionResult> RemoveUser()
-        {
-            try
-            {
-                var userEmail = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.Email)!.Value;
-
-                await _service.RemoveUser(userEmail);
 
                 return NoContent();
             }

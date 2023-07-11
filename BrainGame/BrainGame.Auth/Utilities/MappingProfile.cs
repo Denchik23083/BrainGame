@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BrainGame.Auth.Models;
-using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 
 namespace BrainGame.Auth.Utilities

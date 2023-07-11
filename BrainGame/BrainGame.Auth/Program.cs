@@ -22,13 +22,6 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IStatisticsService, StatisticsService>();
-builder.Services.AddScoped<IQuizService, QuizService>();
-builder.Services.AddScoped<IQuizRepository, QuizRepository>();
-builder.Services.AddScoped<ICorrectsService, CorrectsService>();
-builder.Services.AddScoped<ICorrectsRepository, CorrectsRepository>();
-builder.Services.AddScoped<IPointService, PointService>();
-builder.Services.AddScoped<IPointRepository, PointRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
