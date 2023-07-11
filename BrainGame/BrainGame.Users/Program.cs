@@ -1,10 +1,5 @@
 using BrainGame.Db;
-using BrainGame.Logic.AuthService;
-using BrainGame.Logic.QuizService;
-using BrainGame.Logic.StatisticsService;
 using BrainGame.Logic.UserService;
-using BrainGame.WebDb.AuthRepository;
-using BrainGame.WebDb.QuizRepository;
 using BrainGame.WebDb.UserRepository;
 using BrainGame.Users.Utilities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -77,14 +72,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 namespace BrainGame.Users
 {
