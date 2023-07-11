@@ -71,9 +71,9 @@ namespace BrainGame.Logic.UserService
             }
         }
 
-        public async Task RemoveUser(string userEmail)
+        public async Task RemoveUser(int id)
         {
-            var userToRemove = await _repository.GetUser(userEmail);
+            var userToRemove = await _repository.GetUser(id);
 
             if (userToRemove is null)
             {

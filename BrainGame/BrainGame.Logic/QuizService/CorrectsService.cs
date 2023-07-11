@@ -10,8 +10,8 @@ namespace BrainGame.Logic.QuizService
 
         public CorrectsService(ICorrectsRepository repository, IQuizRepository quizRepository)
         {
-            _quizRepository = quizRepository;
             _repository = repository;
+            _quizRepository = quizRepository;
         }
 
         public async Task Correct(Correct correctAnswerUser)
@@ -21,11 +21,6 @@ namespace BrainGame.Logic.QuizService
             if (correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer))
             {
                 var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
-
-                if (quiz is null)
-                {
-                    throw new ArgumentNullException();
-                }
 
                 await _quizRepository.AddPoints(quiz);
             }

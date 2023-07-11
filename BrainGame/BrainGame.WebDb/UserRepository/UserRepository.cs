@@ -14,6 +14,23 @@ namespace BrainGame.WebDb.UserRepository
             _context = context;
         }
 
+        public async Task<User> GetUser(int id)
+        {
+            var user = await _context.Users
+                .Include(_ => _.Role)
+                .ThenInclude(_ => _!.RolePermissions)
+                .Include(_ => _.RefreshToken)
+                .Include(_ => _.Gender)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return user;
+        }
+
         public async Task<User> GetUser(string userEmail)
         {
             var user = await _context.Users

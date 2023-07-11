@@ -13,6 +13,6 @@ namespace BrainGame.Logic.UserService
 
         Task EditPassword(Password password, string userEmail);
 
-        Task RemoveUser(string userEmail);
+        Task RemoveUser(int id);
     }
 }
