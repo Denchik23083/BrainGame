@@ -1,11 +1,15 @@
 using BrainGame.Db;
-using BrainGame.Logic.UserService;
-using BrainGame.WebDb.UserRepository;
 using BrainGame.Users.Utilities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BrainGame.Logic.UsersService.UserService;
+using BrainGame.Logic.UsersService.AdminService;
+using BrainGame.Logic.UsersService.GodService;
+using BrainGame.WebDb.UsersRepository.UserRepository;
+using BrainGame.WebDb.UsersRepository.AdminRepository;
+using BrainGame.WebDb.UsersRepository.GodRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IGodService, GodService>();
+builder.Services.AddScoped<IGodRepository, GodRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
