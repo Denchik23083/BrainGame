@@ -20,7 +20,7 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task RemovePoint(Quizzes quizzes)
         {
-            quizzes.Point = 0;
+            //quizzes.Point = 0;
 
             await _context.SaveChangesAsync();
         }

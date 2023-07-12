@@ -1,6 +1,6 @@
-﻿namespace BrainGame.Db.Entities.Quiz
+﻿namespace BrainGame.Quiz.Models
 {
-    public class Quizzes
+    public class QuizzesReadModel
     {
         public int Id { get; set; }
 
