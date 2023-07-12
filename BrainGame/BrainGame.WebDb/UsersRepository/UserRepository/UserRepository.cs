@@ -3,7 +3,7 @@ using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb.UserRepository
+namespace BrainGame.WebDb.UsersRepository.UserRepository
 {
     public class UserRepository : IUserRepository
     {
@@ -17,6 +17,7 @@ namespace BrainGame.WebDb.UserRepository
         public async Task<IEnumerable<User>> GetUsers(int roleId)
         {
             return await _context.Users
+                .Include(_ => _.Gender)
                 .Where(_ => _.RoleId == roleId)
                 .ToListAsync();
         }
@@ -50,14 +51,6 @@ namespace BrainGame.WebDb.UserRepository
 
         public async Task EditPassword(User userToUpdate)
         {
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task RemoveUser(User userToRemove)
-        {
-            _context.Users.Remove(userToRemove);
-            _context.RefreshTokens.Remove(userToRemove.RefreshToken!);
-
             await _context.SaveChangesAsync();
         }
     }

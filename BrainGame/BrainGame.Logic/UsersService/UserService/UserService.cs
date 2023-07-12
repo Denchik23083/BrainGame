@@ -1,9 +1,9 @@
 ﻿using BrainGame.Core.Exceptions;
 using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
-using BrainGame.WebDb.UserRepository;
+using BrainGame.WebDb.UsersRepository.UserRepository;
 
-namespace BrainGame.Logic.UserService
+namespace BrainGame.Logic.UsersService.UserService
 {
     public class UserService : IUserService
     {
@@ -22,7 +22,7 @@ namespace BrainGame.Logic.UserService
 
             if (users is null)
             {
-                throw new GenderNotFoundException("Users not found");
+                throw new UserNotFoundException("Users not found");
             }
 
             return users;
@@ -83,18 +83,6 @@ namespace BrainGame.Logic.UserService
 
                 await _repository.EditPassword(userToUpdate);
             }
-        }
-
-        public async Task RemoveUser(int id)
-        {
-            var userToRemove = await _repository.GetUser(id);
-
-            if (userToRemove is null)
-            {
-                throw new UserNotFoundException("User not found");
-            }
-
-            await _repository.RemoveUser(userToRemove);
         }
     }
 }

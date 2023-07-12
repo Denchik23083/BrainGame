@@ -1,7 +1,7 @@
 ﻿using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
 
-namespace BrainGame.Logic.UserService
+namespace BrainGame.Logic.UsersService.UserService
 {
     public interface IUserService
     {
@@ -14,7 +14,5 @@ namespace BrainGame.Logic.UserService
         Task EditUser(User user, int id);
 
         Task EditPassword(Password password, int id);
-
-        Task RemoveUser(int id);
     }
 }

@@ -4,7 +4,7 @@ using BrainGame.Auth.Models;
 using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 using BrainGame.Core.Exceptions;
-using BrainGame.Logic.UserService;
+using BrainGame.Logic.UsersService.UserService;
 
 namespace BrainGame.Auth.Controllers
 {

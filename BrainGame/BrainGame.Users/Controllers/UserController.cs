@@ -3,7 +3,7 @@ using AutoMapper;
 using BrainGame.Core.Exceptions;
 using BrainGame.Core.Utilities;
 using BrainGame.Db.Entities.Auth;
-using BrainGame.Logic.UserService;
+using BrainGame.Logic.UsersService.UserService;
 using BrainGame.Users.Models;
 using BrainGame.Users.Utilities;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +25,7 @@ namespace BrainGame.Users.Controllers
         }
 
         [HttpGet]
-        [RequirePermission(PermissionType.RemoveUser)]
+        [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> GetUsers()
         {
             try
@@ -43,7 +43,7 @@ namespace BrainGame.Users.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> EditUser(UserWriteModel model)
         {
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@ namespace BrainGame.Users.Controllers
         }
 
         [HttpPut("password")]
-        [Authorize]
+        [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> EditPassword(PasswordModel model)
         {
             if (!ModelState.IsValid)

@@ -2,7 +2,9 @@
 using BrainGame.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Users.Utilities;
-using BrainGame.Logic.UserService;
+using BrainGame.Logic.UsersService.AdminService;
+using BrainGame.Users.Models;
+using AutoMapper;
 
 namespace BrainGame.Users.Controllers
 {
@@ -10,11 +12,31 @@ namespace BrainGame.Users.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IAdminService _service;
+        private readonly IMapper _mapper;
 
-        public AdminController(IUserService service)
+        public AdminController(IAdminService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        [RequirePermission(PermissionType.AdminToUser)]
+        public async Task<IActionResult> GetAdmins()
+        {
+            try
+            {
+                var admins = await _service.GetAdmins();
+
+                var mapperAdmins = _mapper.Map<IEnumerable<AdminReadModel>>(admins);
+
+                return Ok(mapperAdmins);
+            }
+            catch (AdminNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("id")]
