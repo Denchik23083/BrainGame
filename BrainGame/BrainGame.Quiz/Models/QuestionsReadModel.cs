@@ -1,6 +1,8 @@
-﻿namespace BrainGame.Db.Entities.Quiz
+﻿using BrainGame.Db.Entities.Quiz;
+
+namespace BrainGame.Quiz.Models
 {
-    public class Questions
+    public class QuestionsReadModel
     {
         public int Id { get; set; }
 
@@ -9,13 +11,9 @@
         public string? Question { get; set; }
 
         public string? Answers { get; set; }
-        
+
         public int CorrectId { get; set; }
 
         public Correct? Correct { get; set; }
-
-        public int QuizId { get; set; }
-
-        public Quizzes? Quizzes { get; set; }
     }
 }

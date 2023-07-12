@@ -4,9 +4,11 @@ namespace BrainGame.WebDb.QuizRepository
 {
     public interface IQuizRepository
     {
-        Task<Quizzes> GetQuiz(Quizzes model);
+        Task<IEnumerable<Quizzes>> GetQuizzes();
 
-        Task<Questions> GetQuestions(int id, int quizId);
+        Task<IEnumerable<Questions>> GetQuestions(int quizId);
+
+        Task<Quizzes> GetQuiz(Quizzes model);
 
         Task AddPoints(Quizzes quizzes);
     }

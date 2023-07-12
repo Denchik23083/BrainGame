@@ -19,13 +19,15 @@ namespace BrainGame.Logic.QuizService
 
         public async Task<Quizzes> GetPoint()
         {
-            var quizId = QuizService.Quiz.Id;
+            /*var quizId = QuizService.Quiz.Id;
 
             var getPoint = await _repository.GetPoint(quizId);
 
             GetPoints = getPoint;
 
-            return getPoint;
+            return getPoint;*/
+
+            throw new NotImplementedException();
         }
 
         public void Result()
@@ -37,9 +39,11 @@ namespace BrainGame.Logic.QuizService
 
         public async Task RemovePoint()
         {
-            var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
+            /*var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
 
-            await _repository.RemovePoint(quiz);
+            await _repository.RemovePoint(quiz);*/
+
+            throw new NotImplementedException();
         }
     }
 }

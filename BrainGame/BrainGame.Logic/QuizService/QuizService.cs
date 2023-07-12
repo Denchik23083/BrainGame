@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Core.Exceptions;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository;
 
 namespace BrainGame.Logic.QuizService
@@ -6,30 +7,35 @@ namespace BrainGame.Logic.QuizService
     public class QuizService : IQuizService
     {
         private readonly IQuizRepository _repository;
-        public static Quizzes Quiz = null!;
-        public static Questions Questions = null!;
 
         public QuizService(IQuizRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<Quizzes> GetQuiz(Quizzes model)
+
+        public async Task<IEnumerable<Quizzes>> GetQuizzes()
         {
-            var quiz = await _repository.GetQuiz(model);
+            var quizzes = await _repository.GetQuizzes();
 
-            Quiz = quiz;
+            if (quizzes is null)
+            {
+                throw new QuizzesNotFoundException("Quizzes not found");
+            }
 
-            return quiz;
+            return quizzes;
         }
 
-        public async Task<Questions> GetQuestions(int id)
+        public async Task<IEnumerable<Questions>> GetQuestions(int quizId)
         {
-            var question = await _repository.GetQuestions(id, Quiz.Id);
+            var questions = await _repository.GetQuestions(quizId);
 
-            Questions = question ?? throw new ArgumentNullException();
-            
-            return question;
+            if (questions is null)
+            {
+                throw new QuestionsNotFoundException("Questions not found");
+            }
+
+            return questions;
         }
     }
 }

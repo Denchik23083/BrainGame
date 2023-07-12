@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using BrainGame.Db.Entities.Quiz;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using BrainGame.Logic.QuizService;
+using BrainGame.Core.Exceptions;
+using BrainGame.Core.Utilities;
 using BrainGame.Quiz.Models;
+using BrainGame.Quiz.Utilities;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -10,36 +13,48 @@ namespace BrainGame.Quiz.Controllers
     public class QuizController : ControllerBase
     {
         private readonly IQuizService _service;
+        private readonly IMapper _mapper;
 
-        public QuizController(IQuizService service)
+        public QuizController(IQuizService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetQuiz(QuizzesModel model)
+        [HttpGet]
+        [RequirePermission(PermissionType.GetQuiz)]
+        public async Task<IActionResult> GetQuizzes()
         {
-            var quiz = await _service.GetQuiz(Map(model));
+            try
+            {
+                var quizzes = await _service.GetQuizzes();
 
-            return Ok(quiz);
+                var mappedQuizzes = _mapper.Map<IEnumerable<QuizzesReadModel>>(quizzes);
+
+                return Ok(mappedQuizzes);
+            }
+            catch (QuizzesNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id")]
-        public async Task<IActionResult> Question(int id)
+        [RequirePermission(PermissionType.GetQuiz)]
+        public async Task<IActionResult> GetQuestions(int id)
         {
-            var question = await _service.GetQuestions(id);
-
-            return Ok(question);
-        }
-
-        private static Quizzes Map(QuizzesModel model)
-        {
-            return new Quizzes
+            try
             {
-                Id = model.Id,
-                Name = model.Name,
-                Point = model.Point
-            };
+                var questions = await _service.GetQuestions(id);
+
+                var mappedQuestions = _mapper.Map<IEnumerable<QuestionsReadModel>>(questions);
+
+                return Ok(mappedQuestions);
+            }
+            catch (QuestionsNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

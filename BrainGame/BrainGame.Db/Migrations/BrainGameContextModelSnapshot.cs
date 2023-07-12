@@ -17,7 +17,7 @@ namespace BrainGame.Db.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "6.0.19")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -312,7 +312,7 @@ namespace BrainGame.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CorrectAnswerId")
+                    b.Property<int>("CorrectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Number")
@@ -328,7 +328,7 @@ namespace BrainGame.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CorrectAnswerId");
+                    b.HasIndex("CorrectId");
 
                     b.HasIndex("QuizId");
 
@@ -339,7 +339,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 1,
                             Answers = "Собака,Кошка,Хомяк",
-                            CorrectAnswerId = 1,
+                            CorrectId = 1,
                             Number = 1,
                             Question = "Кто гавкает?",
                             QuizId = 1
@@ -348,7 +348,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 2,
                             Answers = "Лисички,Опята,Мухоморы",
-                            CorrectAnswerId = 5,
+                            CorrectId = 5,
                             Number = 1,
                             Question = "Какие грибы ядовитые?",
                             QuizId = 3
@@ -357,7 +357,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 3,
                             Answers = "Орел,Пингвин,Ворон",
-                            CorrectAnswerId = 3,
+                            CorrectId = 3,
                             Number = 2,
                             Question = "Какая птица не умеет летать?",
                             QuizId = 1
@@ -366,7 +366,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 4,
                             Answers = "Зеленые,Желтые,Их нет",
-                            CorrectAnswerId = 2,
+                            CorrectId = 2,
                             Number = 1,
                             Question = "Какого цвета листья у деревьев зимой?",
                             QuizId = 2
@@ -375,7 +375,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 5,
                             Answers = "Арахис,Фисташки,Грецкие",
-                            CorrectAnswerId = 4,
+                            CorrectId = 4,
                             Number = 2,
                             Question = "Как называется земляной орех?",
                             QuizId = 2
@@ -384,7 +384,7 @@ namespace BrainGame.Db.Migrations
                         {
                             Id = 6,
                             Answers = "Волнушка,Боровик,Лисичка",
-                            CorrectAnswerId = 6,
+                            CorrectId = 6,
                             Number = 2,
                             Question = "Как еще называют Белый гриб?",
                             QuizId = 3
@@ -403,11 +403,6 @@ namespace BrainGame.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("Point")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
                     b.HasKey("Id");
 
                     b.ToTable("Quizzes");
@@ -416,20 +411,17 @@ namespace BrainGame.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Animals",
-                            Point = 0
+                            Name = "Animals"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Plants",
-                            Point = 0
+                            Name = "Plants"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Mushrooms",
-                            Point = 0
+                            Name = "Mushrooms"
                         });
                 });
 
@@ -470,7 +462,7 @@ namespace BrainGame.Db.Migrations
                 {
                     b.HasOne("BrainGame.Db.Entities.Quiz.Correct", "Correct")
                         .WithMany()
-                        .HasForeignKey("CorrectAnswerId")
+                        .HasForeignKey("CorrectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
