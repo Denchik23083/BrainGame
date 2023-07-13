@@ -6,7 +6,6 @@ using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.UsersService.UserService;
 using BrainGame.Users.Models;
 using BrainGame.Users.Utilities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrainGame.Users.Controllers

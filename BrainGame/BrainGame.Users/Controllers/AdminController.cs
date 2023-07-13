@@ -39,7 +39,7 @@ namespace BrainGame.Users.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("removeuser/id")]
         [RequirePermission(PermissionType.RemoveUser)]
         public async Task<IActionResult> RemoveUser(int id)
         {
