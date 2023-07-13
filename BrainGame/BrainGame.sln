@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Core", "BrainGame
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.WebDb", "BrainGame.WebDb\BrainGame.WebDb.csproj", "{59C09C64-62C7-4455-B6C1-8E652B17F66D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Users", "BrainGame.Users\BrainGame.Users.csproj", "{8C2FEA5D-9F1A-40E0-9661-E61E4B7D52EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainGame.Users", "BrainGame.Users\BrainGame.Users.csproj", "{8C2FEA5D-9F1A-40E0-9661-E61E4B7D52EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Tests", "BrainGame.Tests\BrainGame.Tests.csproj", "{BC745093-828B-40B7-8030-E287F097F73C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{8C2FEA5D-9F1A-40E0-9661-E61E4B7D52EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C2FEA5D-9F1A-40E0-9661-E61E4B7D52EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C2FEA5D-9F1A-40E0-9661-E61E4B7D52EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC745093-828B-40B7-8030-E287F097F73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC745093-828B-40B7-8030-E287F097F73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC745093-828B-40B7-8030-E287F097F73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC745093-828B-40B7-8030-E287F097F73C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
