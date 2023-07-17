@@ -1,6 +1,6 @@
 ﻿namespace BrainGame.Users.Models
 {
-    public class PasswordModel
+    public class PasswordWriteModel
     {
         public string? OldPassword { get; set; }
 

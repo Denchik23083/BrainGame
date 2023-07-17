@@ -76,7 +76,7 @@ namespace BrainGame.Users.Controllers
 
         [HttpPut("password")]
         [RequirePermission(PermissionType.GetQuiz)]
-        public async Task<IActionResult> EditPassword(PasswordModel model)
+        public async Task<IActionResult> EditPassword(PasswordWriteModel model)
         {
             if (!ModelState.IsValid)
             {
