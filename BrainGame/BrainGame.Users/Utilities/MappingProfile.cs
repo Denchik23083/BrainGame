@@ -15,7 +15,7 @@ namespace BrainGame.Users.Utilities
             CreateMap<AdminWriteModel, User>();
             CreateMap<User, AdminReadModel>();
 
-            CreateMap<PasswordModel, Password>();
+            CreateMap<PasswordWriteModel, Password>();
         }
     }
 }

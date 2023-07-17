@@ -2,15 +2,15 @@
 using BrainGame.Tests.Utilities;
 using System.Net.Http.Headers;
 
-namespace BrainGame.Tests.Users.UsersApiConfiguration
+namespace BrainGame.Tests.Quiz.QuizApiConfiguration
 {
-    public class UsersApiTestBase : AddTokenWithPermissions
+    public class QuizApiTestBase : AddTokenWithPermissions
     {
         protected readonly HttpClient HttpClient;
 
-        public UsersApiTestBase()
+        public QuizApiTestBase()
         {
-            var app = new UsersApiFactory();
+            var app = new QuizApiFactory();
             HttpClient = app.CreateDefaultClient();
         }
 
