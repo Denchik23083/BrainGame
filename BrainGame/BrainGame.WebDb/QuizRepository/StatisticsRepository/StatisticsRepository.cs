@@ -2,13 +2,13 @@
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb.QuizRepository
+namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
 {
-    public class PointRepository : IPointRepository
+    public class StatisticsRepository : IStatisticsRepository
     {
         private readonly BrainGameContext _context;
 
-        public PointRepository(BrainGameContext context)
+        public StatisticsRepository(BrainGameContext context)
         {
             _context = context;
         }

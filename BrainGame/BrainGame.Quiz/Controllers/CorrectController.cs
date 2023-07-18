@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.AspNetCore.Mvc;
-using BrainGame.Logic.QuizService;
 using BrainGame.Quiz.Models;
 using BrainGame.Core.Utilities;
 using BrainGame.Quiz.Utilities;
+using BrainGame.Logic.QuizService.CorrectsService;
 
 namespace BrainGame.Quiz.Controllers
 {

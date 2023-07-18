@@ -2,7 +2,7 @@
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb.QuizRepository
+namespace BrainGame.WebDb.QuizRepository.CorrectsRepository
 {
     public class CorrectsRepository : ICorrectsRepository
     {

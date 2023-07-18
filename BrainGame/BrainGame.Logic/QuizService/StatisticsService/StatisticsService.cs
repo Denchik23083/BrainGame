@@ -1,20 +1,39 @@
 ﻿using BrainGame.Db.Entities.Quiz;
-using BrainGame.WebDb.QuizRepository;
+using BrainGame.WebDb.QuizRepository.QuizzesRepository;
+using BrainGame.WebDb.QuizRepository.StatisticsRepository;
 
-namespace BrainGame.Logic.QuizService
+namespace BrainGame.Logic.QuizService.StatisticsService
 {
-    public class PointService : IPointService
+    public class StatisticsService : IStatisticsService
     {
-        private readonly IPointRepository _repository;
-        private readonly IQuizRepository _quizRepository;
+        private readonly StatisticsRepository _repository;
+        private readonly IQuizzesRepository _quizRepository;
         public static Quizzes GetPoints = null!;
         public static int CountQuiz;
         public static List<Statistics> StatisticsList = new();
 
-        public PointService(IPointRepository repository, IQuizRepository quizRepository)
+        public StatisticsService(StatisticsRepository repository, IQuizzesRepository quizRepository)
         {
             _repository = repository;
             _quizRepository = quizRepository;
+        }
+
+        public IEnumerable<Quizzes> GetStatistics()
+        {
+            var statistics = StatisticsList;
+
+            if (statistics is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new List<Quizzes>();
+        }
+
+        public void Clear()
+        {
+            StatisticsList.Clear();
+            CountQuiz = 0;
         }
 
         public async Task<Quizzes> GetPoint()

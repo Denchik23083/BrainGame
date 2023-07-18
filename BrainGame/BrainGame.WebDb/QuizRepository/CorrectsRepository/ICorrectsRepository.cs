@@ -1,6 +1,6 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 
-namespace BrainGame.WebDb.QuizRepository
+namespace BrainGame.WebDb.QuizRepository.CorrectsRepository
 {
     public interface ICorrectsRepository
     {
