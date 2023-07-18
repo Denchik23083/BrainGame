@@ -1,9 +1,9 @@
 ﻿namespace BrainGame.Quiz.Models
 {
-    public class CorrectModel
+    public class CorrectWriteModel
     {
-        public int Id { get; set; }
-
         public string? CorrectAnswer { get; set; }
+
+        public int QuestionId { get; set; }
     }
 }

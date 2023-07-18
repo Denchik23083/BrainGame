@@ -14,7 +14,7 @@ namespace BrainGame.Logic.StatisticsService
                 throw new ArgumentNullException();
             }
 
-            return statistics;
+            return new List<Quizzes>();
         }
 
         public void Clear()

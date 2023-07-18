@@ -4,6 +4,7 @@ using BrainGame.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BrainGame.Db.Migrations
 {
     [DbContext(typeof(BrainGameContext))]
-    partial class BrainGameContextModelSnapshot : ModelSnapshot
+    [Migration("20230718112939_correct")]
+    partial class correct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -426,34 +428,6 @@ namespace BrainGame.Db.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Statistics", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Point")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<int?>("QuizId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Statistics");
-                });
-
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.RefreshToken", b =>
                 {
                     b.HasOne("BrainGame.Db.Entities.Auth.User", "User")
@@ -507,21 +481,6 @@ namespace BrainGame.Db.Migrations
                         .IsRequired();
 
                     b.Navigation("Quizzes");
-                });
-
-            modelBuilder.Entity("BrainGame.Db.Entities.Quiz.Statistics", b =>
-                {
-                    b.HasOne("BrainGame.Db.Entities.Quiz.Quizzes", "Quizzes")
-                        .WithMany()
-                        .HasForeignKey("QuizId");
-
-                    b.HasOne("BrainGame.Db.Entities.Auth.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Quizzes");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BrainGame.Db.Entities.Auth.Gender", b =>

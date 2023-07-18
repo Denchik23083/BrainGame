@@ -13,6 +13,8 @@ namespace BrainGame.Quiz.Utilities
 
             CreateMap<QuestionsWriteModel, Questions>();
             CreateMap<Questions, QuestionsReadModel>();
+
+            CreateMap<CorrectWriteModel, Correct>();
         }
     }
 }

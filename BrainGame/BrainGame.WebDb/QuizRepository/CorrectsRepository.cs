@@ -15,7 +15,7 @@ namespace BrainGame.WebDb.QuizRepository
 
         public async Task<Correct> Correct(int id)
         {
-            return (await _context.Corrects.FirstOrDefaultAsync(b => b.Id == id))!;
+            return (await _context.Corrects.FirstOrDefaultAsync(b => b.QuestionId == id))!;
         }
     }
 }

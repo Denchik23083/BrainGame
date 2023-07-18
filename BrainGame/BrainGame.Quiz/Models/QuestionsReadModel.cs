@@ -1,6 +1,4 @@
-﻿using BrainGame.Db.Entities.Quiz;
-
-namespace BrainGame.Quiz.Models
+﻿namespace BrainGame.Quiz.Models
 {
     public class QuestionsReadModel
     {
@@ -11,9 +9,5 @@ namespace BrainGame.Quiz.Models
         public string? Question { get; set; }
 
         public string? Answers { get; set; }
-
-        public int CorrectId { get; set; }
-
-        public Correct? Correct { get; set; }
     }
 }

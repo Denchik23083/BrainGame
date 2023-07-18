@@ -1,39 +1,39 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using BrainGame.Logic.QuizService;
 using BrainGame.Core.Exceptions;
 using BrainGame.Core.Utilities;
+using BrainGame.Logic.QuizService;
 using BrainGame.Quiz.Models;
 using BrainGame.Quiz.Utilities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrainGame.Quiz.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QuizController : ControllerBase
+    public class QuestionController : ControllerBase
     {
         private readonly IQuizService _service;
         private readonly IMapper _mapper;
 
-        public QuizController(IQuizService service, IMapper mapper)
+        public QuestionController(IQuizService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("id")]
         [RequirePermission(PermissionType.GetQuiz)]
-        public async Task<IActionResult> GetQuizzes()
+        public async Task<IActionResult> GetQuestions(int id)
         {
             try
             {
-                var quizzes = await _service.GetQuizzes();
+                var questions = await _service.GetQuestions(id);
 
-                var mappedQuizzes = _mapper.Map<IEnumerable<QuizzesReadModel>>(quizzes);
+                var mappedQuestions = _mapper.Map<IEnumerable<QuestionsReadModel>>(questions);
 
-                return Ok(mappedQuizzes);
+                return Ok(mappedQuestions);
             }
-            catch (QuizzesNotFoundException e)
+            catch (QuestionsNotFoundException e)
             {
                 return BadRequest(e.Message);
             }

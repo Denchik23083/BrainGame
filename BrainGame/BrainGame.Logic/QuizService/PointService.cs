@@ -9,7 +9,7 @@ namespace BrainGame.Logic.QuizService
         private readonly IQuizRepository _quizRepository;
         public static Quizzes GetPoints = null!;
         public static int CountQuiz;
-        public static List<Quizzes> StatisticsList = new();
+        public static List<Statistics> StatisticsList = new();
 
         public PointService(IPointRepository repository, IQuizRepository quizRepository)
         {
@@ -32,9 +32,7 @@ namespace BrainGame.Logic.QuizService
 
         public void Result()
         {
-            GetPoints.Id = ++CountQuiz;
 
-            StatisticsList.Add(GetPoints);
         }
 
         public async Task RemovePoint()

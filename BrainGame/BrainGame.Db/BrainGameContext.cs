@@ -24,6 +24,8 @@ namespace BrainGame.Db
 
         public DbSet<Quizzes> Quizzes { get; set; } = null!;
 
+        public DbSet<Statistics> Statistics { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
