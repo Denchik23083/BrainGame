@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig.QuizConfig
+namespace BrainGame.Db.EntityConfiguration.QuizConfiguration
 {
     public class QuizConfiguration : IEntityTypeConfiguration<Quizzes>
     {

@@ -1,9 +1,9 @@
-﻿using BrainGame.Db.Entities.Auth;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using BrainGame.Core.Utilities;
+using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
-using BrainGame.Core.Utilities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig.AuthConfig
+namespace BrainGame.Db.EntityConfiguration.AuthConfiguration
 {
     public class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermission>
     {

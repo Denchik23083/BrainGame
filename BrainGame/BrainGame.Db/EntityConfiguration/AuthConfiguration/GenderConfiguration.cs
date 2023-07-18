@@ -3,7 +3,7 @@ using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig.AuthConfig
+namespace BrainGame.Db.EntityConfiguration.AuthConfiguration
 {
     public class GenderConfiguration : IEntityTypeConfiguration<Gender>
     {

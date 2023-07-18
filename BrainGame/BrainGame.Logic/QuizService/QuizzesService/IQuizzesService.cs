@@ -1,8 +1,8 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 
-namespace BrainGame.Logic.QuizService
+namespace BrainGame.Logic.QuizService.QuizzesService
 {
-    public interface IQuizService
+    public interface IQuizzesService
     {
         Task<IEnumerable<Quizzes>> GetQuizzes();
 

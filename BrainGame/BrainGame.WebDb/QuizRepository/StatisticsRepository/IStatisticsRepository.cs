@@ -1,8 +1,8 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 
-namespace BrainGame.WebDb.QuizRepository
+namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
 {
-    public interface IPointRepository
+    public interface IStatisticsRepository
     {
         Task<Quizzes> GetPoint(int quizId);
 

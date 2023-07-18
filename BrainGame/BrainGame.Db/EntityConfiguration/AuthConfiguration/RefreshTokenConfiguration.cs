@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BrainGame.Db.EntityConfig.AuthConfig
+namespace BrainGame.Db.EntityConfiguration.AuthConfiguration
 {
     public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
     {

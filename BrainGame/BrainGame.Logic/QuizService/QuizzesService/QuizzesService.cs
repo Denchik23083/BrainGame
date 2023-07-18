@@ -1,14 +1,14 @@
 ﻿using BrainGame.Core.Exceptions;
 using BrainGame.Db.Entities.Quiz;
-using BrainGame.WebDb.QuizRepository;
+using BrainGame.WebDb.QuizRepository.QuizzesRepository;
 
-namespace BrainGame.Logic.QuizService
+namespace BrainGame.Logic.QuizService.QuizzesService
 {
-    public class QuizService : IQuizService
+    public class QuizzesService : IQuizzesService
     {
-        private readonly IQuizRepository _repository;
+        private readonly IQuizzesRepository _repository;
 
-        public QuizService(IQuizRepository repository)
+        public QuizzesService(IQuizzesRepository repository)
         {
             _repository = repository;
         }

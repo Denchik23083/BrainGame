@@ -1,10 +1,13 @@
 using System.Text;
 using BrainGame.Db;
-using BrainGame.Logic.QuizService;
-using BrainGame.Logic.StatisticsService;
+using BrainGame.Logic.QuizService.CorrectsService;
+using BrainGame.Logic.QuizService.QuizzesService;
+using BrainGame.Logic.QuizService.StatisticsService;
 using BrainGame.Logic.UsersService.UserService;
 using BrainGame.Quiz.Utilities;
-using BrainGame.WebDb.QuizRepository;
+using BrainGame.WebDb.QuizRepository.CorrectsRepository;
+using BrainGame.WebDb.QuizRepository.QuizzesRepository;
+using BrainGame.WebDb.QuizRepository.StatisticsRepository;
 using BrainGame.WebDb.UsersRepository.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -19,12 +22,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IStatisticsService, StatisticsService>();
-builder.Services.AddScoped<IQuizService, QuizService>();
-builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+builder.Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+builder.Services.AddScoped<IQuizzesService, QuizzesService>();
+builder.Services.AddScoped<IQuizzesRepository, QuizzesRepository>();
 builder.Services.AddScoped<ICorrectsService, CorrectsService>();
 builder.Services.AddScoped<ICorrectsRepository, CorrectsRepository>();
-builder.Services.AddScoped<IPointService, PointService>();
-builder.Services.AddScoped<IPointRepository, PointRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
