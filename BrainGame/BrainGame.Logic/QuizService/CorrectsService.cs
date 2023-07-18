@@ -16,16 +16,14 @@ namespace BrainGame.Logic.QuizService
 
         public async Task Correct(Correct correctAnswerUser)
         {
-            /*var correct = await _repository.Correct(QuizService.Questions.CorrectAnswerId);
+            var correct = await _repository.Correct(correctAnswerUser.QuestionId);
             
             if (correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer))
             {
-                var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
+                //var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
 
-                await _quizRepository.AddPoints(quiz);
-            }*/
-
-            throw new NotImplementedException();
+                //await _quizRepository.AddPoints(quiz);
+            }
         }
     }
 }

@@ -9,8 +9,6 @@
         public string? Question { get; set; }
 
         public string? Answers { get; set; }
-        
-        public int CorrectId { get; set; }
 
         public Correct? Correct { get; set; }
 
