@@ -1,18 +1,18 @@
 ﻿using BrainGame.Db.Entities.Quiz;
-using BrainGame.WebDb.QuizRepository.QuizzesRepository;
+using BrainGame.WebDb.QuizRepository.QuizRepository;
 using BrainGame.WebDb.QuizRepository.StatisticsRepository;
 
 namespace BrainGame.Logic.QuizService.StatisticsService
 {
     public class StatisticsService : IStatisticsService
     {
-        private readonly StatisticsRepository _repository;
-        private readonly IQuizzesRepository _quizRepository;
+        private readonly IStatisticsRepository _repository;
+        private readonly IQuizRepository _quizRepository;
         public static Quizzes GetPoints = null!;
         public static int CountQuiz;
         public static List<Statistics> StatisticsList = new();
 
-        public StatisticsService(StatisticsRepository repository, IQuizzesRepository quizRepository)
+        public StatisticsService(IStatisticsRepository repository, IQuizRepository quizRepository)
         {
             _repository = repository;
             _quizRepository = quizRepository;

@@ -2,13 +2,13 @@
 using BrainGame.Db.Entities.Quiz;
 using Microsoft.EntityFrameworkCore;
 
-namespace BrainGame.WebDb.QuizRepository.QuizzesRepository
+namespace BrainGame.WebDb.QuizRepository.QuizRepository
 {
-    public class QuizzesRepository : IQuizzesRepository
+    public class QuizRepository : IQuizRepository
     {
         private readonly BrainGameContext _context;
 
-        public QuizzesRepository(BrainGameContext context)
+        public QuizRepository(BrainGameContext context)
         {
             _context = context;
         }
@@ -16,14 +16,6 @@ namespace BrainGame.WebDb.QuizRepository.QuizzesRepository
         public async Task<IEnumerable<Quizzes>> GetQuizzes()
         {
             return await _context.Quizzes.ToListAsync();
-        }
-
-        public async Task<IEnumerable<Questions>> GetQuestions(int quizId)
-        {
-            return await _context.Questions
-                .Include(_ => _.Correct)
-                .Where(_ => _.QuizId == quizId)
-                .ToListAsync();
         }
 
         public async Task<Quizzes> GetQuiz(Quizzes model)

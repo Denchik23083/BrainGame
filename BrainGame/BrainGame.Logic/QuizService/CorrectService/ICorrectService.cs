@@ -1,8 +1,8 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 
-namespace BrainGame.Logic.QuizService.CorrectsService
+namespace BrainGame.Logic.QuizService.CorrectService
 {
-    public interface ICorrectsService
+    public interface ICorrectService
     {
         Task Correct(Correct correctAnswerUser);
     }
