@@ -3,8 +3,8 @@ using BrainGame.Db.Entities.Quiz;
 using Microsoft.AspNetCore.Mvc;
 using BrainGame.Quiz.Models;
 using BrainGame.Core.Utilities;
+using BrainGame.Logic.QuizService.CorrectService;
 using BrainGame.Quiz.Utilities;
-using BrainGame.Logic.QuizService.CorrectsService;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -12,10 +12,10 @@ namespace BrainGame.Quiz.Controllers
     [ApiController]
     public class CorrectController : ControllerBase
     {
-        private readonly ICorrectsService _service;
+        private readonly ICorrectService _service;
         private readonly IMapper _mapper;
 
-        public CorrectController(ICorrectsService service, IMapper mapper)
+        public CorrectController(ICorrectService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

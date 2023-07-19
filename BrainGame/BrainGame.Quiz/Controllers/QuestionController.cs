@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BrainGame.Core.Exceptions;
 using BrainGame.Core.Utilities;
-using BrainGame.Logic.QuizService.QuizzesService;
+using BrainGame.Logic.QuizService.QuestionService;
 using BrainGame.Quiz.Models;
 using BrainGame.Quiz.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +12,10 @@ namespace BrainGame.Quiz.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        private readonly IQuizzesService _service;
+        private readonly IQuestionService _service;
         private readonly IMapper _mapper;
 
-        public QuestionController(IQuizzesService service, IMapper mapper)
+        public QuestionController(IQuestionService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

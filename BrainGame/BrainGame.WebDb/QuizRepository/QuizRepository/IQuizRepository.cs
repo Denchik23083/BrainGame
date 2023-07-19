@@ -1,12 +1,10 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 
-namespace BrainGame.WebDb.QuizRepository.QuizzesRepository
+namespace BrainGame.WebDb.QuizRepository.QuizRepository
 {
-    public interface IQuizzesRepository
+    public interface IQuizRepository
     {
         Task<IEnumerable<Quizzes>> GetQuizzes();
-
-        Task<IEnumerable<Questions>> GetQuestions(int quizId);
 
         Task<Quizzes> GetQuiz(Quizzes model);
 

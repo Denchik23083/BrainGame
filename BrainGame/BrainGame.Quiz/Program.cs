@@ -1,14 +1,14 @@
 using System.Text;
 using BrainGame.Db;
-using BrainGame.Logic.QuizService.CorrectsService;
-using BrainGame.Logic.QuizService.QuizzesService;
+using BrainGame.Logic.QuizService.CorrectService;
+using BrainGame.Logic.QuizService.QuestionService;
+using BrainGame.Logic.QuizService.QuizService;
 using BrainGame.Logic.QuizService.StatisticsService;
-using BrainGame.Logic.UsersService.UserService;
 using BrainGame.Quiz.Utilities;
-using BrainGame.WebDb.QuizRepository.CorrectsRepository;
-using BrainGame.WebDb.QuizRepository.QuizzesRepository;
+using BrainGame.WebDb.QuizRepository.CorrectRepository;
+using BrainGame.WebDb.QuizRepository.QuizRepository;
+using BrainGame.WebDb.QuizRepository.QuestionRepository;
 using BrainGame.WebDb.QuizRepository.StatisticsRepository;
-using BrainGame.WebDb.UsersRepository.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,14 +19,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IStatisticsService, StatisticsService>();
 builder.Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
-builder.Services.AddScoped<IQuizzesService, QuizzesService>();
-builder.Services.AddScoped<IQuizzesRepository, QuizzesRepository>();
-builder.Services.AddScoped<ICorrectsService, CorrectsService>();
-builder.Services.AddScoped<ICorrectsRepository, CorrectsRepository>();
+builder.Services.AddScoped<IQuizService, QuizService>();
+builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<ICorrectService, CorrectService>();
+builder.Services.AddScoped<ICorrectRepository, CorrectRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
