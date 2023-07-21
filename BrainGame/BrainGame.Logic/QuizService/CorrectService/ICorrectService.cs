@@ -4,6 +4,6 @@ namespace BrainGame.Logic.QuizService.CorrectService
 {
     public interface ICorrectService
     {
-        Task Correct(Correct correctAnswerUser);
+        Task<bool> Correct(Correct correctAnswerUser);
     }
 }

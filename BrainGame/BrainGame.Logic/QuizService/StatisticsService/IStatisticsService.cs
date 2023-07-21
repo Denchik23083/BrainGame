@@ -4,7 +4,11 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 {
     public interface IStatisticsService
     {
-        IEnumerable<Quizzes> GetStatistics();
+        IEnumerable<Statistics> GetStatistics();
+
+        void Create(int quizId, int userId);
+
+        Task AddPoint(int questionId);
 
         Task<Quizzes> GetPoint();
 

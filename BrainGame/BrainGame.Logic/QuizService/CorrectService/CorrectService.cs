@@ -1,4 +1,5 @@
 ﻿using BrainGame.Db.Entities.Quiz;
+using BrainGame.Logic.QuizService.StatisticsService;
 using BrainGame.WebDb.QuizRepository.CorrectRepository;
 using BrainGame.WebDb.QuizRepository.QuizRepository;
 
@@ -7,24 +8,19 @@ namespace BrainGame.Logic.QuizService.CorrectService
     public class CorrectService : ICorrectService
     {
         private readonly ICorrectRepository _repository;
-        private readonly IQuizRepository _quizRepository;
+        private readonly IStatisticsService _statisticsService;
 
-        public CorrectService(ICorrectRepository repository, IQuizRepository quizRepository)
+        public CorrectService(ICorrectRepository repository, IStatisticsService statisticsService)
         {
             _repository = repository;
-            _quizRepository = quizRepository;
+            _statisticsService = statisticsService;
         }
 
-        public async Task Correct(Correct correctAnswerUser)
+        public async Task<bool> Correct(Correct correctAnswerUser)
         {
             var correct = await _repository.Correct(correctAnswerUser.QuestionId);
 
-            if (correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer))
-            {
-                //var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
-
-                //await _quizRepository.AddPoints(quiz);
-            }
+            return correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer);
         }
     }
 }
