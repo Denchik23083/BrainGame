@@ -4,9 +4,9 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 {
     public interface IStatisticsService
     {
-        IEnumerable<Statistics> GetStatistics();
+        Task<IEnumerable<Statistics>> GetStatistics();
 
-        void Create(int quizId, int userId);
+        Task CreateSession(int quizId, int userId);
 
         Task AddPoint(int questionId);
 

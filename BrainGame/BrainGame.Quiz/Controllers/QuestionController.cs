@@ -15,13 +15,11 @@ namespace BrainGame.Quiz.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly IQuestionService _service;
-        private readonly IStatisticsService _statisticsService;
         private readonly IMapper _mapper;
 
-        public QuestionController(IQuestionService service, IStatisticsService statisticsService, IMapper mapper)
+        public QuestionController(IQuestionService service, IMapper mapper)
         {
             _service = service;
-            _statisticsService = statisticsService;
             _mapper = mapper;
         }
 
@@ -31,18 +29,6 @@ namespace BrainGame.Quiz.Controllers
         {
             try
             {
-                var userClaimId = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
-
-                var result = int.TryParse(userClaimId, out var userId);
-
-                if (!result)
-                {
-                    throw new UserNotFoundException("User not found");
-                }
-
-                _statisticsService.Create(id, userId);
-
                 var questions = await _service.GetQuestions(id);
 
                 var mappedQuestions = _mapper.Map<IEnumerable<QuestionsReadModel>>(questions);
