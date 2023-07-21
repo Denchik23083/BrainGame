@@ -1,8 +1,8 @@
-﻿using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Core.Exceptions;
 using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository.QuestionRepository;
-using BrainGame.WebDb.QuizRepository.QuizRepository;
 using BrainGame.WebDb.QuizRepository.StatisticsRepository;
+using BrainGame.WebDb.UsersRepository.UserRepository;
 
 namespace BrainGame.Logic.QuizService.StatisticsService
 {
@@ -10,33 +10,52 @@ namespace BrainGame.Logic.QuizService.StatisticsService
     {
         private readonly IStatisticsRepository _repository;
         private readonly IQuestionRepository _questionRepository;
-        public static Quizzes GetPoints = null!;
-        public static int CountQuiz;
+        private readonly IUserRepository _userRepository;
+
         public static List<Statistics> StatisticsList = new();
 
-        public StatisticsService(IStatisticsRepository repository, IQuestionRepository questionRepository)
+        public StatisticsService(IStatisticsRepository repository, 
+            IQuestionRepository questionRepository, 
+            IUserRepository userRepository)
         {
             _repository = repository;
             _questionRepository = questionRepository;
+            _userRepository = userRepository;
         }
 
-        public IEnumerable<Statistics> GetStatistics()
+        public async Task<IEnumerable<Statistics>> GetStatistics()
         {
-            return StatisticsList;
+            return await _repository.GetStatistics();
         }
 
-        public void Create(int quizId, int userId)
+        public async Task CreateSession(int quizId, int userId)
         {
-            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == userId);
+            var user = await _userRepository.GetUser(userId);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            var newSession = new Statistics { QuizId = quizId, UserId = user.Id, Point = 0 };
+
+            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
 
             if (statistic is null)
             {
-                StatisticsList.Add(new Statistics { QuizId = quizId, UserId = userId, Point = 0 });
+                StatisticsList.Add(newSession);
+            }
+            else
+            {
+                StatisticsList.Remove(statistic);
+                StatisticsList.Add(newSession);
             }
         }
 
         public async Task AddPoint(int questionId)
         {
+            //TODO: Get User
+
             var question = await _questionRepository.GetQuestion(questionId);
 
             var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == question.QuizId);
