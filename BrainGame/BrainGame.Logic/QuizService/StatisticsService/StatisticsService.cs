@@ -1,4 +1,6 @@
-﻿using BrainGame.Db.Entities.Quiz;
+﻿using BrainGame.Db.Entities.Auth;
+using BrainGame.Db.Entities.Quiz;
+using BrainGame.WebDb.QuizRepository.QuestionRepository;
 using BrainGame.WebDb.QuizRepository.QuizRepository;
 using BrainGame.WebDb.QuizRepository.StatisticsRepository;
 
@@ -7,33 +9,44 @@ namespace BrainGame.Logic.QuizService.StatisticsService
     public class StatisticsService : IStatisticsService
     {
         private readonly IStatisticsRepository _repository;
-        private readonly IQuizRepository _quizRepository;
+        private readonly IQuestionRepository _questionRepository;
         public static Quizzes GetPoints = null!;
         public static int CountQuiz;
         public static List<Statistics> StatisticsList = new();
 
-        public StatisticsService(IStatisticsRepository repository, IQuizRepository quizRepository)
+        public StatisticsService(IStatisticsRepository repository, IQuestionRepository questionRepository)
         {
             _repository = repository;
-            _quizRepository = quizRepository;
+            _questionRepository = questionRepository;
         }
 
-        public IEnumerable<Quizzes> GetStatistics()
+        public IEnumerable<Statistics> GetStatistics()
         {
-            var statistics = StatisticsList;
+            return StatisticsList;
+        }
 
-            if (statistics is null)
+        public void Create(int quizId, int userId)
+        {
+            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == userId);
+
+            if (statistic is null)
             {
-                throw new ArgumentNullException();
+                StatisticsList.Add(new Statistics { QuizId = quizId, UserId = userId, Point = 0 });
             }
+        }
 
-            return new List<Quizzes>();
+        public async Task AddPoint(int questionId)
+        {
+            var question = await _questionRepository.GetQuestion(questionId);
+
+            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == question.QuizId);
+
+            statistic!.Point++;
         }
 
         public void Clear()
         {
             StatisticsList.Clear();
-            CountQuiz = 0;
         }
 
         public async Task<Quizzes> GetPoint()
