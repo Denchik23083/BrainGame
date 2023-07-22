@@ -29,11 +29,11 @@ namespace BrainGame.Quiz.Controllers
             {
                 var quizzes = await _service.GetQuizzes();
 
-                var mappedQuizzes = _mapper.Map<IEnumerable<QuizzesReadModel>>(quizzes);
+                var mappedQuizzes = _mapper.Map<IEnumerable<QuizReadModel>>(quizzes);
 
                 return Ok(mappedQuizzes);
             }
-            catch (QuizzesNotFoundException e)
+            catch (QuizNotFoundException e)
             {
                 return BadRequest(e.Message);
             }

@@ -1,24 +1,26 @@
-﻿using BrainGame.Db.Entities.Quiz;
-using BrainGame.Logic.QuizService.StatisticsService;
+﻿using BrainGame.Core.Exceptions;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.WebDb.QuizRepository.CorrectRepository;
-using BrainGame.WebDb.QuizRepository.QuizRepository;
 
 namespace BrainGame.Logic.QuizService.CorrectService
 {
     public class CorrectService : ICorrectService
     {
         private readonly ICorrectRepository _repository;
-        private readonly IStatisticsService _statisticsService;
 
-        public CorrectService(ICorrectRepository repository, IStatisticsService statisticsService)
+        public CorrectService(ICorrectRepository repository)
         {
             _repository = repository;
-            _statisticsService = statisticsService;
         }
 
         public async Task<bool> Correct(Correct correctAnswerUser)
         {
             var correct = await _repository.Correct(correctAnswerUser.QuestionId);
+
+            if (correct is null)
+            {
+                throw new CorrectNotFoundException("Correct not found");
+            }
 
             return correct.CorrectAnswer!.Equals(correctAnswerUser.CorrectAnswer);
         }

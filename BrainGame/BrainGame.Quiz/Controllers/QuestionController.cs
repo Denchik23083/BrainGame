@@ -5,8 +5,6 @@ using BrainGame.Logic.QuizService.QuestionService;
 using BrainGame.Quiz.Models;
 using BrainGame.Quiz.Utilities;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using BrainGame.Logic.QuizService.StatisticsService;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -31,11 +29,11 @@ namespace BrainGame.Quiz.Controllers
             {
                 var questions = await _service.GetQuestions(id);
 
-                var mappedQuestions = _mapper.Map<IEnumerable<QuestionsReadModel>>(questions);
+                var mappedQuestions = _mapper.Map<IEnumerable<QuestionReadModel>>(questions);
 
                 return Ok(mappedQuestions);
             }
-            catch (QuestionsNotFoundException e)
+            catch (QuestionNotFoundException e)
             {
                 return BadRequest(e.Message);
             }

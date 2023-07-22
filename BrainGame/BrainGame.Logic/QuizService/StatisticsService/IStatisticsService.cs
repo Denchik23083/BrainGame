@@ -8,7 +8,7 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 
         Task CreateSession(int quizId, int userId);
 
-        Task AddPoint(int questionId);
+        Task AddPoint(int quizId, int userId);
 
         Task<Quizzes> GetPoint();
 

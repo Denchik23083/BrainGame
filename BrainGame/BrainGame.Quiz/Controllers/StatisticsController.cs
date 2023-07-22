@@ -2,6 +2,10 @@
 using BrainGame.Logic.QuizService.StatisticsService;
 using BrainGame.Core.Exceptions;
 using System.Security.Claims;
+using AutoMapper;
+using BrainGame.Core.Utilities;
+using BrainGame.Quiz.Utilities;
+using BrainGame.Quiz.Models;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -10,42 +14,50 @@ namespace BrainGame.Quiz.Controllers
     public class StatisticsController : ControllerBase
     {
         private readonly IStatisticsService _service;
+        private readonly IMapper _mapper;
 
-        public StatisticsController(IStatisticsService service)
+        public StatisticsController(IStatisticsService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetStatisticsAsync()
+        [RequirePermission(PermissionType.GetQuiz)]
+        public async Task<IActionResult> GetStatistics()
         {
-            var statistics = await _service.GetStatistics();
+            try
+            {
+                var statistics = await _service.GetStatistics();
 
-            return Ok(statistics);
+                var mappedStatistics = _mapper.Map<IEnumerable<StatisticsReadModel>>(statistics);
+
+                return Ok(mappedStatistics);
+            }
+            catch (StatisticsNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id/points")]
+        [RequirePermission(PermissionType.GetQuiz)]
         public IActionResult GetPoints(int id)
         {
+            var userId = GetUserId();
+
             _service.Clear();
 
             return NoContent();
         }
 
         [HttpPost("id")]
-        public async Task<IActionResult> CreateSessionAsync(int id)
+        [RequirePermission(PermissionType.GetQuiz)]
+        public async Task<IActionResult> CreateSession(int id)
         {
             try
             {
-                var userClaimId = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
-
-                var result = int.TryParse(userClaimId, out var userId);
-
-                if (!result)
-                {
-                    throw new UserNotFoundException("User not found");
-                }
+                var userId = GetUserId();
 
                 await _service.CreateSession(id, userId);
 
@@ -55,6 +67,25 @@ namespace BrainGame.Quiz.Controllers
             {
                 return BadRequest(e.Message);
             }
+            catch (StatisticsNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        private int GetUserId()
+        {
+            var userId = HttpContext.User.Claims
+                .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
+
+            var result = int.TryParse(userId, out var id);
+
+            if (!result)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return id;
         }
     }
 }

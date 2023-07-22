@@ -8,13 +8,15 @@ namespace BrainGame.Quiz.Utilities
     {
         public MappingProfile()
         {
-            CreateMap<QuizzesWriteModel, Quizzes>();
-            CreateMap<Quizzes, QuizzesReadModel>();
+            CreateMap<QuizWriteModel, Quizzes>();
+            CreateMap<Quizzes, QuizReadModel>();
 
-            CreateMap<QuestionsWriteModel, Questions>();
-            CreateMap<Questions, QuestionsReadModel>();
+            CreateMap<QuestionWriteModel, Questions>();
+            CreateMap<Questions, QuestionReadModel>();
 
             CreateMap<CorrectWriteModel, Correct>();
+
+            CreateMap<Statistics, StatisticsReadModel>();
         }
     }
 }
