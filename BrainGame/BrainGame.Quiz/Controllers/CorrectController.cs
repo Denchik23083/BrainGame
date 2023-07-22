@@ -6,6 +6,7 @@ using BrainGame.Core.Utilities;
 using BrainGame.Logic.QuizService.CorrectService;
 using BrainGame.Logic.QuizService.StatisticsService;
 using BrainGame.Quiz.Utilities;
+using BrainGame.Core.Exceptions;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -24,9 +25,9 @@ namespace BrainGame.Quiz.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("id")]
         [RequirePermission(PermissionType.GetQuiz)]
-        public async Task<IActionResult> Correct(CorrectWriteModel model)
+        public async Task<IActionResult> Correct(CorrectWriteModel model, int id)
         {
             if (!ModelState.IsValid)
             {
@@ -41,12 +42,12 @@ namespace BrainGame.Quiz.Controllers
 
                 if (result)
                 {
-                    await _statisticsService.AddPoint(mappedCorrect.QuestionId);
+                    await _statisticsService.AddPoint(id);
                 }
 
                 return NoContent();
             }
-            catch (Exception e)
+            catch (CorrectNotFoundException e)
             {
                 return BadRequest(e.Message);
             }

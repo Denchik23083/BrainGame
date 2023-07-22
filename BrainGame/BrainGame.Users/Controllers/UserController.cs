@@ -52,19 +52,11 @@ namespace BrainGame.Users.Controllers
 
             try
             {
-                var userId = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
-
-                var result = int.TryParse(userId, out var id);
-
-                if (!result)
-                {
-                    throw new UserNotFoundException("User not found");
-                }
+                var userId = GetUserId();
 
                 var mappedUser = _mapper.Map<User>(model);
 
-                await _service.EditUser(mappedUser, id);
+                await _service.EditUser(mappedUser, userId);
 
                 return NoContent();
             }
@@ -85,19 +77,11 @@ namespace BrainGame.Users.Controllers
 
             try
             {
-                var userId = HttpContext.User.Claims
-                    .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
-
-                var result = int.TryParse(userId, out var id);
-
-                if (!result)
-                {
-                    throw new UserNotFoundException("User not found");
-                }
+                var userId = GetUserId();
 
                 var mappedPassword = _mapper.Map<Password>(model);
 
-                await _service.EditPassword(mappedPassword, id);
+                await _service.EditPassword(mappedPassword, userId);
 
                 return NoContent();
             }
@@ -105,6 +89,21 @@ namespace BrainGame.Users.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        private int GetUserId()
+        {
+            var userId = HttpContext.User.Claims
+                .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
+
+            var result = int.TryParse(userId, out var id);
+
+            if (!result)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return id;
         }
     }
 }

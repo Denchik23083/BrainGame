@@ -20,7 +20,7 @@ namespace BrainGame.Logic.QuizService.QuizService
 
             if (quizzes is null)
             {
-                throw new QuizzesNotFoundException("Quizzes not found");
+                throw new QuizNotFoundException("Quizzes not found");
             }
 
             return quizzes;

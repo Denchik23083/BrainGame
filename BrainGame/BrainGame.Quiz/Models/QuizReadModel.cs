@@ -1,6 +1,6 @@
 ﻿namespace BrainGame.Quiz.Models
 {
-    public class QuizzesWriteModel
+    public class QuizReadModel
     {
         public int Id { get; set; }
 
