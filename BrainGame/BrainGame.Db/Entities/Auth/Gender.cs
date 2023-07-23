@@ -1,4 +1,5 @@
-﻿using BrainGame.Core.Utilities;
+﻿using System.Text.Json.Serialization;
+using BrainGame.Core.Utilities;
 
 namespace BrainGame.Db.Entities.Auth
 {
@@ -7,7 +8,7 @@ namespace BrainGame.Db.Entities.Auth
         public int Id { get; set; }
 
         public GenderType? Type { get; set; }
-
+        
         public List<User>? Users { get; set; }
     }
 }

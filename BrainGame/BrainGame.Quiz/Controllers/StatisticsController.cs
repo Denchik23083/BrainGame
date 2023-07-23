@@ -28,7 +28,9 @@ namespace BrainGame.Quiz.Controllers
         {
             try
             {
-                var statistics = await _service.GetStatistics();
+                var userId = GetUserId();
+
+                var statistics = await _service.GetStatistics(userId);
 
                 var mappedStatistics = _mapper.Map<IEnumerable<StatisticsReadModel>>(statistics);
 
@@ -40,15 +42,28 @@ namespace BrainGame.Quiz.Controllers
             }
         }
 
-        [HttpGet("id/points")]
+        [HttpGet("id")]
         [RequirePermission(PermissionType.GetQuiz)]
-        public IActionResult GetPoints(int id)
+        public async Task<IActionResult> GetPoints(int id)
         {
-            var userId = GetUserId();
+            try
+            {
+                var userId = GetUserId();
 
-            _service.Clear();
+                var points = await _service.GetPoints(id, userId);
 
-            return NoContent();
+                var mappedPoints = _mapper.Map<StatisticsReadModel>(points);
+
+                return Ok(mappedPoints);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (StatisticsNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("id")]
@@ -60,6 +75,28 @@ namespace BrainGame.Quiz.Controllers
                 var userId = GetUserId();
 
                 await _service.CreateSession(id, userId);
+
+                return NoContent();
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (StatisticsNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [RequirePermission(PermissionType.GetQuiz)]
+        public async Task<IActionResult> ResetStatistics()
+        {
+            try
+            {
+                var userId = GetUserId();
+
+                await _service.ResetStatistics(userId);
 
                 return NoContent();
             }

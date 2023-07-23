@@ -13,19 +13,23 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatistics()
+        public async Task<IEnumerable<Statistics>> GetStatistics(int userId)
         {
-            return await _context.Statistics.ToListAsync();
+            return await _context.Statistics
+                .Where(_ => _.UserId == userId)
+                .ToListAsync();
         }
 
-        public async Task<Quizzes> GetPoint(int quizId)
+        public async Task SavePoints(Statistics statistic)
         {
-            return (await _context.Quizzes.FirstOrDefaultAsync(p => p.Id == quizId))!;
+            await _context.Statistics.AddAsync(statistic);
+
+            await _context.SaveChangesAsync();
         }
 
-        public async Task RemovePoint(Quizzes quizzes)
+        public async Task ResetStatistics(IEnumerable<Statistics> statistics)
         {
-            //quizzes.Point = 0;
+            _context.Statistics.RemoveRange(statistics);
 
             await _context.SaveChangesAsync();
         }

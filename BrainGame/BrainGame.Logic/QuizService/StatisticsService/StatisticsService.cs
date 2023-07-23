@@ -18,9 +18,9 @@ namespace BrainGame.Logic.QuizService.StatisticsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatistics()
+        public async Task<IEnumerable<Statistics>> GetStatistics(int userId)
         {
-            var statistics = await _repository.GetStatistics();
+            var statistics = await _repository.GetStatistics(userId);
 
             if (statistics is null)
             {
@@ -41,11 +41,11 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 
             var newSession = new Statistics { QuizId = quizId, UserId = user.Id, Point = 0 };
 
-            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
+            var statistics = StatisticsList.FirstOrDefault(_ => _.UserId == user.Id);
 
-            if (statistic is not null)
+            if (statistics is not null)
             {
-                StatisticsList.Remove(statistic);
+                StatisticsList.Remove(statistics);
             }
 
             StatisticsList.Add(newSession);
@@ -60,46 +60,56 @@ namespace BrainGame.Logic.QuizService.StatisticsService
                 throw new UserNotFoundException("User not found");
             }
 
-            var statistic = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
+            var statistics = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
 
-            if (statistic is null)
+            if (statistics is null)
             {
                 throw new StatisticsNotFoundException("Statistics not found");
             }
 
-            statistic.Point++;
+            statistics.Point++;
         }
 
-        public void Clear()
+        public async Task<Statistics> GetPoints(int quizId, int userId)
         {
-            StatisticsList.Clear();
+            var user = await _userRepository.GetUser(userId);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            var statistics = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
+
+            if (statistics is null)
+            {
+                throw new StatisticsNotFoundException("Statistics not found");
+            }
+
+            await _repository.SavePoints(statistics);
+
+            return statistics;
         }
 
-        public async Task<Quizzes> GetPoint()
+        public async Task ResetStatistics(int userId)
         {
-            /*var quizId = QuizService.Quiz.Id;
+            var user = await _userRepository.GetUser(userId);
 
-            var getPoint = await _repository.GetPoint(quizId);
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
 
-            GetPoints = getPoint;
+            var statistic = StatisticsList.FirstOrDefault(_ => _.UserId == user.Id);
 
-            return getPoint;*/
+            if (statistic is not null)
+            {
+                StatisticsList.Remove(statistic);
+            }
 
-            throw new NotImplementedException();
-        }
+            var statistics = await _repository.GetStatistics(userId);
 
-        public void Result()
-        {
-
-        }
-
-        public async Task RemovePoint()
-        {
-            /*var quiz = await _quizRepository.GetQuiz(QuizService.Quiz);
-
-            await _repository.RemovePoint(quiz);*/
-
-            throw new NotImplementedException();
+            await _repository.ResetStatistics(statistics);
         }
     }
 }

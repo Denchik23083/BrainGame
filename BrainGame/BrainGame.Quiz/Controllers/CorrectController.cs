@@ -7,6 +7,7 @@ using BrainGame.Logic.QuizService.CorrectService;
 using BrainGame.Logic.QuizService.StatisticsService;
 using BrainGame.Quiz.Utilities;
 using BrainGame.Core.Exceptions;
+using System.Security.Claims;
 
 namespace BrainGame.Quiz.Controllers
 {
@@ -36,13 +37,15 @@ namespace BrainGame.Quiz.Controllers
 
             try
             {
+                var userId = GetUserId();
+
                 var mappedCorrect = _mapper.Map<Correct>(model);
 
                 var result = await _service.Correct(mappedCorrect);
 
                 if (result)
                 {
-                    await _statisticsService.AddPoint(id);
+                    await _statisticsService.AddPoint(id, userId);
                 }
 
                 return NoContent();
@@ -51,6 +54,21 @@ namespace BrainGame.Quiz.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        private int GetUserId()
+        {
+            var userId = HttpContext.User.Claims
+                .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
+
+            var result = int.TryParse(userId, out var id);
+
+            if (!result)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return id;
         }
     }
 }
