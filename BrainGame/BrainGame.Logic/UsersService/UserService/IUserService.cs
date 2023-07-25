@@ -9,8 +9,6 @@ namespace BrainGame.Logic.UsersService.UserService
 
         Task<IEnumerable<Gender>> GetGenders();
 
-        Task<User> GetUser(int id);
-
         Task EditUser(User user, int id);
 
         Task EditPassword(Password password, int id);

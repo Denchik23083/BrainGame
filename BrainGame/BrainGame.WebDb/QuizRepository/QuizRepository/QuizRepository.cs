@@ -17,17 +17,5 @@ namespace BrainGame.WebDb.QuizRepository.QuizRepository
         {
             return await _context.Quizzes.ToListAsync();
         }
-
-        public async Task<Quizzes> GetQuiz(Quizzes model)
-        {
-            return (await _context.Quizzes.FirstOrDefaultAsync(b => b.Name!.Equals(model.Name)))!;
-        }
-
-        public async Task AddPoints(Quizzes quizzes)
-        {
-            //quizzes.Point++;
-
-            await _context.SaveChangesAsync();
-        }
     }
 }

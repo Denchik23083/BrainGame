@@ -20,10 +20,5 @@ namespace BrainGame.WebDb.QuizRepository.QuestionRepository
                 .Where(_ => _.QuizId == quizId)
                 .ToListAsync();
         }
-
-        public async Task<Questions> GetQuestion(int questionId)
-        {
-            return (await _context.Questions.FirstOrDefaultAsync(_ => _.Id == questionId))!;
-        }
     }
 }

@@ -8,25 +8,51 @@ using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using BrainGame.Core.Exceptions;
+using BrainGame.Logic.UsersService.UserService;
 
 namespace BrainGame.Auth.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly IAuthService _service;
+        private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        public LoginController(IAuthService service, IConfiguration configuration, IMapper mapper)
+        public AuthController(IAuthService service,
+            IUserService userService,
+            IConfiguration configuration, 
+            IMapper mapper)
         {
             _service = service;
+            _userService = userService;
             _configuration = configuration;
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                return BadRequest("Your password must match confirmPassword");
+            }
+
+            var mappedRegister = _mapper.Map<User>(model);
+
+            await _service.Register(mappedRegister);
+
+            return NoContent();
+        }
+
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
@@ -50,7 +76,7 @@ namespace BrainGame.Auth.Controllers
             }
         }
 
-        [HttpPost("refresh")]
+        [HttpPost("login/refresh")]
         public async Task<IActionResult> Login(RefreshTokenModel model)
         {
             if (!ModelState.IsValid)
@@ -78,7 +104,24 @@ namespace BrainGame.Auth.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
+
+        [HttpGet("register/gender")]
+        public async Task<IActionResult> GetGenders()
+        {
+            try
+            {
+                var genders = await _userService.GetGenders();
+
+                var mapperGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
+
+                return Ok(mapperGenders);
+            }
+            catch (GenderNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         private async Task<TokenModel> GetUserToken(User user)
         {
             var secretKey = _configuration["SecretKey"];
