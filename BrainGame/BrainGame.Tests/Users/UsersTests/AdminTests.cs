@@ -17,12 +17,15 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var expectedCount = 1;
 
-            var response = await HttpClient.GetStringAsync("api/admin");
+            var response = await HttpClient.GetAsync("api/admin");
 
-            var admins = JsonConvert.DeserializeObject<IEnumerable<AdminReadModel>>(response);
+            var body = await response.Content.ReadAsStringAsync();
+
+            var admins = JsonConvert.DeserializeObject<IEnumerable<AdminReadModel>>(body);
 
             Assert.NotNull(admins);
             Assert.Equal(expectedCount, admins.Count());
+            Assert.True(response.IsSuccessStatusCode);
         }
 
         [Fact]

@@ -77,7 +77,7 @@ namespace BrainGame.Auth.Controllers
         }
 
         [HttpPost("login/refresh")]
-        public async Task<IActionResult> Login(RefreshTokenModel model)
+        public async Task<IActionResult> Refresh(RefreshTokenModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace BrainGame.Auth.Controllers
             {
                 var mappedRefresh = _mapper.Map<RefreshToken>(model);
 
-                var user = await _service.RefreshLogin(mappedRefresh);
+                var user = await _service.Refresh(mappedRefresh);
 
                 var tokenModel = await GetUserToken(user);
 

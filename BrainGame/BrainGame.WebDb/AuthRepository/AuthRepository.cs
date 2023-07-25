@@ -39,7 +39,7 @@ namespace BrainGame.WebDb.AuthRepository
             return user;
         }
 
-        public async Task<User> RefreshLogin(RefreshToken refresh)
+        public async Task<User> Refresh(RefreshToken refresh)
         {
             var refreshToken = await _context.RefreshTokens
                 .Include(_ => _.User)

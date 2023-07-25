@@ -8,7 +8,7 @@ namespace BrainGame.WebDb.AuthRepository
 
         Task<User> Login(User login);
 
-        Task<User> RefreshLogin(RefreshToken refresh);
+        Task<User> Refresh(RefreshToken refresh);
 
         Task CreateRefreshToken(Guid refreshToken, User user);
 
