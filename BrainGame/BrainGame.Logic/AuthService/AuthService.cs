@@ -24,9 +24,9 @@ namespace BrainGame.Logic.AuthService
             return await _repository.Login(login);
         }
 
-        public async Task<User> RefreshLogin(RefreshToken refresh)
+        public async Task<User> Refresh(RefreshToken refresh)
         {
-            return await _repository.RefreshLogin(refresh);
+            return await _repository.Refresh(refresh);
         }
 
         public async Task CreateRefreshToken(Guid refreshToken, User user)
