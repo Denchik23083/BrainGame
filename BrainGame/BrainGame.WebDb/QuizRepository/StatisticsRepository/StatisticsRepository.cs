@@ -16,6 +16,7 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
         public async Task<IEnumerable<Statistics>> GetStatistics(int userId)
         {
             return await _context.Statistics
+                .Include(_ => _.Quizzes)
                 .Where(_ => _.UserId == userId)
                 .ToListAsync();
         }
