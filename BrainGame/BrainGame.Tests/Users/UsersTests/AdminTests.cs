@@ -10,7 +10,7 @@ namespace BrainGame.Tests.Users.UsersTests
     public class AdminTests : UsersApiTestBase
     {
         [Fact]
-        public async void GetAdmins()
+        public async Task GetAdmins()
         {
             AddTokenWithPermissions(new List<PermissionType>
             { PermissionType.AdminToUser });
@@ -23,23 +23,24 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var admins = JsonConvert.DeserializeObject<IEnumerable<AdminReadModel>>(body);
 
+            Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotNull(admins);
             Assert.Equal(expectedCount, admins.Count());
-            Assert.True(response.IsSuccessStatusCode);
         }
 
         [Fact]
-        public async void RemoveUser()
+        public async Task RemoveUser()
         {
             AddTokenWithPermissions(new List<PermissionType>
             { PermissionType.RemoveUser });
 
-            var expectedId = 5;
+            var expectedId = 4;
 
             var response = await HttpClient.DeleteAsync($"api/admin/removeuser/id?id={expectedId}");
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
     }
 }

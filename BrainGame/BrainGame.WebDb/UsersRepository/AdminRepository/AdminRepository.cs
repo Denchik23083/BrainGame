@@ -41,11 +41,6 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
 
         public async Task RemoveUser(User userToRemove)
         {
-            if (userToRemove.RefreshToken is not null)
-            {
-                _context.RefreshTokens.Remove(userToRemove.RefreshToken);
-            }
-
             _context.Users.Remove(userToRemove);
 
             await _context.SaveChangesAsync();

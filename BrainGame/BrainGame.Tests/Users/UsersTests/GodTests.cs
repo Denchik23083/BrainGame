@@ -17,8 +17,8 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var response = await HttpClient.PutAsync($"api/god/usertoadmin/id?id={expectedId}", null);
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         [Fact]
@@ -31,8 +31,8 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var response = await HttpClient.PutAsync($"api/god/admintouser/id?id={expectedId}", null);
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
     }
 }
