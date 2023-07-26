@@ -11,7 +11,7 @@ namespace BrainGame.Tests.Users.UsersTests
     public class UserTests : UsersApiTestBase
     {
         [Fact]
-        public async void GetUsers()
+        public async Task GetUsers()
         {
             AddTokenWithPermissions(new List<PermissionType> 
             { PermissionType.GetQuiz });
@@ -23,14 +23,15 @@ namespace BrainGame.Tests.Users.UsersTests
             var body = await response.Content.ReadAsStringAsync();
 
             var users = JsonConvert.DeserializeObject<IEnumerable<UserReadModel>>(body);
-
+                        
+            Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotNull(users);
             Assert.Equal(expectedCount, users.Count());
-            Assert.True(response.IsSuccessStatusCode);
         }
 
         [Fact]
-        public async void EditUser()
+        public async Task EditUser()
         {
             AddTokenWithPermissions(new List<PermissionType>
             { PermissionType.GetQuiz });
@@ -45,12 +46,12 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var response = await HttpClient.PutAsync("api/user", content);
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         [Fact]
-        public async void EditPassword()
+        public async Task EditPassword()
         {
             AddTokenWithPermissions(new List<PermissionType>
             { PermissionType.GetQuiz });
@@ -66,8 +67,8 @@ namespace BrainGame.Tests.Users.UsersTests
 
             var response = await HttpClient.PutAsync("api/user/password", content);
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
     }
 }

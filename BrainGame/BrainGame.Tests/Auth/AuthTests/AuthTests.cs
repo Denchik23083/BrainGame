@@ -4,8 +4,6 @@ using System.Net.Http.Json;
 using System.Net;
 using Xunit;
 using Newtonsoft.Json;
-using BrainGame.Core.Utilities;
-using BrainGame.Users.Models;
 
 namespace BrainGame.Tests.Auth.AuthTests
 {
@@ -27,8 +25,8 @@ namespace BrainGame.Tests.Auth.AuthTests
 
             var response = await HttpClient.PostAsync("api/auth/register", content);
 
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         [Fact]
@@ -48,8 +46,9 @@ namespace BrainGame.Tests.Auth.AuthTests
 
             var tokenModel = JsonConvert.DeserializeObject<TokenModel>(body);
 
-            Assert.NotNull(tokenModel);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotNull(tokenModel);
         }
 
         [Fact]
@@ -68,12 +67,13 @@ namespace BrainGame.Tests.Auth.AuthTests
 
             var tokenModel = JsonConvert.DeserializeObject<TokenModel>(body);
 
-            Assert.NotNull(tokenModel);
             Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotNull(tokenModel);
         }
 
         [Fact]
-        public async void GetGenders()
+        public async Task GetGenders()
         {
             var expectedCount = 2;
 
@@ -82,10 +82,11 @@ namespace BrainGame.Tests.Auth.AuthTests
             var body = await response.Content.ReadAsStringAsync();
 
             var genders = JsonConvert.DeserializeObject<IEnumerable<GenderModel>>(body);
-
+                        
+            Assert.True(response.IsSuccessStatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotNull(genders);
             Assert.Equal(expectedCount, genders.Count());
-            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }
