@@ -1,26 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace BrainGame.Db.Migrations
 {
-    public partial class quizzes : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Corrects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CorrectAnswer = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Corrects", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Genders",
                 columns: table => new
@@ -69,18 +57,11 @@ namespace BrainGame.Db.Migrations
                     Number = table.Column<int>(type: "int", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Answers = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CorrectId = table.Column<int>(type: "int", nullable: false),
                     QuizId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Questions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Questions_Corrects_CorrectId",
-                        column: x => x.CorrectId,
-                        principalTable: "Corrects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Questions_Quizzes_QuizId",
                         column: x => x.QuizId,
@@ -136,6 +117,26 @@ namespace BrainGame.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Corrects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CorrectAnswer = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    QuestionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Corrects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Corrects_Questions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Questions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RefreshTokens",
                 columns: table => new
                 {
@@ -154,17 +155,29 @@ namespace BrainGame.Db.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.InsertData(
-                table: "Corrects",
-                columns: new[] { "Id", "CorrectAnswer" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "Statistics",
+                columns: table => new
                 {
-                    { 1, "Собака" },
-                    { 2, "Их нет" },
-                    { 3, "Пингвин" },
-                    { 4, "Арахис" },
-                    { 5, "Мухоморы" },
-                    { 6, "Боровик" }
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Point = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    QuizId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statistics", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Statistics_Quizzes_QuizId",
+                        column: x => x.QuizId,
+                        principalTable: "Quizzes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Statistics_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -198,15 +211,15 @@ namespace BrainGame.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Questions",
-                columns: new[] { "Id", "Answers", "CorrectId", "Number", "Question", "QuizId" },
+                columns: new[] { "Id", "Answers", "Number", "Question", "QuizId" },
                 values: new object[,]
                 {
-                    { 1, "Собака,Кошка,Хомяк", 1, 1, "Кто гавкает?", 1 },
-                    { 2, "Лисички,Опята,Мухоморы", 5, 1, "Какие грибы ядовитые?", 3 },
-                    { 3, "Орел,Пингвин,Ворон", 3, 2, "Какая птица не умеет летать?", 1 },
-                    { 4, "Зеленые,Желтые,Их нет", 2, 1, "Какого цвета листья у деревьев зимой?", 2 },
-                    { 5, "Арахис,Фисташки,Грецкие", 4, 2, "Как называется земляной орех?", 2 },
-                    { 6, "Волнушка,Боровик,Лисичка", 6, 2, "Как еще называют Белый гриб?", 3 }
+                    { 1, "Собака,Кошка,Хомяк", 1, "Кто гавкает?", 1 },
+                    { 2, "Лисички,Опята,Мухоморы", 1, "Какие грибы ядовитые?", 3 },
+                    { 3, "Орел,Пингвин,Ворон", 2, "Какая птица не умеет летать?", 1 },
+                    { 4, "Зеленые,Желтые,Их нет", 1, "Какого цвета листья у деревьев зимой?", 2 },
+                    { 5, "Арахис,Фисташки,Грецкие", 2, "Как называется земляной орех?", 2 },
+                    { 6, "Волнушка,Боровик,Лисичка", 2, "Как еще называют Белый гриб?", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -235,10 +248,24 @@ namespace BrainGame.Db.Migrations
                     { 3, "user@gmail.com", 2, "Anna", "0000", 3 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Corrects",
+                columns: new[] { "Id", "CorrectAnswer", "QuestionId" },
+                values: new object[,]
+                {
+                    { 1, "Собака", 1 },
+                    { 2, "Их нет", 4 },
+                    { 3, "Пингвин", 3 },
+                    { 4, "Арахис", 5 },
+                    { 5, "Мухоморы", 2 },
+                    { 6, "Боровик", 6 }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_CorrectId",
-                table: "Questions",
-                column: "CorrectId");
+                name: "IX_Corrects_QuestionId",
+                table: "Corrects",
+                column: "QuestionId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_QuizId",
@@ -258,6 +285,16 @@ namespace BrainGame.Db.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Statistics_QuizId",
+                table: "Statistics",
+                column: "QuizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Statistics_UserId",
+                table: "Statistics",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_GenderId",
                 table: "Users",
                 column: "GenderId");
@@ -271,7 +308,7 @@ namespace BrainGame.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Questions");
+                name: "Corrects");
 
             migrationBuilder.DropTable(
                 name: "RefreshTokens");
@@ -280,13 +317,16 @@ namespace BrainGame.Db.Migrations
                 name: "RolePermissions");
 
             migrationBuilder.DropTable(
-                name: "Corrects");
+                name: "Statistics");
 
             migrationBuilder.DropTable(
-                name: "Quizzes");
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Quizzes");
 
             migrationBuilder.DropTable(
                 name: "Genders");
