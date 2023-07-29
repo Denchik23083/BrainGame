@@ -24,5 +24,39 @@ namespace BrainGame.Logic.QuizService.QuestionService
 
             return questions;
         }
+
+        public async Task CreateQuestion(Questions question)
+        {
+            await _repository.CreateQuestion(question);
+        }
+
+        public async Task UpdateQuestion(Questions question, int id)
+        {
+            var questionToUpdate = await _repository.GetQuestion(id);
+
+            if (questionToUpdate is null)
+            {
+                throw new QuestionNotFoundException("Question not found");
+            }
+
+            questionToUpdate.Number = question.Number;
+            questionToUpdate.Question = question.Question;
+            questionToUpdate.Answers = question.Answers;
+            questionToUpdate.Correct = question.Correct;
+
+            await _repository.UpdateQuestion(questionToUpdate);
+        }
+
+        public async Task DeleteQuestion(int id)
+        {
+            var questionToDelete = await _repository.GetQuestion(id);
+
+            if (questionToDelete is null)
+            {
+                throw new QuestionNotFoundException("Question not found");
+            }
+
+            await _repository.DeleteQuestion(questionToDelete);
+        }
     }
 }

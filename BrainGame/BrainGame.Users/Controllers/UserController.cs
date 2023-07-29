@@ -93,17 +93,17 @@ namespace BrainGame.Users.Controllers
 
         private int GetUserId()
         {
-            var userId = HttpContext.User.Claims
+            var id = HttpContext.User.Claims
                 .FirstOrDefault(_ => _.Type == ClaimTypes.NameIdentifier)!.Value;
 
-            var result = int.TryParse(userId, out var id);
+            var result = int.TryParse(id, out var userId);
 
             if (!result)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            return id;
+            return userId;
         }
     }
 }
