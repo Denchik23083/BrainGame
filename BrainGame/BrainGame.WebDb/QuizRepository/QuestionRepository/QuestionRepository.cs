@@ -18,7 +18,34 @@ namespace BrainGame.WebDb.QuizRepository.QuestionRepository
             return await _context.Questions
                 .Include(_ => _.Correct)
                 .Where(_ => _.QuizId == quizId)
+                .OrderBy(b => b.Number)
                 .ToListAsync();
+        }
+
+        public async Task<Questions> GetQuestion(int id)
+        {
+            return (await _context.Questions
+                .Include(_ => _.Correct)
+                .FirstOrDefaultAsync(_ => _.Id == id))!;
+        }
+
+        public async Task CreateQuestion(Questions question)
+        {
+            await _context.Questions.AddAsync(question);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateQuestion(Questions questionToUpdate)
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteQuestion(Questions questionToDelete)
+        {
+            _context.Questions.Remove(questionToDelete);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BrainGame.Core.Exceptions;
 using BrainGame.Core.Utilities;
+using BrainGame.Db.Entities.Quiz;
 using BrainGame.Logic.QuizService.QuestionService;
 using BrainGame.Quiz.Models;
 using BrainGame.Quiz.Utilities;
@@ -32,6 +33,66 @@ namespace BrainGame.Quiz.Controllers
                 var mappedQuestions = _mapper.Map<IEnumerable<QuestionReadModel>>(questions);
 
                 return Ok(mappedQuestions);
+            }
+            catch (QuestionNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [RequirePermission(PermissionType.EditQuiz)]
+        public async Task<IActionResult> CreateQuestion(QuestionWriteModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var mappedQuestion = _mapper.Map<Questions>(model);
+
+            await _service.CreateQuestion(mappedQuestion);
+
+            return NoContent();
+        }
+
+        [HttpPut("id")]
+        [RequirePermission(PermissionType.EditQuiz)]
+        public async Task<IActionResult> UpdateQuestion(QuestionWriteModel model, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var mappedQuestion = _mapper.Map<Questions>(model);
+
+                await _service.UpdateQuestion(mappedQuestion, id);
+
+                return NoContent();
+            }
+            catch (QuestionNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("id")]
+        [RequirePermission(PermissionType.EditQuiz)]
+        public async Task<IActionResult> DeleteQuestion(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _service.DeleteQuestion(id);
+
+                return NoContent();
             }
             catch (QuestionNotFoundException e)
             {
