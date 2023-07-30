@@ -146,7 +146,7 @@ namespace BrainGame.Auth.Controllers
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddHours(5),
+                expires: now.AddMinutes(5),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 
