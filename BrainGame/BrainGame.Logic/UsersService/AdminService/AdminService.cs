@@ -16,11 +16,11 @@ namespace BrainGame.Logic.UsersService.AdminService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<User>> GetAdmins()
+        public async Task<IEnumerable<User>> GetAdminsAsync()
         {
             var roleId = 2;
 
-            var admins = await _repository.GetAdmins(roleId);
+            var admins = await _repository.GetAdminsAsync(roleId);
 
             if (admins is null)
             {
@@ -30,16 +30,16 @@ namespace BrainGame.Logic.UsersService.AdminService
             return admins;
         }
 
-        public async Task RemoveUser(int id)
+        public async Task RemoveUserAsync(int id)
         {
-            var userToRemove = await _userRepository.GetUser(id);
+            var userToRemove = await _userRepository.GetUserAsync(id);
 
             if (userToRemove is null)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            await _repository.RemoveUser(userToRemove);
+            await _repository.RemoveUserAsync(userToRemove);
         }
     }
 }

@@ -13,9 +13,9 @@ namespace BrainGame.Logic.QuizService.QuestionService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Questions>> GetQuestions(int quizId)
+        public async Task<IEnumerable<Questions>> GetQuestionsAsync(int quizId)
         {
-            var questions = await _repository.GetQuestions(quizId);
+            var questions = await _repository.GetQuestionsAsync(quizId);
 
             if (questions is null)
             {
@@ -25,14 +25,14 @@ namespace BrainGame.Logic.QuizService.QuestionService
             return questions;
         }
 
-        public async Task CreateQuestion(Questions question)
+        public async Task CreateQuestionAsync(Questions question)
         {
-            await _repository.CreateQuestion(question);
+            await _repository.CreateQuestionAsync(question);
         }
 
-        public async Task UpdateQuestion(Questions question, int id)
+        public async Task UpdateQuestionAsync(Questions question, int id)
         {
-            var questionToUpdate = await _repository.GetQuestion(id);
+            var questionToUpdate = await _repository.GetQuestionAsync(id);
 
             if (questionToUpdate is null)
             {
@@ -44,19 +44,19 @@ namespace BrainGame.Logic.QuizService.QuestionService
             questionToUpdate.Answers = question.Answers;
             questionToUpdate.Correct = question.Correct;
 
-            await _repository.UpdateQuestion(questionToUpdate);
+            await _repository.UpdateQuestionAsync(questionToUpdate);
         }
 
-        public async Task DeleteQuestion(int id)
+        public async Task DeleteQuestionAsync(int id)
         {
-            var questionToDelete = await _repository.GetQuestion(id);
+            var questionToDelete = await _repository.GetQuestionAsync(id);
 
             if (questionToDelete is null)
             {
                 throw new QuestionNotFoundException("Question not found");
             }
 
-            await _repository.DeleteQuestion(questionToDelete);
+            await _repository.DeleteQuestionAsync(questionToDelete);
         }
     }
 }

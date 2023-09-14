@@ -29,4 +29,10 @@
     <ProjectReference Include="..\BrainGame.Users\BrainGame.Users.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Auth\" />
+    <Folder Include="Quiz\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
+
 </Project>

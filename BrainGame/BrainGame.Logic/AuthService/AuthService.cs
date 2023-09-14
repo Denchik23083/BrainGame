@@ -1,4 +1,5 @@
-﻿using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Core.Exceptions;
+using BrainGame.Db.Entities.Auth;
 using BrainGame.WebDb.AuthRepository;
 
 namespace BrainGame.Logic.AuthService
@@ -12,31 +13,54 @@ namespace BrainGame.Logic.AuthService
             _repository = repository;
         }
 
-        public async Task Register(User register)
+        public async Task RegisterAsync(User register)
         {
             register.RoleId = 3;
 
-            await _repository.Register(register);
+            await _repository.RegisterAsync(register);
         }
 
-        public async Task<User> Login(User login)
-        {
-            return await _repository.Login(login);
+        public async Task<User> LoginAsync(User login)
+        { 
+            var user = await _repository.LoginAsync(login);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            return user;
         }
 
-        public async Task<User> Refresh(RefreshToken refresh)
+        public async Task<User> RefreshAsync(RefreshToken refresh)
         {
-            return await _repository.Refresh(refresh);
+            var refreshToken = await _repository.RefreshAsync(refresh);
+
+            if (refreshToken is null)
+            {
+                throw new RefreshTokenNotFoundException("RefreshToken not found");
+            }
+
+            if (refreshToken.User is null)
+            {
+                throw new UserNotFoundException("User with this refreshToken not found");
+            }
+
+            return refreshToken.User;
         }
 
-        public async Task CreateRefreshToken(Guid refreshToken, User user)
+        public async Task CreateRefreshTokenAsync(Guid refreshToken, User user)
         {
-            await _repository.CreateRefreshToken(refreshToken, user);
+            user.RefreshToken = new RefreshToken { Value = refreshToken };
+
+            await _repository.CreateRefreshTokenAsync(user);
         }
 
-        public async Task UpdateRefreshToken(Guid refreshToken, User user)
+        public async Task UpdateRefreshTokenAsync(Guid refreshToken, User user)
         {
-            await _repository.UpdateRefreshToken(refreshToken, user);
+            user.RefreshToken!.Value = refreshToken;
+
+            await _repository.UpdateRefreshTokenAsync(user);
         }
     }
 }

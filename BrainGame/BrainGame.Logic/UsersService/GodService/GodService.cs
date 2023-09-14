@@ -18,11 +18,11 @@ namespace BrainGame.Logic.UsersService.GodService
             _userRepository = userRepository;
         }
 
-        public async Task UserToAdmin(int id)
+        public async Task UserToAdminAsync(int id)
         {
             var adminRoleId = 2;
 
-            var userToAdmin = await _userRepository.GetUser(id);
+            var userToAdmin = await _userRepository.GetUserAsync(id);
 
             if (userToAdmin is null)
             {
@@ -31,14 +31,14 @@ namespace BrainGame.Logic.UsersService.GodService
 
             userToAdmin.RoleId = adminRoleId;
 
-            await _repository.UserToAdmin(userToAdmin);
+            await _repository.UserToAdminAsync(userToAdmin);
         }
 
-        public async Task AdminToUser(int id)
+        public async Task AdminToUserAsync(int id)
         {
             var userRoleId = 3;
 
-            var adminToUser = await _adminRepository.GetAdmin(id);
+            var adminToUser = await _adminRepository.GetAdminAsync(id);
 
             if (adminToUser is null)
             {
@@ -47,7 +47,7 @@ namespace BrainGame.Logic.UsersService.GodService
 
             adminToUser.RoleId = userRoleId;
 
-            await _repository.AdminToUser(adminToUser);
+            await _repository.AdminToUserAsync(adminToUser);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BrainGame.Logic.QuizService.StatisticsService
         private readonly IStatisticsRepository _repository;
         private readonly IUserRepository _userRepository;
 
-        public static List<Statistics> StatisticsList = new();
+        private static readonly List<Statistics> _statisticsList = new();
 
         public StatisticsService(IStatisticsRepository repository, IUserRepository userRepository)
         {
@@ -18,9 +18,9 @@ namespace BrainGame.Logic.QuizService.StatisticsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatistics(int userId)
+        public async Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId)
         {
-            var statistics = await _repository.GetStatistics(userId);
+            var statistics = await _repository.GetStatisticsAsync(userId);
 
             if (statistics is null)
             {
@@ -30,9 +30,9 @@ namespace BrainGame.Logic.QuizService.StatisticsService
             return statistics;
         }
 
-        public async Task CreateSession(int quizId, int userId)
+        public async Task CreateSessionAsync(int quizId, int userId)
         {
-            var user = await _userRepository.GetUser(userId);
+            var user = await _userRepository.GetUserAsync(userId);
 
             if (user is null)
             {
@@ -41,26 +41,26 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 
             var newSession = new Statistics { QuizId = quizId, UserId = user.Id, Point = 0 };
 
-            var statistics = StatisticsList.FirstOrDefault(_ => _.UserId == user.Id);
+            var statistics = _statisticsList.FirstOrDefault(_ => _.UserId == user.Id);
 
             if (statistics is not null)
             {
-                StatisticsList.Remove(statistics);
+                _statisticsList.Remove(statistics);
             }
 
-            StatisticsList.Add(newSession);
+            _statisticsList.Add(newSession);
         }
 
-        public async Task AddPoint(int quizId, int userId)
+        public async Task AddPointAsync(int quizId, int userId)
         {
-            var user = await _userRepository.GetUser(userId);
+            var user = await _userRepository.GetUserAsync(userId);
 
             if (user is null)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            var statistics = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
+            var statistics = _statisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
 
             if (statistics is null)
             {
@@ -70,46 +70,46 @@ namespace BrainGame.Logic.QuizService.StatisticsService
             statistics.Point++;
         }
 
-        public async Task<Statistics> GetPoints(int quizId, int userId)
+        public async Task<Statistics> GetPointsAsync(int quizId, int userId)
         {
-            var user = await _userRepository.GetUser(userId);
+            var user = await _userRepository.GetUserAsync(userId);
 
             if (user is null)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            var statistics = StatisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
+            var statistics = _statisticsList.FirstOrDefault(_ => _.QuizId == quizId && _.UserId == user.Id);
 
             if (statistics is null)
             {
                 throw new StatisticsNotFoundException("Statistics not found");
             }
 
-            await _repository.SavePoints(statistics);
+            await _repository.SavePointsAsync(statistics);
 
             return statistics;
         }
 
-        public async Task ResetStatistics(int userId)
+        public async Task ResetStatisticsAsync(int userId)
         {
-            var user = await _userRepository.GetUser(userId);
+            var user = await _userRepository.GetUserAsync(userId);
 
             if (user is null)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            var statistic = StatisticsList.FirstOrDefault(_ => _.UserId == user.Id);
+            var statistic = _statisticsList.FirstOrDefault(_ => _.UserId == user.Id);
 
             if (statistic is not null)
             {
-                StatisticsList.Remove(statistic);
+                _statisticsList.Remove(statistic);
             }
 
-            var statistics = await _repository.GetStatistics(userId);
+            var statistics = await _repository.GetStatisticsAsync(userId);
 
-            await _repository.ResetStatistics(statistics);
+            await _repository.ResetStatisticsAsync(statistics);
         }
     }
 }

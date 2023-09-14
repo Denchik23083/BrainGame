@@ -4,14 +4,14 @@ namespace BrainGame.Logic.AuthService
 {
     public interface IAuthService
     {
-        Task Register(User register);
+        Task RegisterAsync(User register);
 
-        Task<User> Login(User login);
+        Task<User> LoginAsync(User login);
 
-        Task<User> Refresh(RefreshToken refresh);
+        Task<User> RefreshAsync(RefreshToken refresh);
 
-        Task CreateRefreshToken(Guid refreshToken, User user);
+        Task CreateRefreshTokenAsync(Guid refreshToken, User user);
 
-        Task UpdateRefreshToken(Guid refreshToken, User user);
+        Task UpdateRefreshTokenAsync(Guid refreshToken, User user);
     }
 }

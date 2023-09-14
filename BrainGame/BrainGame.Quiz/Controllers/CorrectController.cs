@@ -41,11 +41,11 @@ namespace BrainGame.Quiz.Controllers
 
                 var mappedCorrect = _mapper.Map<Correct>(model);
 
-                var result = await _service.Correct(mappedCorrect);
+                var result = await _service.CorrectAsync(mappedCorrect);
 
                 if (result)
                 {
-                    await _statisticsService.AddPoint(id, userId);
+                    await _statisticsService.AddPointAsync(id, userId);
                 }
 
                 return NoContent();

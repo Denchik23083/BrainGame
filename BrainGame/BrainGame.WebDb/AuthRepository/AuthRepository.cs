@@ -1,5 +1,4 @@
-﻿using BrainGame.Core.Exceptions;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,15 +13,16 @@ namespace BrainGame.WebDb.AuthRepository
             _context = context;
         }
 
-        public async Task Register(User register)
+        public async Task RegisterAsync(User register)
         {
             await _context.Users.AddAsync(register);
+
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> Login(User login)
+        public async Task<User?> LoginAsync(User login)
         {
-            var user = await _context.Users
+            return await _context.Users
                 .Include(_ => _.Role)
                 .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.RefreshToken)
@@ -30,49 +30,26 @@ namespace BrainGame.WebDb.AuthRepository
                 .FirstOrDefaultAsync(b =>
                     b.Email == login.Email &&
                     b.Password == login.Password);
-
-            if (user is null)
-            {
-                throw new UserNotFoundException("User not found");
-            }
-
-            return user;
         }
 
-        public async Task<User> Refresh(RefreshToken refresh)
+        public async Task<RefreshToken?> RefreshAsync(RefreshToken refresh)
         {
-            var refreshToken = await _context.RefreshTokens
+            return await _context.RefreshTokens
                 .Include(_ => _.User)
                 .ThenInclude(_ => _!.Role)
                 .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.User)
                 .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Value == refresh.Value);
-
-            if (refreshToken is null)
-            {
-                throw new RefreshTokenNotFoundException("RefreshToken not found");
-            }
-
-            if (refreshToken.User is null)
-            {
-                throw new UserNotFoundException("User with this refreshToken not found");
-            }
-
-            return refreshToken.User;
         }
 
-        public async Task CreateRefreshToken(Guid refreshToken, User user)
+        public async Task CreateRefreshTokenAsync(User user)
         {
-            user.RefreshToken = new RefreshToken { Value = refreshToken };
-            
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateRefreshToken(Guid refreshToken, User user)
+        public async Task UpdateRefreshTokenAsync(User user)
         {
-            user.RefreshToken!.Value = refreshToken;
-
             await _context.SaveChangesAsync();
         }
     }

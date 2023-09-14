@@ -4,6 +4,6 @@ namespace BrainGame.WebDb.QuizRepository.CorrectRepository
 {
     public interface ICorrectRepository
     {
-        Task<Correct> Correct(int id);
+        Task<Correct?> CorrectAsync(int id);
     }
 }

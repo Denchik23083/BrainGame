@@ -4,10 +4,10 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
 {
     public interface IAdminRepository
     {
-        Task<IEnumerable<User>> GetAdmins(int roleId);
+        Task<IEnumerable<User>> GetAdminsAsync(int roleId);
 
-        Task<User> GetAdmin(int id);
+        Task<User?> GetAdminAsync(int id);
 
-        Task RemoveUser(User userToRemove);
+        Task RemoveUserAsync(User userToRemove);
     }
 }

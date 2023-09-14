@@ -23,7 +23,7 @@ namespace BrainGame.Users.Controllers
         {
             try
             {
-                await _service.UserToAdmin(id);
+                await _service.UserToAdminAsync(id);
 
                 return NoContent();
             }
@@ -39,7 +39,7 @@ namespace BrainGame.Users.Controllers
         {
             try
             {
-                await _service.AdminToUser(id);
+                await _service.AdminToUserAsync(id);
 
                 return NoContent();
             }

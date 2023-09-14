@@ -28,7 +28,7 @@ namespace BrainGame.Quiz.Controllers
         {
             try
             {
-                var quizzes = await _service.GetQuizzes();
+                var quizzes = await _service.GetQuizzesAsync();
 
                 var mappedQuizzes = _mapper.Map<IEnumerable<QuizReadModel>>(quizzes);
 
@@ -51,7 +51,7 @@ namespace BrainGame.Quiz.Controllers
 
             var mappedQuiz = _mapper.Map<Quizzes>(model);
 
-            await _service.CreateQuiz(mappedQuiz);
+            await _service.CreateQuizAsync(mappedQuiz);
 
             return NoContent();
         }
@@ -69,7 +69,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var mappedQuiz = _mapper.Map<Quizzes>(model);
 
-                await _service.UpdateQuiz(mappedQuiz, id);
+                await _service.UpdateQuizAsync(mappedQuiz, id);
 
                 return NoContent();
             }
@@ -90,7 +90,7 @@ namespace BrainGame.Quiz.Controllers
 
             try
             {
-                await _service.DeleteQuiz(id);
+                await _service.DeleteQuizAsync(id);
 
                 return NoContent();
             }

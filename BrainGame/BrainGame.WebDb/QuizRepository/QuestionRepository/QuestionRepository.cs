@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.QuizRepository.QuestionRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Questions>> GetQuestions(int quizId)
+        public async Task<IEnumerable<Questions>> GetQuestionsAsync(int quizId)
         {
             return await _context.Questions
                 .Include(_ => _.Correct)
@@ -22,26 +22,26 @@ namespace BrainGame.WebDb.QuizRepository.QuestionRepository
                 .ToListAsync();
         }
 
-        public async Task<Questions> GetQuestion(int id)
+        public async Task<Questions?> GetQuestionAsync(int id)
         {
-            return (await _context.Questions
+            return await _context.Questions
                 .Include(_ => _.Correct)
-                .FirstOrDefaultAsync(_ => _.Id == id))!;
+                .FirstOrDefaultAsync(_ => _.Id == id);
         }
 
-        public async Task CreateQuestion(Questions question)
+        public async Task CreateQuestionAsync(Questions question)
         {
             await _context.Questions.AddAsync(question);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateQuestion(Questions questionToUpdate)
+        public async Task UpdateQuestionAsync(Questions questionToUpdate)
         {
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteQuestion(Questions questionToDelete)
+        public async Task DeleteQuestionAsync(Questions questionToDelete)
         {
             _context.Questions.Remove(questionToDelete);
 

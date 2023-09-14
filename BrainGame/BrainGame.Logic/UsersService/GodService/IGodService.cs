@@ -2,8 +2,8 @@
 {
     public interface IGodService
     {
-        Task UserToAdmin(int id);
+        Task UserToAdminAsync(int id);
         
-        Task AdminToUser(int id);
+        Task AdminToUserAsync(int id);
     }
 }

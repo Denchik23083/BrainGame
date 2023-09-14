@@ -1,5 +1,4 @@
-﻿using BrainGame.Core.Exceptions;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +13,7 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAdmins(int roleId)
+        public async Task<IEnumerable<User>> GetAdminsAsync(int roleId)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -22,24 +21,17 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
                 .ToListAsync();
         }
 
-        public async Task<User> GetAdmin(int id)
+        public async Task<User?> GetAdminAsync(int id)
         {
-            var admin = await _context.Users
+            return await _context.Users
                 .Include(_ => _.Role)
                 .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.RefreshToken)
                 .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(b => b.Id == id);
-
-            if (admin is null)
-            {
-                throw new AdminNotFoundException("Admin not found");
-            }
-
-            return admin;
         }
 
-        public async Task RemoveUser(User userToRemove)
+        public async Task RemoveUserAsync(User userToRemove)
         {
             _context.Users.Remove(userToRemove);
 

@@ -4,14 +4,14 @@ namespace BrainGame.WebDb.AuthRepository
 {
     public interface IAuthRepository
     {
-        Task Register(User register);
+        Task RegisterAsync(User register);
 
-        Task<User> Login(User login);
+        Task<User?> LoginAsync(User login);
 
-        Task<User> Refresh(RefreshToken refresh);
+        Task<RefreshToken?> RefreshAsync(RefreshToken refresh);
 
-        Task CreateRefreshToken(Guid refreshToken, User user);
+        Task CreateRefreshTokenAsync(User user);
 
-        Task UpdateRefreshToken(Guid refreshToken, User user);
+        Task UpdateRefreshTokenAsync(User user);
     }
 }

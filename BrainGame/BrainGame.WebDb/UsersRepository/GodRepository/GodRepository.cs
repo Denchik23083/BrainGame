@@ -12,12 +12,12 @@ namespace BrainGame.WebDb.UsersRepository.GodRepository
             _context = context;
         }
 
-        public async Task UserToAdmin(User userToAdmin)
+        public async Task UserToAdminAsync(User userToAdmin)
         {
             await _context.SaveChangesAsync();
         }
 
-        public async Task AdminToUser(User adminToUser)
+        public async Task AdminToUserAsync(User adminToUser)
         {
             await _context.SaveChangesAsync();
         }

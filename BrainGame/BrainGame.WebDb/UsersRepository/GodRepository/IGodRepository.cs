@@ -4,8 +4,8 @@ namespace BrainGame.WebDb.UsersRepository.GodRepository
 {
     public interface IGodRepository
     {
-        Task UserToAdmin(User userToAdmin);
+        Task UserToAdminAsync(User userToAdmin);
 
-        Task AdminToUser(User adminToUser);
+        Task AdminToUserAsync(User adminToUser);
     }
 }
