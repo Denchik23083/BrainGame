@@ -10,7 +10,6 @@ using BrainGame.Logic.UsersService.GodService;
 using BrainGame.WebDb.UsersRepository.UserRepository;
 using BrainGame.WebDb.UsersRepository.AdminRepository;
 using BrainGame.WebDb.UsersRepository.GodRepository;
-using System.Net.NetworkInformation;
 
 var builder = WebApplication.CreateBuilder(args);
 

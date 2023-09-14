@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using BrainGame.Core.Utilities;
+﻿using BrainGame.Core.Utilities;
 
 namespace BrainGame.Db.Entities.Auth
 {

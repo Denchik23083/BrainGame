@@ -1,6 +1,5 @@
 ﻿using BrainGame.Db.Entities.Quiz;
 using BrainGame.Logic.QuizService.QuestionService;
-using BrainGame.Logic.QuizService.QuizService;
 using BrainGame.WebDb.QuizRepository.QuestionRepository;
 using Moq;
 using Xunit;
