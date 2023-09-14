@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync(int roleId)
+        public async Task<IEnumerable<User>> GetAllUsersAsync(int roleId)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -21,7 +21,7 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Gender>> GetGendersAsync()
+        public async Task<IEnumerable<Gender>> GetAllGendersAsync()
         {
             return await _context.Genders.ToListAsync();
         }

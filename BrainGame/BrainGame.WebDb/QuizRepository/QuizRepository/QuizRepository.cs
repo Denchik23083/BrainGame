@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.QuizRepository.QuizRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Quizzes>> GetQuizzesAsync()
+        public async Task<IEnumerable<Quizzes>> GetAllQuizzesAsync()
         {
             return await _context.Quizzes.ToListAsync();
         }

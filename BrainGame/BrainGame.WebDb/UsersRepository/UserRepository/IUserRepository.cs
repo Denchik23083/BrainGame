@@ -4,9 +4,9 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> GetUsersAsync(int roleId);
+        Task<IEnumerable<User>> GetAllUsersAsync(int roleId);
 
-        Task<IEnumerable<Gender>> GetGendersAsync();
+        Task<IEnumerable<Gender>> GetAllGendersAsync();
 
         Task<User?> GetUserAsync(int id);
 

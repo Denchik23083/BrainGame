@@ -13,9 +13,9 @@ namespace BrainGame.Logic.QuizService.QuestionService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Questions>> GetQuestionsAsync(int quizId)
+        public async Task<IEnumerable<Questions>> GetAllQuestionsAsync(int quizId)
         {
-            var questions = await _repository.GetQuestionsAsync(quizId);
+            var questions = await _repository.GetAllQuestionsAsync(quizId);
 
             if (questions is null)
             {

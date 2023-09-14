@@ -18,9 +18,9 @@ namespace BrainGame.Logic.QuizService.StatisticsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId)
+        public async Task<IEnumerable<Statistics>> GetAllStatisticsAsync(int userId)
         {
-            var statistics = await _repository.GetStatisticsAsync(userId);
+            var statistics = await _repository.GetAllStatisticsAsync(userId);
 
             if (statistics is null)
             {
@@ -107,7 +107,7 @@ namespace BrainGame.Logic.QuizService.StatisticsService
                 _statisticsList.Remove(statistic);
             }
 
-            var statistics = await _repository.GetStatisticsAsync(userId);
+            var statistics = await _repository.GetAllStatisticsAsync(userId);
 
             await _repository.ResetStatisticsAsync(statistics);
         }

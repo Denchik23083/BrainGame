@@ -30,7 +30,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var userId = GetUserId();
 
-                var statistics = await _service.GetStatisticsAsync(userId);
+                var statistics = await _service.GetAllStatisticsAsync(userId);
 
                 var mappedStatistics = _mapper.Map<IEnumerable<StatisticsReadModel>>(statistics);
 

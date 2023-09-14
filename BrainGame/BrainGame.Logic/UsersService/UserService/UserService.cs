@@ -14,11 +14,11 @@ namespace BrainGame.Logic.UsersService.UserService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             var roleId = 3;
 
-            var users = await _repository.GetUsersAsync(roleId);
+            var users = await _repository.GetAllUsersAsync(roleId);
 
             if (users is null)
             {
@@ -28,9 +28,9 @@ namespace BrainGame.Logic.UsersService.UserService
             return users;
         }
 
-        public async Task<IEnumerable<Gender>> GetGendersAsync()
+        public async Task<IEnumerable<Gender>> GetAllGendersAsync()
         {
-            var genders = await _repository.GetGendersAsync();
+            var genders = await _repository.GetAllGendersAsync();
 
             if (genders is null)
             {

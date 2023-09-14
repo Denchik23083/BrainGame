@@ -35,14 +35,14 @@ namespace BrainGame.Tests.UsersTests.UserTests
                 }
             };
 
-            _repository.Setup(_ => _.GetUsersAsync(roleId))
+            _repository.Setup(_ => _.GetAllUsersAsync(roleId))
                 .ReturnsAsync(users);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.GetUsersAsync();
+            var result = await service.GetAllUsersAsync();
 
-            _repository.Verify(_ => _.GetUsersAsync(roleId),
+            _repository.Verify(_ => _.GetAllUsersAsync(roleId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -58,14 +58,14 @@ namespace BrainGame.Tests.UsersTests.UserTests
                 new() { Id = 2, Type = GenderType.Female }
             };
 
-            _repository.Setup(_ => _.GetGendersAsync())
+            _repository.Setup(_ => _.GetAllGendersAsync())
                 .ReturnsAsync(genders);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.GetGendersAsync();
+            var result = await service.GetAllGendersAsync();
 
-            _repository.Verify(_ => _.GetGendersAsync(),
+            _repository.Verify(_ => _.GetAllGendersAsync(),
                 Times.Once);
 
             Assert.NotNull(result);

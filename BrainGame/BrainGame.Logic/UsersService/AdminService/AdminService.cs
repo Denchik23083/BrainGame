@@ -16,11 +16,11 @@ namespace BrainGame.Logic.UsersService.AdminService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<User>> GetAdminsAsync()
+        public async Task<IEnumerable<User>> GetAllAdminsAsync()
         {
             var roleId = 2;
 
-            var admins = await _repository.GetAdminsAsync(roleId);
+            var admins = await _repository.GetAllAdminsAsync(roleId);
 
             if (admins is null)
             {
