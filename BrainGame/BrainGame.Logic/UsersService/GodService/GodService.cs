@@ -20,7 +20,7 @@ namespace BrainGame.Logic.UsersService.GodService
 
         public async Task UserToAdminAsync(int id)
         {
-            var adminRoleId = 2;
+            var roleId = 2;
 
             var userToAdmin = await _userRepository.GetUserAsync(id);
 
@@ -29,14 +29,14 @@ namespace BrainGame.Logic.UsersService.GodService
                 throw new UserNotFoundException("User not found");
             }
 
-            userToAdmin.RoleId = adminRoleId;
+            userToAdmin.RoleId = roleId;
 
             await _repository.UserToAdminAsync(userToAdmin);
         }
 
         public async Task AdminToUserAsync(int id)
         {
-            var userRoleId = 3;
+            var roleId = 3;
 
             var adminToUser = await _adminRepository.GetAdminAsync(id);
 
@@ -45,7 +45,7 @@ namespace BrainGame.Logic.UsersService.GodService
                 throw new AdminNotFoundException("Admin not found");
             }
 
-            adminToUser.RoleId = userRoleId;
+            adminToUser.RoleId = roleId;
 
             await _repository.AdminToUserAsync(adminToUser);
         }
