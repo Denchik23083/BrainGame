@@ -29,7 +29,7 @@ namespace BrainGame.Users.Controllers
         {
             try
             {
-                var users = await _service.GetUsers();
+                var users = await _service.GetUsersAsync();
 
                 var mapperUsers = _mapper.Map<IEnumerable<UserReadModel>>(users);
 
@@ -56,7 +56,7 @@ namespace BrainGame.Users.Controllers
 
                 var mappedUser = _mapper.Map<User>(model);
 
-                await _service.EditUser(mappedUser, userId);
+                await _service.EditUserAsync(mappedUser, userId);
 
                 return NoContent();
             }
@@ -81,7 +81,7 @@ namespace BrainGame.Users.Controllers
 
                 var mappedPassword = _mapper.Map<Password>(model);
 
-                await _service.EditPassword(mappedPassword, userId);
+                await _service.EditPasswordAsync(mappedPassword, userId);
 
                 return NoContent();
             }

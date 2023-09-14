@@ -4,14 +4,14 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> GetUsers(int roleId);
+        Task<IEnumerable<User>> GetUsersAsync(int roleId);
 
-        Task<IEnumerable<Gender>> GetGenders();
+        Task<IEnumerable<Gender>> GetGendersAsync();
 
-        Task<User> GetUser(int id);
+        Task<User?> GetUserAsync(int id);
 
-        Task EditUser(User userToUpdate);
+        Task EditUserAsync(User userToUpdate);
 
-        Task EditPassword(User userToUpdate);
+        Task EditPasswordAsync(User userToUpdate);
     }
 }

@@ -4,12 +4,12 @@ namespace BrainGame.Logic.QuizService.QuestionService
 {
     public interface IQuestionService
     {
-        Task<IEnumerable<Questions>> GetQuestions(int quizId);
+        Task<IEnumerable<Questions>> GetQuestionsAsync(int quizId);
 
-        Task CreateQuestion(Questions question);
+        Task CreateQuestionAsync(Questions question);
 
-        Task UpdateQuestion(Questions question, int id);
+        Task UpdateQuestionAsync(Questions question, int id);
 
-        Task DeleteQuestion(int id);
+        Task DeleteQuestionAsync(int id);
     }
 }

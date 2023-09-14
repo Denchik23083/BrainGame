@@ -30,7 +30,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var userId = GetUserId();
 
-                var statistics = await _service.GetStatistics(userId);
+                var statistics = await _service.GetStatisticsAsync(userId);
 
                 var mappedStatistics = _mapper.Map<IEnumerable<StatisticsReadModel>>(statistics);
 
@@ -50,7 +50,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var userId = GetUserId();
 
-                var points = await _service.GetPoints(id, userId);
+                var points = await _service.GetPointsAsync(id, userId);
 
                 var mappedPoints = _mapper.Map<StatisticsReadModel>(points);
 
@@ -74,7 +74,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var userId = GetUserId();
 
-                await _service.CreateSession(id, userId);
+                await _service.CreateSessionAsync(id, userId);
 
                 return NoContent();
             }
@@ -96,7 +96,7 @@ namespace BrainGame.Quiz.Controllers
             {
                 var userId = GetUserId();
 
-                await _service.ResetStatistics(userId);
+                await _service.ResetStatisticsAsync(userId);
 
                 return NoContent();
             }

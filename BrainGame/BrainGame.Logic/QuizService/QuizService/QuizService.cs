@@ -13,10 +13,9 @@ namespace BrainGame.Logic.QuizService.QuizService
             _repository = repository;
         }
 
-
-        public async Task<IEnumerable<Quizzes>> GetQuizzes()
+        public async Task<IEnumerable<Quizzes>> GetQuizzesAsync()
         {
-            var quizzes = await _repository.GetQuizzes();
+            var quizzes = await _repository.GetQuizzesAsync();
 
             if (quizzes is null)
             {
@@ -26,14 +25,14 @@ namespace BrainGame.Logic.QuizService.QuizService
             return quizzes;
         }
 
-        public async Task CreateQuiz(Quizzes quiz)
+        public async Task CreateQuizAsync(Quizzes quiz)
         {
-            await _repository.CreateQuiz(quiz);
+            await _repository.CreateQuizAsync(quiz);
         }
 
-        public async Task UpdateQuiz(Quizzes quiz, int id)
+        public async Task UpdateQuizAsync(Quizzes quiz, int id)
         {
-            var quizToUpdate = await _repository.GetQuiz(id);
+            var quizToUpdate = await _repository.GetQuizAsync(id);
 
             if (quizToUpdate is null)
             {
@@ -42,19 +41,19 @@ namespace BrainGame.Logic.QuizService.QuizService
 
             quizToUpdate.Name = quiz.Name;
 
-            await _repository.UpdateQuiz(quizToUpdate);
+            await _repository.UpdateQuizAsync(quizToUpdate);
         }
 
-        public async Task DeleteQuiz(int id)
+        public async Task DeleteQuizAsync(int id)
         {
-            var quizToDelete = await _repository.GetQuiz(id);
+            var quizToDelete = await _repository.GetQuizAsync(id);
 
             if (quizToDelete is null)
             {
                 throw new QuizNotFoundException("Quiz not found");
             }
 
-            await _repository.DeleteQuiz(quizToDelete);
+            await _repository.DeleteQuizAsync(quizToDelete);
         }
     }
 }

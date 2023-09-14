@@ -4,8 +4,8 @@ namespace BrainGame.Logic.UsersService.AdminService
 {
     public interface IAdminService
     {
-        Task<IEnumerable<User>> GetAdmins();
+        Task<IEnumerable<User>> GetAdminsAsync();
 
-        Task RemoveUser(int id);
+        Task RemoveUserAsync(int id);
     }
 }

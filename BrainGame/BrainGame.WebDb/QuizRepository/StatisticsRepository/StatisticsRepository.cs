@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatistics(int userId)
+        public async Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId)
         {
             return await _context.Statistics
                 .Include(_ => _.Quizzes)
@@ -21,14 +21,14 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
                 .ToListAsync();
         }
 
-        public async Task SavePoints(Statistics statistic)
+        public async Task SavePointsAsync(Statistics statistic)
         {
             await _context.Statistics.AddAsync(statistic);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task ResetStatistics(IEnumerable<Statistics> statistics)
+        public async Task ResetStatisticsAsync(IEnumerable<Statistics> statistics)
         {
             _context.Statistics.RemoveRange(statistics);
 

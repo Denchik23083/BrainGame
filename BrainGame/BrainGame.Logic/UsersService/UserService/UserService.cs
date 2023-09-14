@@ -14,11 +14,11 @@ namespace BrainGame.Logic.UsersService.UserService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
             var roleId = 3;
 
-            var users = await _repository.GetUsers(roleId);
+            var users = await _repository.GetUsersAsync(roleId);
 
             if (users is null)
             {
@@ -28,9 +28,9 @@ namespace BrainGame.Logic.UsersService.UserService
             return users;
         }
 
-        public async Task<IEnumerable<Gender>> GetGenders()
+        public async Task<IEnumerable<Gender>> GetGendersAsync()
         {
-            var genders = await _repository.GetGenders();
+            var genders = await _repository.GetGendersAsync();
 
             if (genders is null)
             {
@@ -40,9 +40,9 @@ namespace BrainGame.Logic.UsersService.UserService
             return genders;
         }
 
-        public async Task EditUser(User user, int id)
+        public async Task EditUserAsync(User user, int id)
         {
-            var userToUpdate = await _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUserAsync(id);
 
             if (userToUpdate is null)
             {
@@ -52,12 +52,12 @@ namespace BrainGame.Logic.UsersService.UserService
             userToUpdate.Name = user.Name;
             userToUpdate.Email = user.Email;
 
-            await _repository.EditUser(userToUpdate);
+            await _repository.EditUserAsync(userToUpdate);
         }
 
-        public async Task EditPassword(Password password, int id)
+        public async Task EditPasswordAsync(Password password, int id)
         {
-            var userToUpdate = await _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUserAsync(id);
 
             if (userToUpdate is null)
             {
@@ -69,7 +69,7 @@ namespace BrainGame.Logic.UsersService.UserService
             {
                 userToUpdate.Password = password.NewPassword;
 
-                await _repository.EditPassword(userToUpdate);
+                await _repository.EditPasswordAsync(userToUpdate);
             }
         }
     }

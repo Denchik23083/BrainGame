@@ -1,5 +1,4 @@
-﻿using BrainGame.Core.Exceptions;
-using BrainGame.Db;
+﻿using BrainGame.Db;
 using BrainGame.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +13,7 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetUsers(int roleId)
+        public async Task<IEnumerable<User>> GetUsersAsync(int roleId)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -22,34 +21,27 @@ namespace BrainGame.WebDb.UsersRepository.UserRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Gender>> GetGenders()
+        public async Task<IEnumerable<Gender>> GetGendersAsync()
         {
             return await _context.Genders.ToListAsync();
         }
 
-        public async Task<User> GetUser(int id)
+        public async Task<User?> GetUserAsync(int id)
         {
-            var user = await _context.Users
+            return await _context.Users
                 .Include(_ => _.Role)
                 .ThenInclude(_ => _!.RolePermissions)
                 .Include(_ => _.RefreshToken)
                 .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(b => b.Id == id);
-
-            if (user is null)
-            {
-                throw new UserNotFoundException("User not found");
-            }
-
-            return user;
         }
 
-        public async Task EditUser(User userToUpdate)
+        public async Task EditUserAsync(User userToUpdate)
         {
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditPassword(User userToUpdate)
+        public async Task EditPasswordAsync(User userToUpdate)
         {
             await _context.SaveChangesAsync();
         }

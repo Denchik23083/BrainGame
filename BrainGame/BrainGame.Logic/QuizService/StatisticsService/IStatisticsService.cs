@@ -4,14 +4,14 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 {
     public interface IStatisticsService
     {
-        Task<IEnumerable<Statistics>> GetStatistics(int userId);
+        Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId);
 
-        Task CreateSession(int quizId, int userId);
+        Task CreateSessionAsync(int quizId, int userId);
 
-        Task AddPoint(int quizId, int userId);
+        Task AddPointAsync(int quizId, int userId);
 
-        Task<Statistics> GetPoints(int quizId, int userId);
+        Task<Statistics> GetPointsAsync(int quizId, int userId);
 
-        Task ResetStatistics(int userId);
+        Task ResetStatisticsAsync(int userId);
     }
 }

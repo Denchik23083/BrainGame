@@ -47,7 +47,7 @@ namespace BrainGame.Auth.Controllers
 
             var mappedRegister = _mapper.Map<User>(model);
 
-            await _service.Register(mappedRegister);
+            await _service.RegisterAsync(mappedRegister);
 
             return NoContent();
         }
@@ -64,7 +64,7 @@ namespace BrainGame.Auth.Controllers
             {
                 var mappedLogin = _mapper.Map<User>(model);
 
-                var user = await _service.Login(mappedLogin);
+                var user = await _service.LoginAsync(mappedLogin);
 
                 var tokenModel = await GetUserToken(user);
 
@@ -88,7 +88,7 @@ namespace BrainGame.Auth.Controllers
             {
                 var mappedRefresh = _mapper.Map<RefreshToken>(model);
 
-                var user = await _service.Refresh(mappedRefresh);
+                var user = await _service.RefreshAsync(mappedRefresh);
 
                 var tokenModel = await GetUserToken(user);
 
@@ -110,7 +110,7 @@ namespace BrainGame.Auth.Controllers
         {
             try
             {
-                var genders = await _userService.GetGenders();
+                var genders = await _userService.GetGendersAsync();
 
                 var mapperGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
 
@@ -156,11 +156,11 @@ namespace BrainGame.Auth.Controllers
 
             if (user.RefreshToken is null)
             {
-                await _service.CreateRefreshToken(refreshToken, user);
+                await _service.CreateRefreshTokenAsync(refreshToken, user);
             }
             else
             {
-                await _service.UpdateRefreshToken(refreshToken, user);
+                await _service.UpdateRefreshTokenAsync(refreshToken, user);
             }
 
             return new TokenModel { JwtToken = stringToken, RefreshToken = refreshToken };

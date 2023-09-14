@@ -13,9 +13,9 @@ namespace BrainGame.Logic.QuizService.CorrectService
             _repository = repository;
         }
 
-        public async Task<bool> Correct(Correct correctAnswerUser)
+        public async Task<bool> CorrectAsync(Correct correctAnswerUser)
         {
-            var correct = await _repository.Correct(correctAnswerUser.QuestionId);
+            var correct = await _repository.CorrectAsync(correctAnswerUser.QuestionId);
 
             if (correct is null)
             {
