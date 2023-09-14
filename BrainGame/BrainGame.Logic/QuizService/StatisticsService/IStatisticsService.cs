@@ -10,7 +10,7 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 
         Task AddPointAsync(int quizId, int userId);
 
-        Task<Statistics> GetPointsAsync(int quizId, int userId);
+        Task<Statistics?> GetPointsAsync(int quizId, int userId);
 
         Task ResetStatisticsAsync(int userId);
     }
