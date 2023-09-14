@@ -1,5 +1,4 @@
-﻿using BrainGame.Auth.Models;
-using BrainGame.Db.Entities.Auth;
+﻿using BrainGame.Db.Entities.Auth;
 using BrainGame.Logic.AuthService;
 using BrainGame.Tests.Utilities;
 using BrainGame.WebDb.AuthRepository;
