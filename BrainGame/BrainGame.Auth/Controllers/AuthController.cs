@@ -130,7 +130,7 @@ namespace BrainGame.Auth.Controllers
 
             var claims = new List<Claim>
             {
-                new (ClaimTypes.NameIdentifier, user.Id.ToString()!),
+                new (ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new (ClaimTypes.Name, user.Name!),
                 new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.Gender, user.Gender!.Type.ToString()!),
