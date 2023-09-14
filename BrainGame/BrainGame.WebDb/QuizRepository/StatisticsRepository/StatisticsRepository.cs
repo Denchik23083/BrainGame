@@ -21,9 +21,12 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
                 .ToListAsync();
         }
 
-        public async Task SavePointsAsync(Statistics statistic)
+        public async Task SavePointsAsync(Statistics? statistic)
         {
-            await _context.Statistics.AddAsync(statistic);
+            if (statistic is not null)
+            {
+                await _context.Statistics.AddAsync(statistic);
+            }
 
             await _context.SaveChangesAsync();
         }
