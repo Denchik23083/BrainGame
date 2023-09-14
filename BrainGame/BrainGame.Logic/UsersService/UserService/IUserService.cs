@@ -5,9 +5,9 @@ namespace BrainGame.Logic.UsersService.UserService
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUsersAsync();
+        Task<IEnumerable<User>> GetAllUsersAsync();
 
-        Task<IEnumerable<Gender>> GetGendersAsync();
+        Task<IEnumerable<Gender>> GetAllGendersAsync();
 
         Task EditUserAsync(User user, int id);
 

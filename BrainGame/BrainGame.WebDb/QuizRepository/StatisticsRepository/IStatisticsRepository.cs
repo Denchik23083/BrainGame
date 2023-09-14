@@ -4,7 +4,7 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
 {
     public interface IStatisticsRepository
     {
-        Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId);
+        Task<IEnumerable<Statistics>> GetAllStatisticsAsync(int userId);
 
         Task SavePointsAsync(Statistics statistic);
 

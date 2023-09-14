@@ -4,7 +4,7 @@ namespace BrainGame.Logic.QuizService.StatisticsService
 {
     public interface IStatisticsService
     {
-        Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId);
+        Task<IEnumerable<Statistics>> GetAllStatisticsAsync(int userId);
 
         Task CreateSessionAsync(int quizId, int userId);
 

@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.QuizRepository.StatisticsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Statistics>> GetStatisticsAsync(int userId)
+        public async Task<IEnumerable<Statistics>> GetAllStatisticsAsync(int userId)
         {
             return await _context.Statistics
                 .Include(_ => _.Quizzes)

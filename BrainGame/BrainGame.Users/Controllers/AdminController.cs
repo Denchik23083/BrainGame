@@ -27,7 +27,7 @@ namespace BrainGame.Users.Controllers
         {
             try
             {
-                var admins = await _service.GetAdminsAsync();
+                var admins = await _service.GetAllAdminsAsync();
 
                 var mapperAdmins = _mapper.Map<IEnumerable<AdminReadModel>>(admins);
 

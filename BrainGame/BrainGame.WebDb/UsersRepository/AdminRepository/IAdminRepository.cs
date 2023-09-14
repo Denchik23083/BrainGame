@@ -4,7 +4,7 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
 {
     public interface IAdminRepository
     {
-        Task<IEnumerable<User>> GetAdminsAsync(int roleId);
+        Task<IEnumerable<User>> GetAllAdminsAsync(int roleId);
 
         Task<User?> GetAdminAsync(int id);
 

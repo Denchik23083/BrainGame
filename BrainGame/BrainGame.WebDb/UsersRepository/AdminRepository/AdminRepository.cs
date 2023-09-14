@@ -13,7 +13,7 @@ namespace BrainGame.WebDb.UsersRepository.AdminRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAdminsAsync(int roleId)
+        public async Task<IEnumerable<User>> GetAllAdminsAsync(int roleId)
         {
             return await _context.Users
                 .Include(_ => _.Gender)

@@ -28,7 +28,7 @@ namespace BrainGame.Quiz.Controllers
         {
             try
             {
-                var questions = await _service.GetQuestionsAsync(id);
+                var questions = await _service.GetAllQuestionsAsync(id);
 
                 var mappedQuestions = _mapper.Map<IEnumerable<QuestionReadModel>>(questions);
 

@@ -110,7 +110,7 @@ namespace BrainGame.Auth.Controllers
         {
             try
             {
-                var genders = await _userService.GetGendersAsync();
+                var genders = await _userService.GetAllGendersAsync();
 
                 var mapperGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
 

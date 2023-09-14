@@ -4,7 +4,7 @@ namespace BrainGame.WebDb.QuizRepository.QuestionRepository
 {
     public interface IQuestionRepository
     {
-        Task<IEnumerable<Questions>> GetQuestionsAsync(int quizId);
+        Task<IEnumerable<Questions>> GetAllQuestionsAsync(int quizId);
 
         Task<Questions?> GetQuestionAsync(int id);
 

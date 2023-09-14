@@ -4,7 +4,7 @@ namespace BrainGame.Logic.QuizService.QuizService
 {
     public interface IQuizService
     {
-        Task<IEnumerable<Quizzes>> GetQuizzesAsync();
+        Task<IEnumerable<Quizzes>> GetAllQuizzesAsync();
 
         Task CreateQuizAsync(Quizzes quiz);
 

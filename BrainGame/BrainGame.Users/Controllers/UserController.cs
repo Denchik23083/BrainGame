@@ -29,7 +29,7 @@ namespace BrainGame.Users.Controllers
         {
             try
             {
-                var users = await _service.GetUsersAsync();
+                var users = await _service.GetAllUsersAsync();
 
                 var mapperUsers = _mapper.Map<IEnumerable<UserReadModel>>(users);
 
