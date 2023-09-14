@@ -10,8 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.19" />
+    <Compile Remove="Auth\**" />
+    <Compile Remove="Quiz\**" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Auth\**" />
+    <EmbeddedResource Remove="Quiz\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Auth\**" />
+    <None Remove="Quiz\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="Moq" Version="4.20.69" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,12 +39,6 @@
     <ProjectReference Include="..\BrainGame.Auth\BrainGame.Auth.csproj" />
     <ProjectReference Include="..\BrainGame.Quiz\BrainGame.Quiz.csproj" />
     <ProjectReference Include="..\BrainGame.Users\BrainGame.Users.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Auth\" />
-    <Folder Include="Quiz\" />
-    <Folder Include="Users\" />
   </ItemGroup>
 
 </Project>
