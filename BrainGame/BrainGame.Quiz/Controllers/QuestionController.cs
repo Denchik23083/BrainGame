@@ -22,7 +22,7 @@ namespace BrainGame.Quiz.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> GetQuestions(int id)
         {
@@ -56,7 +56,7 @@ namespace BrainGame.Quiz.Controllers
             return NoContent();
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         [RequirePermission(PermissionType.EditQuiz)]
         public async Task<IActionResult> UpdateQuestion(QuestionWriteModel model, int id)
         {
@@ -79,7 +79,7 @@ namespace BrainGame.Quiz.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         [RequirePermission(PermissionType.EditQuiz)]
         public async Task<IActionResult> DeleteQuestion(int id)
         {

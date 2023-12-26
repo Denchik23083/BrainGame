@@ -42,7 +42,7 @@ namespace BrainGame.Quiz.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> GetPoints(int id)
         {
@@ -66,7 +66,7 @@ namespace BrainGame.Quiz.Controllers
             }
         }
 
-        [HttpPost("id")]
+        [HttpPost("{id}")]
         [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> CreateSession(int id)
         {

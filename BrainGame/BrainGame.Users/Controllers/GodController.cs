@@ -17,7 +17,7 @@ namespace BrainGame.Users.Controllers
             _service = service;
         }
 
-        [HttpPut("usertoadmin/id")]
+        [HttpPut("usertoadmin/{id}")]
         [RequirePermission(PermissionType.UserToAdmin)]
         public async Task<IActionResult> UserToAdmin(int id)
         {
@@ -33,7 +33,7 @@ namespace BrainGame.Users.Controllers
             }
         }
 
-        [HttpPut("admintouser/id")]
+        [HttpPut("admintouser/{id}")]
         [RequirePermission(PermissionType.AdminToUser)]
         public async Task<IActionResult> AdminToUser(int id)
         {

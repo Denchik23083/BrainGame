@@ -56,7 +56,7 @@ namespace BrainGame.Quiz.Controllers
             return NoContent();
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         [RequirePermission(PermissionType.EditQuiz)]
         public async Task<IActionResult> UpdateQuiz(QuizWriteModel model, int id)
         {
@@ -79,7 +79,7 @@ namespace BrainGame.Quiz.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         [RequirePermission(PermissionType.EditQuiz)]
         public async Task<IActionResult> DeleteQuiz(int id)
         {

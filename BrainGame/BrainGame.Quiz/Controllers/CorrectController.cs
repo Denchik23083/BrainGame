@@ -26,7 +26,7 @@ namespace BrainGame.Quiz.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("id")]
+        [HttpPost("{id}")]
         [RequirePermission(PermissionType.GetQuiz)]
         public async Task<IActionResult> Correct(CorrectWriteModel model, int id)
         {
